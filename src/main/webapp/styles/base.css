@@ -1,0 +1,38 @@
+/**
+ * 파일명: base.css
+ * 설명: 이 파일은 *.html(모든 html) 에 적용되는 스타일시트 입니다.
+ * 작성자: oxxultus(김영진)
+ * 생성일: 2024-11-06
+ * 업데이트일: 2024-11-06
+ */
+
+/* 통합 백그라운드 패턴 설정 */
+.background {
+    width: 100%;
+    height: 100%;
+    background: rgb(28, 28, 37) /* 배경 색상 */
+    radial-gradient(rgb(40, 40, 48) 20%, transparent 1%); /* 점 패턴 */
+    background-size: 13px 13px;
+}
+.background2 {
+    width: 100%;
+    height: 100%;
+    background: rgb(228, 228, 236) /* 배경 색상 */
+    radial-gradient(rgb(161, 161, 164) 20%, transparent 1%); /* 점 패턴 */
+    background-size: 13px 13px;
+}
+
+/* 이미지 드래그 방지 설정 */
+img {
+    -webkit-user-drag: none; /* Chrome, Safari 용: 이미지가 드래그되지 않도록 설정 */
+    -khtml-user-drag: none;  /* Konqueror 브라우저 용 (거의 사용되지 않음) */
+    -moz-user-drag: none;    /* Firefox 용: 이미지 드래그 방지 */
+    -o-user-drag: none;      /* Opera 용: 이미지 드래그 방지 */
+    user-drag: none;         /* 표준 속성: 지원하는 브라우저에서 이미지 드래그 방지 */
+}
+
+/* 이 요소 내에서 스크롤 바를 숨기고 스크롤을 막습니다 */
+.hide-scroll {
+    overflow: hidden;
+}
+
