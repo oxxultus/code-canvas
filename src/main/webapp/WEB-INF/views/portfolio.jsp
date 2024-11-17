@@ -14,7 +14,7 @@
 
     <script src="../scripts/portfolio/show-div.js" defer></script>
     <script src="../scripts/portfolio/play-sound.js" defer></script>
-<%--    <script src="../scripts/portfolio/check_login.js" defer></script>--%>
+    <script src="../scripts/portfolio/check_login.js" defer></script>
 </head>
 <body class="background hide">
 <nav>
