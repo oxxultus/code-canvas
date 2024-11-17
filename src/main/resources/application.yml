@@ -27,4 +27,4 @@ spring:
       hibernate.dialect: org.hibernate.dialect.MySQLDialect
 
 server:
-  port: 3002
+  port: 8080
