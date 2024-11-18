@@ -26,7 +26,7 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
-            <img id="display-img" src="../images/index/study.gif" alt="display-img" oncontextmenu="return false;">
+            <img id="display-img" src="../images/index/game-1.gif" alt="display-img" oncontextmenu="return false;">
             <p class="audiowide-regular" id="loader-text">Loading ...</p>
             <!-- 로그인 창이 띄워지는 부분 =================================================-->
             <form id="login_form">
