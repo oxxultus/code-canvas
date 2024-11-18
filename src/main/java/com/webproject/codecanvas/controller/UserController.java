@@ -77,4 +77,11 @@ public class UserController {
         return ResponseEntity.ok().body(user);
     }
 
+    /* 로그아웃에 대한 api 는 구현하지 않습니다.
+     * Springboot Security 의 logout 을 사용합니다.
+     * Springboot Security 에 내장되어 있는 logout 은 기존의 저장된 세선을 삭제해줍니다.
+     * 그러므로 본 프로젝트에서는 세션방식으로 로그인 되어 있기 때문에 따로 구현 할 필요 없이
+     * Springboot Security의 /logout를 사용합니다.
+     * */
+
 }
