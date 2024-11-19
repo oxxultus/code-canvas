@@ -1,38 +1,46 @@
 package com.webproject.codecanvas.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "tech_stack_icons")
-@Data
+@Getter
+@Setter
+@ToString
 public class TechStackIcon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column()
+    @Column(name = "first_tech_stack_button_icon")
     private String firstTechStackButtonIcon;
 
-    @Column()
+    @Column(name = "second_tech_stack_button_icon")
     private String secondTechStackButtonIcon;
 
-    @Column()
+    @Column(name = "third_tech_stack_button_icon")
     private String thirdTechStackButtonIcon;
 
-    @Column()
+    @Column(name = "fourth_tech_stack_button_icon")
     private String fourthTechStackButtonIcon;
 
-    @Column()
+    @Column(name = "fifth_tech_stack_button_icon")
     private String fifthTechStackButtonIcon;
 
-    @Column()
+    @Column(name = "sixth_tech_stack_button_icon")
     private String sixthTechStackButtonIcon;
 
     @OneToOne
     @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    @JsonBackReference
     private User user;
 
+    // 생성자
     public TechStackIcon(String techStackButtonIcon1, String techStackButtonIcon2, String techStackButtonIcon3, String techStackButtonIcon4, String techStackButtonIcon5, String techStackButtonIcon6) {
         this.firstTechStackButtonIcon = techStackButtonIcon1;
         this.secondTechStackButtonIcon = techStackButtonIcon2;
@@ -42,7 +50,7 @@ public class TechStackIcon {
         this.sixthTechStackButtonIcon = techStackButtonIcon6;
     }
 
+    // 기본 생성자
     public TechStackIcon() {
-
     }
 }

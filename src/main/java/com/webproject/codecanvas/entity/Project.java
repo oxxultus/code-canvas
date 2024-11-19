@@ -1,57 +1,66 @@
 package com.webproject.codecanvas.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "projects")
-@Data
+@Getter
+@Setter
+@ToString
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column()
+    @Column(name = "project_img_1")
     private String projectImg1;
 
-    @Column()
+    @Column(name = "project_desc_1")
     private String projectDesc1;
 
-    @Column()
+    @Column(name = "project_img_2")
     private String projectImg2;
 
-    @Column()
+    @Column(name = "project_desc_2")
     private String projectDesc2;
 
-    @Column()
+    @Column(name = "project_img_3")
     private String projectImg3;
 
-    @Column()
+    @Column(name = "project_desc_3")
     private String projectDesc3;
 
-    @Column()
+    @Column(name = "project_img_4")
     private String projectImg4;
 
-    @Column()
+    @Column(name = "project_desc_4")
     private String projectDesc4;
 
-    @Column()
+    @Column(name = "project_img_5")
     private String projectImg5;
 
-    @Column()
+    @Column(name = "project_desc_5")
     private String projectDesc5;
 
-    @Column()
+    @Column(name = "project_img_6")
     private String projectImg6;
 
-    @Column()
+    @Column(name = "project_desc_6")
     private String projectDesc6;
 
     @OneToOne
     @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    @JsonBackReference
     private User user;
 
-    public Project(String projectImg1, String projectDesc1, String projectImg2, String projectDesc2, String projectImg3, String projectDesc3, String projectImg4, String projectDesc4, String projectImg5, String projectDesc5, String projectImg6, String projectDesc6) {
+    // 생성자
+    public Project(String projectImg1, String projectDesc1, String projectImg2, String projectDesc2, String projectImg3, String projectDesc3,
+                   String projectImg4, String projectDesc4, String projectImg5, String projectDesc5, String projectImg6, String projectDesc6) {
         this.projectImg1 = projectImg1;
         this.projectDesc1 = projectDesc1;
         this.projectImg2 = projectImg2;
@@ -66,6 +75,7 @@ public class Project {
         this.projectDesc6 = projectDesc6;
     }
 
+    // 기본 생성자
     public Project() {
 
     }

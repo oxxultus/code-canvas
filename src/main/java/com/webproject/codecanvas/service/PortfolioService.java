@@ -34,31 +34,67 @@ public class PortfolioService {
 
     public void savePortfolio(PortfolioRequestDTO portfolioRequestDTO) {
         // User 찾기
-        User user = userRepository.findById(portfolioRequestDTO.getUserId()).orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userRepository.findById(portfolioRequestDTO.getUserId())
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
-        // Certificate 저장
+        // Certificate 처리
         Certificate certificate = portfolioRequestDTO.getCertificate();
-        certificate.setUser(user);
-        certificateRepository.save(certificate);
+        if (certificate.getId() != null && certificateRepository.existsById(certificate.getId())) {
+            // 기존 Certificate 업데이트
+            certificate.setUser(user);
+            certificateRepository.save(certificate);
+        } else {
+            // 새 Certificate 저장
+            certificate.setUser(user);
+            certificateRepository.save(certificate);
+        }
 
-        // Portfolio 저장
+        // Portfolio 처리
         Portfolio portfolio = portfolioRequestDTO.getPortfolio();
-        portfolio.setUser(user);
-        portfolioRepository.save(portfolio);
+        if (portfolio.getId() != null && portfolioRepository.existsById(portfolio.getId())) {
+            // 기존 Portfolio 업데이트
+            portfolio.setUser(user);
+            portfolioRepository.save(portfolio);
+        } else {
+            // 새 Portfolio 저장
+            portfolio.setUser(user);
+            portfolioRepository.save(portfolio);
+        }
 
-        // Project 저장
+        // Project 처리
         Project project = portfolioRequestDTO.getProject();
-        project.setUser(user);
-        projectRepository.save(project);
+        if (project.getId() != null && projectRepository.existsById(project.getId())) {
+            // 기존 Project 업데이트
+            project.setUser(user);
+            projectRepository.save(project);
+        } else {
+            // 새 Project 저장
+            project.setUser(user);
+            projectRepository.save(project);
+        }
 
-        // SocialButtonIcon 저장
+        // SocialButtonIcon 처리
         SocialButtonIcon socialButtonIcon = portfolioRequestDTO.getSocialButtonIcon();
-        socialButtonIcon.setUser(user);
-        socialButtonIconRepository.save(socialButtonIcon);
+        if (socialButtonIcon.getId() != null && socialButtonIconRepository.existsById(socialButtonIcon.getId())) {
+            // 기존 SocialButtonIcon 업데이트
+            socialButtonIcon.setUser(user);
+            socialButtonIconRepository.save(socialButtonIcon);
+        } else {
+            // 새 SocialButtonIcon 저장
+            socialButtonIcon.setUser(user);
+            socialButtonIconRepository.save(socialButtonIcon);
+        }
 
-        // TechStackIcon 저장
+        // TechStackIcon 처리
         TechStackIcon techStackIcon = portfolioRequestDTO.getTechStackIcon();
-        techStackIcon.setUser(user);
-        techStackIconRepository.save(techStackIcon);
+        if (techStackIcon.getId() != null && techStackIconRepository.existsById(techStackIcon.getId())) {
+            // 기존 TechStackIcon 업데이트
+            techStackIcon.setUser(user);
+            techStackIconRepository.save(techStackIcon);
+        } else {
+            // 새 TechStackIcon 저장
+            techStackIcon.setUser(user);
+            techStackIconRepository.save(techStackIcon);
+        }
     }
 }

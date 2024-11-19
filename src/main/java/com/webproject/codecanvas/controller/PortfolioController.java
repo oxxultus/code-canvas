@@ -13,10 +13,12 @@ import com.webproject.codecanvas.repository.SocialButtonIconRepository;
 import com.webproject.codecanvas.repository.TechStackIconRepository;
 import com.webproject.codecanvas.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -44,12 +46,11 @@ public class PortfolioController {
     private UserRepository userRepository;
 
     // 포트폴리오 페이지 가져오기 (GET)
-    // 포트폴리오 페이지 가져오기 (GET)
     @GetMapping("/portfolio")
     public String getPortfolioPage(Model model, HttpSession session) {
         // 세션에서 로그인된 유저 정보 가져오기
         User currentUser = (User) session.getAttribute("user");
-        System.out.println("Current user: " + currentUser);
+        System.out.println("Portfolio Current user: " + currentUser);
 
         if (currentUser == null) {
             return "redirect:/index";  // 로그인되지 않은 상태라면 로그인 페이지로 리디렉션
@@ -65,7 +66,7 @@ public class PortfolioController {
         return "portfolio";  // 데이터가 포함된 JSP 페이지
     }
 
-    // 포트폴리오 저장하기 (POST)
+    @Transactional
     @PostMapping("/api/portfolio/save")
     public String savePortfolio(
             @RequestParam("portfolioImg1") String portfolioImg1,
@@ -108,38 +109,37 @@ public class PortfolioController {
 
         // 세션에서 유저 정보 가져오기
         User currentUser = (User) session.getAttribute("user");
-        System.out.println("Current user: " + currentUser);
-
         if (currentUser == null) {
-            return "redirect:/portfolioForm";  // 유저가 세션에 없으면 로그인 페이지로 리디렉션
+            return "redirect:/index"; // 유저가 세션에 없으면 로그인 페이지로 리디렉션
         }
 
-        // 포트폴리오 엔티티 생성 및 데이터 저장
+        // 새로운 데이터 생성
         Portfolio portfolio = new Portfolio(portfolioImg1, portfolioImg2, portfolioImg3, portfolioImg4, portfolioImg5, portfolioImg6);
         Certificate certificate = new Certificate(firstCertificateTitle, firstCertificateButtonIcon,
                 secondCertificateTitle, secondCertificateButtonIcon,
                 thirdCertificateTitle, thirdCertificateButtonIcon,
                 fourthCertificateTitle, fourthCertificateButtonIcon);
-        Project project = new Project(projectImg1, projectDesc1, projectImg2, projectDesc2, projectImg3, projectDesc3, projectImg4, projectDesc4, projectImg5, projectDesc5, projectImg6, projectDesc6);
+        Project project = new Project(projectImg1, projectDesc1, projectImg2, projectDesc2, projectImg3, projectDesc3,
+                projectImg4, projectDesc4, projectImg5, projectDesc5, projectImg6, projectDesc6);
         SocialButtonIcon socialButtonIcon = new SocialButtonIcon(socialButtonIcon1, socialButtonIcon2, socialButtonIcon3, socialButtonIcon4);
-        TechStackIcon techStackIcon = new TechStackIcon(techStackButtonIcon1, techStackButtonIcon2, techStackButtonIcon3, techStackButtonIcon4, techStackButtonIcon5, techStackButtonIcon6);
+        TechStackIcon techStackIcon = new TechStackIcon(techStackButtonIcon1, techStackButtonIcon2, techStackButtonIcon3,
+                techStackButtonIcon4, techStackButtonIcon5, techStackButtonIcon6);
 
-        // 연관된 객체를 유저와 연결
+        // 새 데이터를 유저와 연결
         portfolio.setUser(currentUser);
         certificate.setUser(currentUser);
         project.setUser(currentUser);
         socialButtonIcon.setUser(currentUser);
         techStackIcon.setUser(currentUser);
 
-        // 데이터 저장
+        // 새 데이터 저장
         portfolioRepository.save(portfolio);
         certificateRepository.save(certificate);
         projectRepository.save(project);
         socialButtonIconRepository.save(socialButtonIcon);
         techStackIconRepository.save(techStackIcon);
 
-        // 포트폴리오 저장 후 리디렉션
-        return "redirect:/portfolio";  // 저장 후 포트폴리오 페이지로 리디렉션
+        // 저장 후 리디렉션
+        return "redirect:/portfolio"; // 저장 후 포트폴리오 페이지로 리디렉션
     }
-
 }

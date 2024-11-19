@@ -24,6 +24,7 @@ public class SecurityConfig {
                                 "/api/login",
                                 "/api/register",
                                 "/api/user/current",
+                                "/api/portfolio/save",
                                 "/images/**",
                                 "/scripts/**",
                                 "/audio/**",

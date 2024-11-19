@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,7 @@
 <body>
 <h1>Submit Your Portfolio</h1>
 
-<form action="${pageContext.request.contextPath}/api/portfolio/save" method="POST">
+<form action="/api/portfolio/save" method="POST">
   <!-- Portfolio Images -->
   <h2>Portfolio Images</h2>
   <label>Portfolio Image 1:</label>
