@@ -1,3 +1,4 @@
+<%@ page import="com.webproject.codecanvas.entity.*" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%
     // 중복된 PATH
@@ -60,6 +61,12 @@
             {"../images/examples/project4.gif", "Project 4 description here"},
             {"../images/examples/project5.gif", "Project 5 description here"}
     };
+    // Model에서 전달된 'portfolio' 객체를 가져옴
+    Certificate certificate = (Certificate) request.getAttribute("certificate");
+    Portfolio portfolio = (Portfolio) request.getAttribute("portfolio");
+    Project project = (Project) request.getAttribute("project");
+    SocialButtonIcon socialButtonIcon = (SocialButtonIcon) request.getAttribute("socialButtonIcon");
+    TechStackIcon techStackIcon = (TechStackIcon) request.getAttribute("techStackIcon");
 %>
 <!DOCTYPE html>
 <html lang="ko">

@@ -16,26 +16,26 @@ public class TechStackIcon {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_tech_stack_button_icon")
-    private String firstTechStackButtonIcon;
+    @Column(name = "first_tech_stack_button_icon", nullable = false)
+    private String firstTechStackButtonIcon = "";
 
-    @Column(name = "second_tech_stack_button_icon")
-    private String secondTechStackButtonIcon;
+    @Column(name = "second_tech_stack_button_icon", nullable = false)
+    private String secondTechStackButtonIcon = "";
 
-    @Column(name = "third_tech_stack_button_icon")
-    private String thirdTechStackButtonIcon;
+    @Column(name = "third_tech_stack_button_icon", nullable = false)
+    private String thirdTechStackButtonIcon = "";
 
-    @Column(name = "fourth_tech_stack_button_icon")
-    private String fourthTechStackButtonIcon;
+    @Column(name = "fourth_tech_stack_button_icon", nullable = false)
+    private String fourthTechStackButtonIcon = "";
 
-    @Column(name = "fifth_tech_stack_button_icon")
-    private String fifthTechStackButtonIcon;
+    @Column(name = "fifth_tech_stack_button_icon", nullable = false)
+    private String fifthTechStackButtonIcon = "";
 
-    @Column(name = "sixth_tech_stack_button_icon")
-    private String sixthTechStackButtonIcon;
+    @Column(name = "sixth_tech_stack_button_icon", nullable = false)
+    private String sixthTechStackButtonIcon = "";
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     @ToString.Exclude
     @JsonBackReference
     private User user;

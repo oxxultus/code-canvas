@@ -16,20 +16,20 @@ public class SocialButtonIcon {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_social_button_icon")
-    private String firstSocialButtonIcon;
+    @Column(name = "first_social_button_icon", nullable = false)
+    private String firstSocialButtonIcon = "";
 
-    @Column(name = "second_social_button_icon")
-    private String secondSocialButtonIcon;
+    @Column(name = "second_social_button_icon", nullable = false)
+    private String secondSocialButtonIcon = "";
 
-    @Column(name = "third_social_button_icon")
-    private String thirdSocialButtonIcon;
+    @Column(name = "third_social_button_icon", nullable = false)
+    private String thirdSocialButtonIcon = "";
 
-    @Column(name = "fourth_social_button_icon")
-    private String fourthSocialButtonIcon;
+    @Column(name = "fourth_social_button_icon", nullable = false)
+    private String fourthSocialButtonIcon = "";
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     @ToString.Exclude // 순환 참조 방지
     @JsonBackReference
     private User user;
