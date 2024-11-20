@@ -238,7 +238,7 @@ function selectButtonA() {
             .then(async response => {
                 const data = await response.json();
                 if (response.status === 200) {
-                    alert('로그인 성공!');
+                    // alert('로그인 성공!');
                     window.location.href = '/'; // 로그인 성공 후 리디렉션
                 } else {
                     alert('로그인 실패: ' + data.message);
@@ -258,29 +258,55 @@ function selectButtonA() {
         const address = document.getElementById('register_address').value;
         const birth = document.getElementById('register_birth').value;
 
-        // 입력값 검증
-        if (!email) {
-            alert("이메일을 입력해 주세요.");
+
+        // 이메일 유효성 검사 패턴
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(email)) {
+            alert("유효한 이메일 주소를 입력해 주세요.");
             return;
         }
-        if (!password) {
-            alert("비밀번호를 입력해 주세요.");
+
+        // 비밀번호 유효성 검사 패턴
+        const passwordPattern = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=^\S+$).{8,20}$/;
+
+        if (!passwordPattern.test(password)) {
+            alert(
+                "비밀번호는 다음 조건을 충족해야 합니다:\n" +
+                "- 최소 8자, 최대 20자\n" +
+                "- 최소 하나의 대문자(A-Z), 소문자(a-z)\n" +
+                "- 최소 하나의 숫자(0-9)\n" +
+                "- 최소 하나의 특수문자(@#$%^&+=)\n" +
+                "- 공백 포함 불가"
+            );
             return;
         }
-        if (!phone) {
-            alert("전화번호를 입력해 주세요.");
+        // 전화번호 유효성 검사
+        const phonePattern = /^(010|011)\d{7,8}$/;
+
+        if (!phonePattern.test(phone)) {
+            alert("전화번호는 010 또는 011로 시작하고, 숫자 7~8자리가 포함되어야 합니다.");
             return;
         }
-        if (!gender) {
-            alert("성별을 입력해 주세요.");
+        // 허용된 성별 옵션
+        const validGenders = ["남성", "여성", "응답안함"];
+
+        // 성별 유효성 검사
+        if (!validGenders.includes(gender)) {
+            alert("성별은 '남성', '여성', '응답안함'중 하나를 입력해 주세요.");
             return;
         }
-        if (!name) {
-            alert("이름을 입력해 주세요.");
+        // 이름 유효성 검사
+        const regex = /[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9]/g;
+        if (regex.test(name)) {
+            alert("이름에는 특수문자를 사용할 수 없습니다.\n" +
+            "- 한글과 영어만 사용가능합니다.");
             return;
         }
-        if (!address) {
-            alert("주소를 입력해 주세요.");
+        // 한글과 영어만 허용하는 정규식
+        const regex2 = /[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z\s]/g;  // \s는 공백을 허용
+        if (regex.test(address)) {
+            alert("주소는 한글과 영어만 입력 가능합니다.");
             return;
         }
         if (!birth) {
