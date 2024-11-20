@@ -124,7 +124,7 @@ function playHomeButtonSound() {
         .catch(error => {
             console.error('오류 발생:', error);
             alert("오류가 발생했습니다. 다시 시도해 주세요.");
-            window.location.href = '/index';
+            window.location.href = '/';
         });
 }
 // ====================================================================================================================
@@ -167,7 +167,7 @@ function userButton() {
             if (response.status === 200) {
                 const data = await response.json();
                 alert(`당신은 이미 로그인 되어있습니다., ${data.name}님!`); // test-code
-                window.location.href = '/index'; // 로그인 되어있을 경우 리디렉션
+                window.location.href = '/'; // 로그인 되어있을 경우 리디렉션
             } else {
                 // 로그인 되어있지 않을 경우 처리
                 if (isUserButton) {
@@ -184,7 +184,7 @@ function userButton() {
         .catch(error => {
             console.error('오류 발생:', error);
             alert("오류가 발생했습니다. 다시 시도해 주세요.");
-            window.location.href = '/index';
+            window.location.href = '/';
         });
 }
 // ====================================================================================================================
@@ -239,7 +239,7 @@ function selectButtonA() {
                 const data = await response.json();
                 if (response.status === 200) {
                     alert('로그인 성공!');
-                    window.location.href = '/index'; // 로그인 성공 후 리디렉션
+                    window.location.href = '/'; // 로그인 성공 후 리디렉션
                 } else {
                     alert('로그인 실패: ' + data.message);
                 }
@@ -299,7 +299,7 @@ function selectButtonA() {
                 const data = await response.json();
                 if (response.status === 200) {
                     alert('회원가입 성공!');
-                    window.location.href = '/index'; // 회원가입 성공 후 리디렉션
+                    window.location.href = '/'; // 회원가입 성공 후 리디렉션
                 } else {
                     alert('회원가입 실패: ' + data.message);
                 }
@@ -408,7 +408,7 @@ function selectButtonLogout() {
         .then(async (response) => {
             if (response.status === 200) {
                 alert('로그아웃되었습니다.');
-                window.location.href = '/index'; // 로그아웃 성공 시 리디렉션
+                window.location.href = '/'; // 로그아웃 성공 시 리디렉션
             } else {
                 alert('로그아웃에 실패했습니다. 다시 시도해주세요.');
             }

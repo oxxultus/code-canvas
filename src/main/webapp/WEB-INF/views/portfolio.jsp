@@ -69,19 +69,19 @@
 <audio id="click-home-button-sound" src="../audio/click-button-app.mp3"></audio>
 <nav>
     <div class="fade-in-bottom tab-container">
-        <input type="radio" name="tab" id="tab1" class="tab tab--1"/>
+        <input type="radio" name="tab" id="tab1" onclick="window.location.href='/home'" class="tab tab--1"/>
         <label class="tab_label" for="tab1">홈</label>
 
         <input type="radio" name="tab" id="tab2" class="tab tab--2" checked/>
         <label class="tab_label" for="tab2">포트폴리오</label>
 
-        <input type="radio" name="tab" id="tab3" class="tab tab--3"/>
+        <input type="radio" name="tab" id="tab3" onclick="window.location.href='/community'" class="tab tab--3"/>
         <label class="tab_label" for="tab3">커뮤니티</label>
 
-        <input type="radio" name="tab" id="tab4" class="tab tab--4"/>
+        <input type="radio" name="tab" id="tab4" onclick="window.location.href='/information'" class="tab tab--4"/>
         <label class="tab_label" for="tab4">정보</label>
 
-        <input type="radio" name="tab" id="tab5" class="tab tab--5"/>
+        <input type="radio" name="tab" id="tab5" onclick="window.location.href='/setting'" class="tab tab--5"/>
         <label class="tab_label" for="tab5">설정</label>
 
         <div class="indicator"></div>
@@ -91,9 +91,11 @@
     <%--프로필 영역 ================================================================================================== --%>
     <div class="first-fade-in-left" id="profile">
         <div id="profile_frame">
-            <%--프로필 이미지 추가해야됨--%>
+            <button id="profile_edit_button" onclick="window.location.href='/editportfolio'">
+                <span id="profile_edit_button_text" class="audiowide-regular">EDIT</span>
+            </button>
             <div id="profile_image_frame">
-                <img id="profile_image" src="../images/examples/profile2.gif" oncontextmenu="return false;">
+                <img id="profile_image" alt="프로밀 이미지" src="../images/examples/profile2.gif" oncontextmenu="return false;">
             </div>
         </div>
         <svg id="profile-title-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -141,64 +143,6 @@
                 </svg>
             </button>
         </div>
-    </div>
-    <%--포트폴리오 영역 ================================================================================================== --%>
-    <div class="fade-in-top" id="portfolio">
-        <div id="portfolio_title_frame">
-            <svg id="portfolio_title_frame_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                 fill="currentColor" class="size-6">
-                <path fill-rule="evenodd" d="<%= path_PortfolioTitleFrameIcon %>" clip-rule="evenodd"></path>
-            </svg>
-            <p id="portfolio_title_frame_icon_text">PORTFOLIO</p>
-        </div>
-        <div id="portfolio_frame">
-            <img id="portfolio_img" src="<%= portfolio_img[0] %>" oncontextmenu="return false;">
-        </div>
-        <script>
-            // JSP 내 에서 가져온 portfolio_img 배열
-            const portfolioImages = [
-                "<%= portfolio_img[0] %>",
-                "<%= portfolio_img[1] %>",
-                "<%= portfolio_img[2] %>",
-                "<%= portfolio_img[3] %>",
-                "<%= portfolio_img[4] %>",
-                "<%= portfolio_img[5] %>"
-            ];
-
-            // "examples"를 포함하지 않는 이미지만 필터링하여 저장
-            const filteredPortfolioImages = portfolioImages.filter(image => !image.includes("examples"));
-
-            // 사용할 배열 결정
-            // 이 코드는 "examples"가 포함된 이미지를 제외한 이미지가 있으면 그것을 사용하고, 없으면 원본 배열을 사용합니다.
-            const imagesToUse = filteredPortfolioImages.length > 0 ? filteredPortfolioImages : portfolioImages;
-
-            // 초기 이미지 인덱스 설정
-            let currentIndex = 0;
-
-            // 이미지를 변경하는 함수 (순방향)
-            function portfolioChangeImage() {
-                currentIndex = (currentIndex + 1) % imagesToUse.length; // 인덱스를 순환
-                document.getElementById("portfolio_img").src = imagesToUse[currentIndex];
-            }
-
-            // 이미지를 변경하는 함수 (역방향)
-            function reversePortfolioChangeImage() {
-                currentIndex = (currentIndex - 1 + imagesToUse.length) % imagesToUse.length; // 인덱스를 역순으로 순환
-                document.getElementById("portfolio_img").src = imagesToUse[currentIndex];
-            }
-        </script>
-        <button id="portfolio-angle-right-button" onclick="playSoundButton(); portfolioChangeImage()">
-            <svg id="portfolio-angle-right-icon" width="800px" height="800px" viewBox="0 0 24 24" fill="none"
-                 xmlns="http://www.w3.org/2000/svg">
-                <path d="<%= path_AngleRightIcon %>" fill="#2A4AB2FF"></path>
-            </svg>
-        </button>
-        <button id="portfolio-angle-left-button" onclick="playSoundButton(); reversePortfolioChangeImage()">
-            <svg id="portfolio-angle-left-icon" width="800px" height="800px" viewBox="0 0 24 24" fill="none"
-                 xmlns="http://www.w3.org/2000/svg">
-                <path d="<%= path_AngleLeftIcon %>" fill="#2A4AB2FF"></path>
-            </svg>
-        </button>
     </div>
     <%--기술 스텍 영역 ================================================================================================== --%>
     <div class="first-fade-in-right" id="tech-stack">
@@ -301,17 +245,75 @@
             </button>
         </div>
     </div>
+    <%--포트폴리오 영역 ================================================================================================== --%>
+    <div class="fade-in-top" id="portfolio">
+        <div id="portfolio_title_frame">
+            <svg id="portfolio_title_frame_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                 fill="currentColor" class="size-6">
+                <path fill-rule="evenodd" d="<%= path_PortfolioTitleFrameIcon %>" clip-rule="evenodd"></path>
+            </svg>
+            <p id="portfolio_title_frame_icon_text">PORTFOLIO</p>
+        </div>
+        <div id="portfolio_frame">
+            <img id="portfolio_img" alt="포트폴리오 이미지" src="<%= portfolio_img[0] %>" oncontextmenu="return false;">
+        </div>
+        <script>
+            // JSP 내 에서 가져온 portfolio_img 배열
+            const portfolioImages = [
+                "<%= portfolio_img[0] %>",
+                "<%= portfolio_img[1] %>",
+                "<%= portfolio_img[2] %>",
+                "<%= portfolio_img[3] %>",
+                "<%= portfolio_img[4] %>",
+                "<%= portfolio_img[5] %>"
+            ];
+
+            // "examples"를 포함하지 않는 이미지만 필터링하여 저장
+            const filteredPortfolioImages = portfolioImages.filter(image => !image.includes("examples"));
+
+            // 사용할 배열 결정
+            // 이 코드는 "examples"가 포함된 이미지를 제외한 이미지가 있으면 그것을 사용하고, 없으면 원본 배열을 사용합니다.
+            const imagesToUse = filteredPortfolioImages.length > 0 ? filteredPortfolioImages : portfolioImages;
+
+            // 초기 이미지 인덱스 설정
+            let currentIndex = 0;
+
+            // 이미지를 변경하는 함수 (순방향)
+            function portfolioChangeImage() {
+                currentIndex = (currentIndex + 1) % imagesToUse.length; // 인덱스를 순환
+                document.getElementById("portfolio_img").src = imagesToUse[currentIndex];
+            }
+
+            // 이미지를 변경하는 함수 (역방향)
+            function reversePortfolioChangeImage() {
+                currentIndex = (currentIndex - 1 + imagesToUse.length) % imagesToUse.length; // 인덱스를 역순으로 순환
+                document.getElementById("portfolio_img").src = imagesToUse[currentIndex];
+            }
+        </script>
+        <button id="portfolio-angle-right-button" onclick="playSoundButton(); portfolioChangeImage()">
+            <svg id="portfolio-angle-right-icon" width="800px" height="800px" viewBox="0 0 24 24" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="<%= path_AngleRightIcon %>" fill="#2A4AB2FF"></path>
+            </svg>
+        </button>
+        <button id="portfolio-angle-left-button" onclick="playSoundButton(); reversePortfolioChangeImage()">
+            <svg id="portfolio-angle-left-icon" width="800px" height="800px" viewBox="0 0 24 24" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="<%= path_AngleLeftIcon %>" fill="#2A4AB2FF"></path>
+            </svg>
+        </button>
+    </div>
     <%--진행중인 프로젝트 영역 ================================================================================================== --%>
     <div class="fade-in-bottom" id="projects">
         <div id="projects_img_frame">
-            <img id="projects_img" src="<%= project_img_and_desc[0][0] %>" oncontextmenu="return false;">
+            <img id="projects_img" alt="프로젝트 이미지" src="<%= project_img_and_desc[0][0] %>" oncontextmenu="return false;">
         </div>
         <div id="projects_explain_frame">
             <p class="jua-regular" id="projects_explain"><%= project_img_and_desc[0][1] %>
             </p>
         </div>
         <script>
-            // JSP에서 가져온 project_img_and_desc 배열을 JavaScript로 전달
+            // JSP 에서 가져온 project_img_and_desc 배열을 JavaScript로 전달
             const projectImages = [
                 <% for (int i = 0; i < project_img_and_desc.length; i++) { %>
                 {
@@ -368,7 +370,6 @@
             </svg>
         </button>
     </div>
-
 </section>
 <footer class="text-focus-in">
     <p>CodeCanvas &copy; 2024 - ALL RIGHT RESERVE</p>

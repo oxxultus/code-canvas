@@ -13,8 +13,6 @@ import com.webproject.codecanvas.repository.SocialButtonIconRepository;
 import com.webproject.codecanvas.repository.TechStackIconRepository;
 import com.webproject.codecanvas.repository.UserRepository;
 import com.webproject.codecanvas.webdata.AddPortfolioData;
-import com.webproject.codecanvas.webdata.LinkList;
-import com.webproject.codecanvas.webdata.PathList;
 import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +56,7 @@ public class PortfolioController {
             System.out.println("------------------------------------------------------------------------\n");
             System.out.println("[/portfolio] : 세선에 저장된  정보가 없습니다. 로그인 페이지로 이동합니다.\n"); // 디버깅을 위한 출력
             System.out.println("------------------------------------------------------------------------\n");
-            return "redirect:/index";  // 로그인되지 않은 상태라면 로그인 페이지로 리디렉션
+            return "redirect:/";  // 로그인되지 않은 상태라면 로그인 페이지로 리디렉션
         }
         System.out.println("------------------------------------------------------------------------\n");
         System.out.println("포트폴리오 페이지에 접속된 유저 \n" + currentUser + "\n");
@@ -86,55 +84,75 @@ public class PortfolioController {
     }
 
     // 포트폴리오 작성 페이지 가져오기 (GET)
-    @GetMapping("/portfolioForm")
-    public String PortfolioForm (){
-        return "portfolioForm";
+    @GetMapping("/editportfolio")
+    public String EditPortfolio (Model model, HttpSession session){
+
+        User currentUser = (User) session.getAttribute("user");
+        if (currentUser == null) {
+            System.out.println("------------------------------------------------------------------------\n");
+            System.out.println("[/api/portfolio/save] : 세선에 저장된  정보가 없습니다. 로그인 페이지로 이동합니다. \n");
+            System.out.println("------------------------------------------------------------------------\n");
+            return "redirect:/"; // 유저가 세션에 없으면 로그인 페이지로 리디렉션
+        }
+
+        // 정보를 보내기 위한 객체 생성
+        AddPortfolioData addPortfolioData = new AddPortfolioData(
+                currentUser.getPortfolio() != null ? currentUser.getPortfolio() : new Portfolio(),
+                currentUser.getCertificate() != null ? currentUser.getCertificate() : new Certificate(),
+                currentUser.getProject() != null ? currentUser.getProject() : new Project(),
+                currentUser.getSocialButtonIcon() != null ? currentUser.getSocialButtonIcon() : new SocialButtonIcon(),
+                currentUser.getTechStackIcon() != null ? currentUser.getTechStackIcon() : new TechStackIcon()
+        );
+
+        model.addAttribute("addPortfolioData", addPortfolioData);
+
+        return "editportfolio";
     }
 
     // 포트폴리오 작성내용을 DB로 저장하는 API
     @Transactional
     @PostMapping("/api/portfolio/save")
     public String saveOrUpdatePortfolio(
-            @RequestParam("portfolioImg1") String portfolioImg1,
-            @RequestParam("portfolioImg2") String portfolioImg2,
-            @RequestParam("portfolioImg3") String portfolioImg3,
-            @RequestParam("portfolioImg4") String portfolioImg4,
-            @RequestParam("portfolioImg5") String portfolioImg5,
-            @RequestParam("portfolioImg6") String portfolioImg6,
-            @RequestParam("firstCertificateTitle") String firstCertificateTitle,
-            @RequestParam("firstCertificateButtonIcon") String firstCertificateButtonIcon,
-            @RequestParam("secondCertificateTitle") String secondCertificateTitle,
-            @RequestParam("secondCertificateButtonIcon") String secondCertificateButtonIcon,
-            @RequestParam("thirdCertificateTitle") String thirdCertificateTitle,
-            @RequestParam("thirdCertificateButtonIcon") String thirdCertificateButtonIcon,
-            @RequestParam("fourthCertificateTitle") String fourthCertificateTitle,
-            @RequestParam("fourthCertificateButtonIcon") String fourthCertificateButtonIcon,
-            @RequestParam("projectImg1") String projectImg1,
-            @RequestParam("projectDesc1") String projectDesc1,
-            @RequestParam("projectImg2") String projectImg2,
-            @RequestParam("projectDesc2") String projectDesc2,
-            @RequestParam("projectImg3") String projectImg3,
-            @RequestParam("projectDesc3") String projectDesc3,
-            @RequestParam("projectImg4") String projectImg4,
-            @RequestParam("projectDesc4") String projectDesc4,
-            @RequestParam("projectImg5") String projectImg5,
-            @RequestParam("projectDesc5") String projectDesc5,
-            @RequestParam("projectImg6") String projectImg6,
-            @RequestParam("projectDesc6") String projectDesc6,
-            @RequestParam("socialButtonIcon1") String firstSocialButtonIcon,
-            @RequestParam("socialButtonIcon2") String secondSocialButtonIcon,
-            @RequestParam("socialButtonIcon3") String thirdSocialButtonIcon,
-            @RequestParam("socialButtonIcon4") String fourthSocialButtonIcon,
-            @RequestParam("socialButtonLink1") String firstSocialButtonLink,
-            @RequestParam("socialButtonLink2") String secondSocialButtonLink,
-            @RequestParam("socialButtonLink3") String thirdSocialButtonLink,
-            @RequestParam("socialButtonLink4") String fourthSocialButtonLink,
-            @RequestParam("techStackButtonIcon1") String firstTechStackButtonIcon,
-            @RequestParam("techStackButtonIcon2") String secondTechStackButtonIcon,
-            @RequestParam("techStackButtonIcon3") String thirdTechStackButtonIcon,
-            @RequestParam("techStackButtonIcon4") String fourthTechStackButtonIcon,
-            @RequestParam("techStackButtonIcon5") String fifthTechStackButtonIcon,
-            @RequestParam("techStackButtonIcon6") String sixthTechStackButtonIcon,
+            @RequestParam(value = "portfolioImg1",defaultValue = "") String portfolioImg1,
+            @RequestParam(value = "portfolioImg2",defaultValue = "") String portfolioImg2,
+            @RequestParam(value = "portfolioImg3",defaultValue = "") String portfolioImg3,
+            @RequestParam(value = "portfolioImg4",defaultValue = "") String portfolioImg4,
+            @RequestParam(value = "portfolioImg5",defaultValue = "") String portfolioImg5,
+            @RequestParam(value = "portfolioImg6",defaultValue = "") String portfolioImg6,
+            @RequestParam(value = "firstCertificateTitle",defaultValue = "") String firstCertificateTitle,
+            @RequestParam(value = "firstCertificateButtonIcon",defaultValue = "") String firstCertificateButtonIcon,
+            @RequestParam(value = "secondCertificateTitle",defaultValue = "") String secondCertificateTitle,
+            @RequestParam(value = "secondCertificateButtonIcon",defaultValue = "") String secondCertificateButtonIcon,
+            @RequestParam(value = "thirdCertificateTitle",defaultValue = "") String thirdCertificateTitle,
+            @RequestParam(value = "thirdCertificateButtonIcon",defaultValue = "") String thirdCertificateButtonIcon,
+            @RequestParam(value = "fourthCertificateTitle",defaultValue = "") String fourthCertificateTitle,
+            @RequestParam(value = "fourthCertificateButtonIcon",defaultValue = "") String fourthCertificateButtonIcon,
+            @RequestParam(value = "projectImg1",defaultValue = "") String projectImg1,
+            @RequestParam(value = "projectDesc1",defaultValue = "") String projectDesc1,
+            @RequestParam(value = "projectImg2",defaultValue = "") String projectImg2,
+            @RequestParam(value = "projectDesc2",defaultValue = "") String projectDesc2,
+            @RequestParam(value = "projectImg3",defaultValue = "") String projectImg3,
+            @RequestParam(value = "projectDesc3",defaultValue = "") String projectDesc3,
+            @RequestParam(value = "projectImg4",defaultValue = "") String projectImg4,
+            @RequestParam(value = "projectDesc4",defaultValue = "") String projectDesc4,
+            @RequestParam(value = "projectImg5",defaultValue = "") String projectImg5,
+            @RequestParam(value = "projectDesc5",defaultValue = "") String projectDesc5,
+            @RequestParam(value = "projectImg6",defaultValue = "") String projectImg6,
+            @RequestParam(value = "projectDesc6",defaultValue = "") String projectDesc6,
+            @RequestParam(value = "firstSocialButtonIcon",defaultValue = "") String firstSocialButtonIcon,
+            @RequestParam(value = "secondSocialButtonIcon",defaultValue = "") String secondSocialButtonIcon,
+            @RequestParam(value = "thirdSocialButtonIcon",defaultValue = "") String thirdSocialButtonIcon,
+            @RequestParam(value = "fourthSocialButtonIcon",defaultValue = "") String fourthSocialButtonIcon,
+            @RequestParam(value = "firstSocialButtonLink",defaultValue = "") String firstSocialButtonLink,
+            @RequestParam(value = "secondSocialButtonLink",defaultValue = "") String secondSocialButtonLink,
+            @RequestParam(value = "thirdSocialButtonLink",defaultValue = "") String thirdSocialButtonLink,
+            @RequestParam(value = "fourthSocialButtonLink",defaultValue = "") String fourthSocialButtonLink,
+            @RequestParam(value = "firstTechStackButtonIcon",defaultValue = "") String firstTechStackButtonIcon,
+            @RequestParam(value = "secondTechStackButtonIcon",defaultValue = "") String secondTechStackButtonIcon,
+            @RequestParam(value = "thirdTechStackButtonIcon",defaultValue = "") String thirdTechStackButtonIcon,
+            @RequestParam(value = "fourthTechStackButtonIcon",defaultValue = "") String fourthTechStackButtonIcon,
+            @RequestParam(value = "fifthTechStackButtonIcon",defaultValue = "") String fifthTechStackButtonIcon,
+            @RequestParam(value = "sixthTechStackButtonIcon",defaultValue = "") String sixthTechStackButtonIcon,
             HttpSession session) {
 
         // 세션에서 유저 정보 가져오기
@@ -143,7 +161,7 @@ public class PortfolioController {
             System.out.println("------------------------------------------------------------------------\n");
             System.out.println("[/api/portfolio/save] : 세선에 저장된  정보가 없습니다. 로그인 페이지로 이동합니다. \n");
             System.out.println("------------------------------------------------------------------------\n");
-            return "redirect:/index"; // 유저가 세션에 없으면 로그인 페이지로 리디렉션
+            return "redirect:/"; // 유저가 세션에 없으면 로그인 페이지로 리디렉션
         }
 
         System.out.println("------------------------------------------------------------------------\n");
@@ -219,8 +237,6 @@ public class PortfolioController {
         techStackIcon.setSixthTechStackButtonIcon(sixthTechStackButtonIcon);
         techStackIcon.setUser(currentUser);
         techStackIconRepository.save(techStackIcon);
-
-        // 저장 후 리디렉션
 
         // 세션에 갱신된 데이터 저장
         currentUser.setPortfolio(portfolio); // User 객체에 포트폴리오 설정

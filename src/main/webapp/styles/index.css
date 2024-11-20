@@ -167,8 +167,8 @@ body {
 }
 #display-img{
     position: absolute;
-    width: 384px;
-    height: 222px;
+    width: 385px;
+    height: 224px;
     border-radius: 4px;
 }
 /* home-button 스타일 및 위치 설정 */
@@ -1073,4 +1073,39 @@ body {
     left: 16%; /* 부모 요소의 가로 중앙 */
     width: 8px;
     height: 8px;
+}
+
+#error {
+    position: absolute;
+    top: 3%;
+    left: 1%;
+    width: 160px;
+    height: 28px;
+    display: none;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#error__icon {
+    position: absolute;
+    top: 12%;
+    left: 3%;
+    width: 6px;
+    height: 6px;
+    transform: translateY(-2px);
+    margin-right: 4px;
+    filter: drop-shadow(2px 1px 2px rgb(0 0 0 / 0.4));
+}
+
+#error__icon path {
+    fill: rgba(255, 255, 255, 0.5);
+}
+
+#error__title {
+    position: absolute;
+    top: 23%;
+    left: 20%;
+    font-weight: 500;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
 }

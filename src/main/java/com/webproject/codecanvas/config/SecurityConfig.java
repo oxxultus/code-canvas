@@ -29,9 +29,8 @@ public class SecurityConfig {
                                 "/scripts/**",
                                 "/audio/**",
                                 "/styles/**",
-                                "/index",
                                 "/portfolio",
-                                "/portfolioForm"
+                                "/editportfolio"
                         ).permitAll()  // 인증 없이 접근 가능한 URL
 //                        .requestMatchers("/portfolio").authenticated()  // 인증이 필요한 URL
                         .anyRequest().authenticated()  // 그 외의 모든 요청은 인증 필요
@@ -45,7 +44,7 @@ public class SecurityConfig {
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")  // 로그아웃 URL 설정
-                        .logoutSuccessUrl("/index")  // 로그아웃 후 리다이렉트 URL
+                        .logoutSuccessUrl("/")  // 로그아웃 후 리다이렉트 URL
                         .permitAll()  // 로그아웃 URL 접근 가능
                 );
 
