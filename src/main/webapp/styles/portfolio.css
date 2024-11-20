@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+.jua-regular {
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
 /* 전체 화면을 기준으로 배치 */
 body {
     position: relative;
@@ -9,7 +17,7 @@ body {
 }
 
 
-/* Nav */
+/* Nav  ===================================================================== */
 nav {
     position: absolute;
     display: flex;
@@ -23,7 +31,7 @@ nav {
     color: white;
 }
 
-/* Section */
+/* Section  ===================================================================== */
 section {
     position: absolute;
     display: flex;
@@ -44,13 +52,13 @@ section {
     /*--card-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;*/
 }
 
-/* Footer */
+/* Footer  ===================================================================== */
 footer {
     position: absolute;
     display: flex;
     width: 1440px;
     height: 30px;
-    top: 0px;
+    top: 0;
     left: 50%;
     transform: translate(-50%, 0); /* 중앙 기준으로 배치 */
     justify-content: center;
@@ -72,7 +80,7 @@ footer {
     text-align: center;
 }
 
- /*메뉴바를 구성 하는 css*/
+ /*메뉴바를 구성 하는 css   ===================================================================== */
 .tab-container {
     position: relative;
 
@@ -112,10 +120,10 @@ footer {
     top: 2px;
     left: 2px;
     z-index: 9;
-    border: 0.5px solid rgba(255, 251, 251, 0.04);
-    -webkit-box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12),
-    0px 3px 1px rgba(0, 0, 0, 0.04);
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(255, 251, 251, 0.04);
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12),
+    0 3px 1px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12), 0 3px 1px rgba(0, 0, 0, 0.04);
     border-radius: 12px;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
@@ -173,7 +181,7 @@ footer {
 .tab--5:checked ~ .indicator {
     left: calc(130px * 4 + 2px);
 }
-/* 프로필 구성 */
+/* 프로필 구성 ===================================================================== */
 #profile {
     position: absolute;
     top: 2%;
@@ -199,6 +207,51 @@ footer {
     background: var(--card-bg-color);
     box-shadow: var(--card-box-shadow);
 }
+#profile_edit_button{
+    position: absolute;
+    top: -16%;
+    left: 75%;
+    width: 70px;
+    height: 30px;
+    border-radius: 15px;
+    border: solid 1px #0f0f14;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: #16161c;
+    box-shadow: 0 0 var(--main-color);
+}
+#profile_edit_button:hover #profile_edit_button_text{
+    color: #25409c;
+}
+#profile_edit_button:active{
+    box-shadow: 0 0 var(--main-color);
+    transform: translate(1px, 1px);
+}
+#profile_edit_button_text{
+    position: absolute;
+    top: 26%;
+    left: 29%;
+    color: rgba(211, 211, 211, 0.7);
+}
+#profile_image_frame {
+    position: absolute;
+    top: 5.4%;
+    left: 4.65%;
+    display: flex;
+    width: 290px;
+    height: 250px;
+    border-radius: 15px;
+    background: #0f0f14;
+    /*box-shadow: var(--card-box-shadow);*/
+}
+#profile_image {
+    position: absolute;
+    display: flex;
+    width: 290px;
+    height: 250px;
+    border-radius: 8px;
+    border: solid 1px #09090c;
+}
 #profile-title-icon {
     position: absolute;
     top: 4.4%; /* 부모 요소의 세로 중앙 */
@@ -214,7 +267,7 @@ footer {
     font-size: 20px;
     color: rgba(211, 211, 211, 0.7);
 }
-/* sns 구성 */
+/* sns 구성 ===================================================================== */
 #social {
     position: absolute;
     top: 48%;
@@ -230,6 +283,50 @@ footer {
 #social:hover {
     margin-top: -10px;
 }
+.social-button {
+    position: absolute;
+    --bg-color: #1c1c25;
+    --main-color: #000000;
+    width: 151px;
+    height: 180px;
+    border-radius: 15px;
+    border: 1px solid var(--bg-color);
+    background-color: var(--bg-color);
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.71),
+    -10px -10px 50px rgba(0, 0, 0, 0.71);
+    font-size: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.social-button:hover {
+    box-shadow: 0 0 var(--main-color);
+    transform: translate(1px, 1px);
+    border: solid 1px black;
+}
+.social-button:hover .social-button-icon {
+    fill: #2846a8; /* 마우스 오버 시 색상 */
+}
+.social-button:active {
+     box-shadow: -4px -4px var(--main-color);
+     transform: translate(1px, 1px);
+ }
+.social-button a {
+    position: absolute;
+    display: block; /* a 태그를 블록 요소로 만들어 클릭 가능하게 */
+    width: 100%; /* 버튼 크기 꽉 채우기 */
+    height: 100%; /* 버튼 크기 꽉 채우기 */
+}
+
+.social-button-icon {
+    position: absolute;
+    top: 38%; /* 부모 요소의 세로 중앙 */
+    left: 37%; /* 부모 요소의 가로 중앙 */
+    width: 55px;
+    fill: black;
+}
 #first_social_frame {
     position: absolute;
     top: 3%;
@@ -239,7 +336,7 @@ footer {
     height: 180px;
     border-radius: 15px;
     background: var(--card-bg-color);
-    box-shadow: var(--card-box-shadow);
+    /*box-shadow: var(--card-box-shadow);*/
 }
 #second_social_frame {
     position: absolute;
@@ -250,7 +347,7 @@ footer {
     height: 180px;
     border-radius: 15px;
     background: var(--card-bg-color);
-    box-shadow: var(--card-box-shadow);
+    /*box-shadow: var(--card-box-shadow);*/
 }
 #third_social_frame {
     position: absolute;
@@ -261,7 +358,7 @@ footer {
     height: 180px;
     border-radius: 15px;
     background: var(--card-bg-color);
-    box-shadow: var(--card-box-shadow);
+    /*box-shadow: var(--card-box-shadow);*/
 }
 #fourth_social_frame {
     position: absolute;
@@ -272,9 +369,9 @@ footer {
     height: 180px;
     border-radius: 15px;
     background: var(--card-bg-color);
-    box-shadow: var(--card-box-shadow);
+    /*box-shadow: var(--card-box-shadow);*/
 }
-/* portfolio 구성 */
+/* portfolio 구성 ===================================================================== */
 #portfolio {
      position: absolute;
      top: 2%;
@@ -303,7 +400,7 @@ footer {
 }
 #portfolio_frame {
     position: absolute;
-    top: 17%; /* 화면의 50% 아래에 위치 */
+    top: 17%;
     left: 2.6%;
     display: flex;
     width: 525px;
@@ -311,6 +408,23 @@ footer {
     border-radius: 15px;
     background: var(--card-bg-color);
     box-shadow: var(--card-box-shadow);
+    transition: transform 0.3s ease;
+    z-index: 94;
+}
+#portfolio_frame:hover {
+    transform: scale(1.2);
+    z-index: 1002;
+}
+#portfolio_img{
+    position: absolute;
+    top: 6%;
+    left: 3.5%;
+    display: flex;
+    width: 490px;
+    height: 245px;
+    border-radius: 15px;
+    border: solid 1px #09090c;
+    background: #0e0e13;
 }
 #portfolio_title_frame_icon{
     position: absolute;
@@ -354,7 +468,7 @@ footer {
     height: 100%; /* 버튼 크기 꽉 채우기 */
 }
 #portfolio-angle-left-button:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #portfolio-angle-left-icon {
@@ -391,7 +505,7 @@ footer {
     height: 100%; /* 버튼 크기 꽉 채우기 */
 }
 #portfolio-angle-right-button:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #portfolio-angle-right-icon {
@@ -401,7 +515,7 @@ footer {
     width: 50px;
     height: 50px;
 }
-/* projects 구성 */
+/* projects 구성 =====================================================================*/
 #projects {
     position: absolute;
     top: 48%;
@@ -439,6 +553,23 @@ footer {
     border-radius: 15px;
     background: var(--card-bg-color);
     box-shadow: var(--card-box-shadow);
+    transition: transform 0.3s ease;
+    z-index: 95;
+}
+#projects_img_frame:hover {
+    transform: scale(1.3);
+    z-index: 1000;
+}
+#projects_img {
+    position: absolute;
+    top: 4.4%;
+    left: 5%;
+    display: flex;
+    width: 270px;
+    height: 290px;
+    border-radius: 15px;
+    border: solid 1px #09090c;
+    background: var(--card-bg-color);
 }
 #projects_explain_frame{
     position: absolute;
@@ -450,6 +581,27 @@ footer {
     border-radius: 15px;
     background: var(--card-bg-color);
     box-shadow: var(--card-box-shadow);
+    transition: transform 0.3s ease;
+    z-index: 95;
+}
+#projects_explain_frame:hover {
+    transform: scale(1.4);
+
+}
+#projects_explain {
+    position: absolute;
+    top: 1%;
+    left: 2%;
+    width: 137px;
+    height: 250px;
+    border: solid 1px #09090c;
+    border-radius: 15px;
+    text-align: left;
+    font-size: 10px;
+    padding: 20px; /* 내부 여백 */
+    margin: 10px;  /* 외부 여백 */
+    overflow: hidden;
+    background: #0f0f14;
 }
 #projects_title_frame_icon{
     position: absolute;
@@ -464,7 +616,7 @@ footer {
     top: -27%; /* 부모 요소의 세로 중앙 */
     left: 20%; /* 부모 요소의 가로 중앙 */
     font-size: 20px;
-    color: rgba(211, 211, 211, 0.54);
+    color: lightgray;
 }
 /* projects-angle-left-button 스타일 및 위치 설정 */
 #projects-angle-left-button {
@@ -493,7 +645,7 @@ footer {
     height: 100%; /* 버튼 크기 꽉 채우기 */
 }
 #projects-angle-left-button:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #projects-angle-left-icon {
@@ -530,7 +682,7 @@ footer {
     height: 100%; /* 버튼 크기 꽉 채우기 */
 }
 #projects-angle-right-button:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #projects-angle-right-icon {
@@ -540,7 +692,7 @@ footer {
     width: 50px;
     height: 50px;
 }
-/* 기술 스택 구성*/
+/* 기술 스택 구성 ===================================================================== */
 #tech-stack {
     position: absolute;
     top: 2%; /* 화면의 50% 아래에 위치 */
@@ -556,6 +708,50 @@ footer {
 #tech-stack:hover {
     margin-top: -10px;
 }
+.tech-stack-button {
+    position: absolute;
+    --bg-color: #1c1c25;
+    --main-color: #000000;
+    width: 145px;
+    height: 155px;
+    border-radius: 15px;
+    border: 1px solid var(--bg-color);
+    background-color: var(--bg-color);
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.71),
+    -10px -10px 50px rgba(0, 0, 0, 0.71);
+    font-size: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.tech-stack-button:hover {
+    box-shadow: 0 0 var(--main-color);
+    transform: translate(1px, 1px);
+    border: solid 1px black;
+}
+.tech-stack-button:hover .tech-stack-button-icon {
+    fill: #2846a8; /* 마우스 오버 시 색상 */
+}
+.tech-stack-button:active {
+    box-shadow: -4px -4px var(--main-color);
+    transform: translate(1px, 1px);
+}
+.tech-stack-button a {
+    position: absolute;
+    display: block; /* a 태그를 블록 요소로 만들어 클릭 가능하게 */
+    width: 100%; /* 버튼 크기 꽉 채우기 */
+    height: 100%; /* 버튼 크기 꽉 채우기 */
+}
+
+.tech-stack-button-icon {
+    position: absolute;
+    top: 34%; /* 부모 요소의 세로 중앙 */
+    left: 35%; /* 부모 요소의 가로 중앙 */
+    width: 55px;
+    fill: black;
+}
 #tech_stack_frame_1 {
     position: absolute;
     top: 3%;
@@ -565,7 +761,7 @@ footer {
     height: 155px;
     border-radius: 15px;
     background: var(--card-bg-color);
-    box-shadow: var(--card-box-shadow);
+    /*box-shadow: var(--card-box-shadow);*/
 }
 #tech_stack_frame_2 {
     position: absolute;
@@ -576,7 +772,7 @@ footer {
     height: 155px;
     border-radius: 15px;
     background: var(--card-bg-color);
-    box-shadow: var(--card-box-shadow);
+    /*box-shadow: var(--card-box-shadow);*/
 }
 #tech_stack_frame_3 {
     position: absolute;
@@ -587,7 +783,7 @@ footer {
     height: 155px;
     border-radius: 15px;
     background: var(--card-bg-color);
-    box-shadow: var(--card-box-shadow);
+    /*box-shadow: var(--card-box-shadow);*/
 }
 #tech_stack_frame_4 {
     position: absolute;
@@ -598,7 +794,7 @@ footer {
     height: 155px;
     border-radius: 15px;
     background: var(--card-bg-color);
-    box-shadow: var(--card-box-shadow);
+    /*box-shadow: var(--card-box-shadow);*/
 }
 #tech_stack_frame_5 {
     position: absolute;
@@ -609,7 +805,7 @@ footer {
     height: 155px;
     border-radius: 15px;
     background: var(--card-bg-color);
-    box-shadow: var(--card-box-shadow);
+    /*box-shadow: var(--card-box-shadow);*/
 }
 #tech_stack_frame_6 {
     position: absolute;
@@ -620,9 +816,9 @@ footer {
     height: 155px;
     border-radius: 15px;
     background: var(--card-bg-color);
-    box-shadow: var(--card-box-shadow);
+    /*box-shadow: var(--card-box-shadow);*/
 }
-/* 자격증 구성*/
+/* 자격증 구성 ========================================================================== */
 #certificate {
     position: absolute;
     top: 48%;
@@ -638,6 +834,69 @@ footer {
 #certificate:hover {
     margin-top: -10px;
 }
+.certificate-button {
+    position: absolute;
+    --bg-color: #1c1c25;
+    --main-color: #000000;
+    width: 475px;
+    height: 85px;
+    border-radius: 15px;
+    border: 1px solid var(--bg-color);
+    background-color: var(--bg-color);
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.71),
+    -10px -10px 50px rgba(0, 0, 0, 0.71);
+    font-size: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.certificate-button:hover {
+    box-shadow: 0 0 var(--main-color);
+    transform: translate(1px, 1px);
+    border: solid 1px black;
+}
+.certificate-button:hover .certificate-button-icon{
+    fill: #2846a8; /* 마우스 오버 시 색상 */
+}
+.certificate-button:hover .certificate-title{
+    color: lightgray;
+}
+.certificate-button:active {
+    box-shadow: -4px -4px var(--main-color);
+    transform: translate(1px, 1px);
+}
+.certificate-button a {
+    position: absolute;
+    display: block; /* a 태그를 블록 요소로 만들어 클릭 가능하게 */
+    width: 100%; /* 버튼 크기 꽉 채우기 */
+    height: 100%; /* 버튼 크기 꽉 채우기 */
+}
+.certificate-icon-frame{
+    position: absolute;
+    left: 2%;
+    width: 100px;
+    height: 70px;
+    background: #0f0f14;
+    border-radius: 15px;
+}
+.certificate-button-icon {
+    position: absolute;
+    top: 26%; /* 부모 요소의 세로 중앙 */
+    left: 29%; /* 부모 요소의 가로 중앙 */
+    width: 43px;
+    fill: #0f0f14;
+}
+.certificate-title{
+    position: absolute;
+    left: 30%;
+    width: 300px;
+    text-align: center;
+    font-size: 25px;
+    color: black;
+    letter-spacing: 3px; /* 문자 간격 */
+}
 #certificate_frame_1 {
     position: absolute;
     top: 3%;
@@ -647,7 +906,7 @@ footer {
     height: 85px;
     border-radius: 15px;
     background: var(--card-bg-color);
-    box-shadow: var(--card-box-shadow);
+    /*box-shadow: var(--card-box-shadow);*/
 }
 #certificate_frame_2 {
     position: absolute;
@@ -658,7 +917,7 @@ footer {
     height: 85px;
     border-radius: 15px;
     background: var(--card-bg-color);
-    box-shadow: var(--card-box-shadow);
+    /*box-shadow: var(--card-box-shadow);*/
 }
 #certificate_frame_3 {
     position: absolute;
@@ -669,7 +928,7 @@ footer {
     height: 85px;
     border-radius: 15px;
     background: var(--card-bg-color);
-    box-shadow: var(--card-box-shadow);
+    /*box-shadow: var(--card-box-shadow);*/
 }
 #certificate_frame_4 {
     position: absolute;
@@ -680,12 +939,12 @@ footer {
     height: 85px;
     border-radius: 15px;
     background: var(--card-bg-color);
-    box-shadow: var(--card-box-shadow);
+    /*box-shadow: var(--card-box-shadow);*/
 }
 #rock-certificate {
     position: absolute;
-    top: 0%;
-    left: 0%;
+    top: 0;
+    left: 0;
     display: flex;
     width: 500px;
     height: 400px;
@@ -718,7 +977,10 @@ footer {
      height: 100%; /* 버튼 크기 꽉 채우기 */
  }
 #showButton:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0
+
+
+    0 var(--main-color);
     transform: translate(1px, 1px);
 }
 

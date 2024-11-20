@@ -167,11 +167,11 @@ body {
 }
 #display-img{
     position: absolute;
-    width: 384px;
-    height: 222px;
+    width: 385px;
+    height: 224px;
     border-radius: 4px;
 }
-/* angle-left-button 스타일 및 위치 설정 */
+/* home-button 스타일 및 위치 설정 */
 #home-button {
     position: absolute;
     top: 77%; /* 부모 요소의 세로 */
@@ -198,7 +198,7 @@ body {
     height: 100%; /* 버튼 크기 꽉 채우기 */
 }
 #home-button:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #home-button-icon {
@@ -228,14 +228,8 @@ body {
     transition: all 0.3s;
     cursor: pointer;
 }
-#angle-right-button a {
-    position: absolute;
-    display: block; /* a 태그를 블록 요소로 만들어 클릭 가능하게 */
-    width: 100%; /* 버튼 크기 꽉 채우기 */
-    height: 100%; /* 버튼 크기 꽉 채우기 */
-}
 #angle-right-button:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #angle-right-icon {
@@ -264,16 +258,11 @@ body {
     align-items: center;
     transition: all 0.3s;
     cursor: pointer;
-}
-#angle-left-button a {
-    position: absolute;
-    display: block; /* a 태그를 블록 요소로 만들어 클릭 가능하게 */
-    width: 100%; /* 버튼 크기 꽉 채우기 */
-    height: 100%; /* 버튼 크기 꽉 채우기 */
+    z-index: 99;
 }
 /* 버튼이 눌렸을 때의 스타일 */
 #angle-left-button:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #angle-left-icon {
@@ -310,7 +299,7 @@ body {
     height: 100%; /* 버튼 크기 꽉 채우기 */
 }
 #left-big-button:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #sound-on-icon {
@@ -355,7 +344,7 @@ body {
     height: 100%; /* 버튼 크기 꽉 채우기 */
 }
 #right-big-button:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #right-big-button-icon {
@@ -392,7 +381,7 @@ body {
     height: 100%; /* 버튼 크기 꽉 채우기 */
 }
 #y-button:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #y-icon {
@@ -429,7 +418,7 @@ body {
     height: 100%; /* 버튼 크기 꽉 채우기 */
 }
 #x-button:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #x-icon {
@@ -466,7 +455,7 @@ body {
     height: 100%; /* 버튼 크기 꽉 채우기 */
 }
 #a-button:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #a-icon {
@@ -503,7 +492,7 @@ body {
     height: 100%; /* 버튼 크기 꽉 채우기 */
 }
 #b-button:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #b-icon {
@@ -540,7 +529,7 @@ body {
     height: 100%; /* 버튼 크기 꽉 채우기 */
 }
 #logout-button:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #logout-icon {
@@ -697,7 +686,7 @@ body {
     cursor: pointer;
 }
 #login_explain_button_a:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #login_explain_button_a_icon {
@@ -741,7 +730,7 @@ body {
     cursor: pointer;
 }
 #login_explain_button_x:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #login_explain_button_x_icon {
@@ -757,7 +746,7 @@ body {
     left: 110%; /* 부모 요소의 가로 */
     display: flex;
     color: rgba(229, 59, 59, 0.78);
-    width: 300px;
+    width: 40px;
     /*border: solid 1px white;*/
     font-size: 10px; /* 폰트 크기 */
     text-align: center; /* 텍스트 정렬 (기본값: left) */
@@ -784,7 +773,7 @@ body {
     cursor: pointer;
 }
 #login_explain_button_b:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #login_explain_button_b_icon {
@@ -991,7 +980,7 @@ body {
     cursor: pointer;
 }
 #register_explain_button_b:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #register_explain_button_b_icon {
@@ -1033,7 +1022,7 @@ body {
     cursor: pointer;
 }
 #register_explain_button_x:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #register_explain_button_x_icon {
@@ -1075,7 +1064,7 @@ body {
     cursor: pointer;
 }
 #register_explain_button_a:active {
-    box-shadow: 0px 0px var(--main-color);
+    box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
 }
 #register_explain_button_a_icon {
@@ -1084,4 +1073,39 @@ body {
     left: 16%; /* 부모 요소의 가로 중앙 */
     width: 8px;
     height: 8px;
+}
+
+#error {
+    position: absolute;
+    top: 3%;
+    left: 1%;
+    width: 160px;
+    height: 28px;
+    display: none;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#error__icon {
+    position: absolute;
+    top: 12%;
+    left: 3%;
+    width: 6px;
+    height: 6px;
+    transform: translateY(-2px);
+    margin-right: 4px;
+    filter: drop-shadow(2px 1px 2px rgb(0 0 0 / 0.4));
+}
+
+#error__icon path {
+    fill: rgba(255, 255, 255, 0.5);
+}
+
+#error__title {
+    position: absolute;
+    top: 23%;
+    left: 20%;
+    font-weight: 500;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
 }

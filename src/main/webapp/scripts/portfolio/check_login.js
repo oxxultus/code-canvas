@@ -25,7 +25,7 @@ function checkAuthStatus() {
       .catch(error => {
         console.error('오류 발생:', error);
         alert('오류 발생:', error);
-        window.location.href = '/index';
+        window.location.href = '/';
       });
 }
 
@@ -35,7 +35,7 @@ function updateUIForLoggedInUser(data) {
 
 function updateUIForLoggedOutUser() {
   alert("로그인이 필요합니다."); // Notification or UI updating code here
-  window.location.href = '/index';
+  window.location.href = '/';
 }
 
 window.onload = () => {

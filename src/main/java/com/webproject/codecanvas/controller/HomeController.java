@@ -7,17 +7,7 @@ import org.springframework.web.bind.annotation.*;
 public class HomeController {
 
     @GetMapping("/")
-    public String Home (){
+    public String Main(){
         return "index";
-    }
-
-    @GetMapping("/index")
-    public String Index (){
-        return "index";
-    }
-
-    @GetMapping("/portfolio")
-    public String Portfolio (){
-        return "portfolio";
     }
 }
