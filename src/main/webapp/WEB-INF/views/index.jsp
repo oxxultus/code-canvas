@@ -4,13 +4,15 @@
 <head>
   <meta charset ="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
     <link rel="stylesheet" href="../styles/base.css"> <!-- base CSS 파일 연결 -->
     <link rel="stylesheet" href="../styles/index.css"> <!-- index CSS 파일 연결 -->
 
     <script src="../scripts/index/change-image.js" defer></script> <!-- change-image js 파일 연결 -->
     <script src="../scripts/index/functions-of-each-button.js" defer></script> <!-- play-sound js 파일 연결 -->
     <script src="../scripts/index/keep-press-button.js" defer></script> <!-- keep-press-button js 파일 연결 -->
-    <script src="../scripts/index/check-login.js" defer></script>
+    <script src="../scripts/index/check-login.js" defer></script> <!-- login-check js 파일 연결 -->
+
   <title>CodeCanvas</title>
 </head>
 <body class="background hide-scroll">
@@ -81,20 +83,20 @@
                     <label for="register_password"></label><input placeholder="Password" class="input-field" id="register_password" name="password" type="password">
                 </div>
                 <div id="register_name_field">
-                    <svg class="register-input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                    <svg class="register-input-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 512 512">
+                        <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"></path>
                     </svg>
                     <label for="register_name"></label><input placeholder="Name" class="input-field" id="register_name" name="name" type="text">
                 </div>
                 <div id="register_phone_field">
-                    <svg class="register-input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                    <svg class="register-input-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 512 512">
+                        <path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"></path>
                     </svg>
                     <label for="register_phone"></label><input placeholder="Tel" class="input-field" id="register_phone" name="phone" type="tel" maxlength="11">
                 </div>
                 <div id="register_gender_field">
-                    <svg class="register-input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                    <svg class="register-input-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 512 512">
+                        <path d="M160 0a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm8 352l0-224 6.9 0c33.7 0 64.9 17.7 82.3 46.6l58.3 97c9.1 15.1 4.2 34.8-10.9 43.9s-34.8 4.2-43.9-10.9L232 256.9 232 480c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-128s0 0 0 0zM58.2 182.3c19.9-33.1 55.3-53.5 93.8-54.3l0 256s0 0 0 0l0 96c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-96-17.8 0c-10.9 0-18.6-10.7-15.2-21.1L93.3 248.1 59.4 304.5c-9.1 15.1-28.8 20-43.9 10.9s-20-28.8-10.9-43.9l53.6-89.2z"></path>
                     </svg>
                     <label for="register_gender"></label><input placeholder="Gender" class="input-field" id="register_gender" name="gender" type="text" maxlength="6">
                 </div>
@@ -102,8 +104,8 @@
                     <label for="register_birth"></label><input placeholder="Date" class="input-field" id="register_birth" name="birth" type="date">
                 </div>
                 <div id="register_address_field">
-                    <svg class="register-input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                    <svg class="register-input-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 512 512">
+                        <path d="M96 0C60.7 0 32 28.7 32 64l0 384c0 35.3 28.7 64 64 64l288 0c35.3 0 64-28.7 64-64l0-384c0-35.3-28.7-64-64-64L96 0zM208 288l64 0c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16l-192 0c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zM512 80c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64zM496 192c-8.8 0-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64c0-8.8-7.2-16-16-16zm16 144c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64z"></path>
                     </svg>
                     <label for="register_address"></label><input placeholder="Address" class="input-field" id="register_address" name="address" type="text">
                 </div>

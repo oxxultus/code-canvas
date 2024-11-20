@@ -223,9 +223,8 @@ footer {
     display: flex;
     width: 290px;
     height: 250px;
-    border-radius: 15px;
-    background: #0f0f14;
-    /*box-shadow: var(--card-box-shadow);*/
+    border-radius: 8px;
+    border: solid 1px #09090c;
 }
 #profile-title-icon {
     position: absolute;
@@ -544,7 +543,12 @@ footer {
     border-radius: 15px;
     background: var(--card-bg-color);
     box-shadow: var(--card-box-shadow);
+    transition: transform 0.3s ease;
+    z-index: 99;
 }
+#projects_explain_frame:hover {
+    transform: scale(1.4);
+  }
 #projects_explain {
     position: absolute;
     top: 1%;
@@ -705,7 +709,7 @@ footer {
 .tech-stack-button-icon {
     position: absolute;
     top: 34%; /* 부모 요소의 세로 중앙 */
-    left: 32%; /* 부모 요소의 가로 중앙 */
+    left: 35%; /* 부모 요소의 가로 중앙 */
     width: 55px;
     fill: black;
 }

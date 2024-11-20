@@ -12,6 +12,7 @@ import com.webproject.codecanvas.repository.ProjectRepository;
 import com.webproject.codecanvas.repository.SocialButtonIconRepository;
 import com.webproject.codecanvas.repository.TechStackIconRepository;
 import com.webproject.codecanvas.repository.UserRepository;
+import com.webproject.codecanvas.webdata.AddPortfolioData;
 import com.webproject.codecanvas.webdata.LinkList;
 import com.webproject.codecanvas.webdata.PathList;
 import jakarta.servlet.http.HttpSession;
@@ -64,16 +65,22 @@ public class PortfolioController {
         System.out.println("------------------------------------------------------------------------\n");
 
 
-        // 연관된 데이터를 모델에 추가
-        model.addAttribute("portfolio", currentUser.getPortfolio() != null ? currentUser.getPortfolio() : new Portfolio());
-        model.addAttribute("certificate", currentUser.getCertificate() != null ? currentUser.getCertificate() : new Certificate());
-        model.addAttribute("project", currentUser.getProject() != null ? currentUser.getProject() : new Project());
-        model.addAttribute("socialButtonIcon", currentUser.getSocialButtonIcon() != null ? currentUser.getSocialButtonIcon() : new SocialButtonIcon());
-        model.addAttribute("techStackIcon", currentUser.getTechStackIcon() != null ? currentUser.getTechStackIcon() : new TechStackIcon());
+//        연관된 데이터를 모델에 추가
+//        model.addAttribute("portfolio", currentUser.getPortfolio() != null ? currentUser.getPortfolio() : new Portfolio());
+//        model.addAttribute("certificate", currentUser.getCertificate() != null ? currentUser.getCertificate() : new Certificate());
+//        model.addAttribute("project", currentUser.getProject() != null ? currentUser.getProject() : new Project());
+//        model.addAttribute("socialButtonIcon", currentUser.getSocialButtonIcon() != null ? currentUser.getSocialButtonIcon() : new SocialButtonIcon());
+//        model.addAttribute("techStackIcon", currentUser.getTechStackIcon() != null ? currentUser.getTechStackIcon() : new TechStackIcon());
 
-
-
-
+        // 정보를 보내기 위한 객체 생성
+        AddPortfolioData addPortfolioData = new AddPortfolioData(
+                currentUser.getPortfolio() != null ? currentUser.getPortfolio() : new Portfolio(),
+                currentUser.getCertificate() != null ? currentUser.getCertificate() : new Certificate(),
+                currentUser.getProject() != null ? currentUser.getProject() : new Project(),
+                currentUser.getSocialButtonIcon() != null ? currentUser.getSocialButtonIcon() : new SocialButtonIcon(),
+                currentUser.getTechStackIcon() != null ? currentUser.getTechStackIcon() : new TechStackIcon()
+        );
+        model.addAttribute("addPortfolioData", addPortfolioData);
 
         return "portfolio";  // 데이터가 포함된 JSP 페이지
     }

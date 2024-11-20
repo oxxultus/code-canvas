@@ -31,11 +31,11 @@ function checkAuthStatus() {
 
 function updateUIForLoggedInUser(data) {
   document.getElementById("logout-button").style.display = "inline-block";
-  alert(`환영합니다, ${data.name}님!`); // Notification or UI updating code here
+  alert(`환영합니다, ${data.name}님!`); // 로그인 테스트를 위한 알림
 }
 
 function updateUIForLoggedOutUser() {
-  alert("로그인이 필요합니다."); // Notification or UI updating code here
+  alert("로그인이 필요합니다."); // 로그인 테스트를 위한 알림
 }
 
 window.onload = () => {

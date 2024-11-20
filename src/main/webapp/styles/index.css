@@ -171,7 +171,7 @@ body {
     height: 222px;
     border-radius: 4px;
 }
-/* angle-left-button 스타일 및 위치 설정 */
+/* home-button 스타일 및 위치 설정 */
 #home-button {
     position: absolute;
     top: 77%; /* 부모 요소의 세로 */
@@ -228,12 +228,6 @@ body {
     transition: all 0.3s;
     cursor: pointer;
 }
-#angle-right-button a {
-    position: absolute;
-    display: block; /* a 태그를 블록 요소로 만들어 클릭 가능하게 */
-    width: 100%; /* 버튼 크기 꽉 채우기 */
-    height: 100%; /* 버튼 크기 꽉 채우기 */
-}
 #angle-right-button:active {
     box-shadow: 0 0 var(--main-color);
     transform: translate(1px, 1px);
@@ -264,12 +258,7 @@ body {
     align-items: center;
     transition: all 0.3s;
     cursor: pointer;
-}
-#angle-left-button a {
-    position: absolute;
-    display: block; /* a 태그를 블록 요소로 만들어 클릭 가능하게 */
-    width: 100%; /* 버튼 크기 꽉 채우기 */
-    height: 100%; /* 버튼 크기 꽉 채우기 */
+    z-index: 99;
 }
 /* 버튼이 눌렸을 때의 스타일 */
 #angle-left-button:active {
@@ -757,7 +746,7 @@ body {
     left: 110%; /* 부모 요소의 가로 */
     display: flex;
     color: rgba(229, 59, 59, 0.78);
-    width: 300px;
+    width: 40px;
     /*border: solid 1px white;*/
     font-size: 10px; /* 폰트 크기 */
     text-align: center; /* 텍스트 정렬 (기본값: left) */
