@@ -12,17 +12,16 @@ import com.webproject.codecanvas.repository.ProjectRepository;
 import com.webproject.codecanvas.repository.SocialButtonIconRepository;
 import com.webproject.codecanvas.repository.TechStackIconRepository;
 import com.webproject.codecanvas.repository.UserRepository;
+import com.webproject.codecanvas.webdata.LinkList;
+import com.webproject.codecanvas.webdata.PathList;
 import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Optional;
 
 @Controller
 public class PortfolioController {
@@ -50,12 +49,20 @@ public class PortfolioController {
     public String getPortfolioPage(Model model, HttpSession session) {
         // 세션에서 로그인된 유저 정보 가져오기
         User currentUser = (User) session.getAttribute("user");
-        System.out.println("Portfolio Current user: " + currentUser);
+
 
         if (currentUser == null) {
             model.addAttribute("error", "세션이 만료되었습니다. 다시 로그인해주세요.");
+
+            System.out.println("------------------------------------------------------------------------\n");
+            System.out.println("[/portfolio] : 세선에 저장된  정보가 없습니다. 로그인 페이지로 이동합니다.\n"); // 디버깅을 위한 출력
+            System.out.println("------------------------------------------------------------------------\n");
             return "redirect:/index";  // 로그인되지 않은 상태라면 로그인 페이지로 리디렉션
         }
+        System.out.println("------------------------------------------------------------------------\n");
+        System.out.println("포트폴리오 페이지에 접속된 유저 \n" + currentUser + "\n");
+        System.out.println("------------------------------------------------------------------------\n");
+
 
         // 연관된 데이터를 모델에 추가
         model.addAttribute("portfolio", currentUser.getPortfolio() != null ? currentUser.getPortfolio() : new Portfolio());
@@ -64,10 +71,20 @@ public class PortfolioController {
         model.addAttribute("socialButtonIcon", currentUser.getSocialButtonIcon() != null ? currentUser.getSocialButtonIcon() : new SocialButtonIcon());
         model.addAttribute("techStackIcon", currentUser.getTechStackIcon() != null ? currentUser.getTechStackIcon() : new TechStackIcon());
 
+
+
+
+
         return "portfolio";  // 데이터가 포함된 JSP 페이지
     }
 
+    // 포트폴리오 작성 페이지 가져오기 (GET)
+    @GetMapping("/portfolioForm")
+    public String PortfolioForm (){
+        return "portfolioForm";
+    }
 
+    // 포트폴리오 작성내용을 DB로 저장하는 API
     @Transactional
     @PostMapping("/api/portfolio/save")
     public String saveOrUpdatePortfolio(
@@ -101,6 +118,10 @@ public class PortfolioController {
             @RequestParam("socialButtonIcon2") String secondSocialButtonIcon,
             @RequestParam("socialButtonIcon3") String thirdSocialButtonIcon,
             @RequestParam("socialButtonIcon4") String fourthSocialButtonIcon,
+            @RequestParam("socialButtonLink1") String firstSocialButtonLink,
+            @RequestParam("socialButtonLink2") String secondSocialButtonLink,
+            @RequestParam("socialButtonLink3") String thirdSocialButtonLink,
+            @RequestParam("socialButtonLink4") String fourthSocialButtonLink,
             @RequestParam("techStackButtonIcon1") String firstTechStackButtonIcon,
             @RequestParam("techStackButtonIcon2") String secondTechStackButtonIcon,
             @RequestParam("techStackButtonIcon3") String thirdTechStackButtonIcon,
@@ -112,8 +133,15 @@ public class PortfolioController {
         // 세션에서 유저 정보 가져오기
         User currentUser = (User) session.getAttribute("user");
         if (currentUser == null) {
+            System.out.println("------------------------------------------------------------------------\n");
+            System.out.println("[/api/portfolio/save] : 세선에 저장된  정보가 없습니다. 로그인 페이지로 이동합니다. \n");
+            System.out.println("------------------------------------------------------------------------\n");
             return "redirect:/index"; // 유저가 세션에 없으면 로그인 페이지로 리디렉션
         }
+
+        System.out.println("------------------------------------------------------------------------\n");
+        System.out.println("[/api/portfolio/save] 기존의 데이터\n" + currentUser +"\n");
+        System.out.println("------------------------------------------------------------------------\n");
 
         // 포트폴리오 업데이트 또는 생성
         Portfolio portfolio = portfolioRepository.findByUserId(currentUser.getId())
@@ -165,7 +193,11 @@ public class PortfolioController {
         socialButtonIcon.setFirstSocialButtonIcon(firstSocialButtonIcon);
         socialButtonIcon.setSecondSocialButtonIcon(secondSocialButtonIcon);
         socialButtonIcon.setThirdSocialButtonIcon(thirdSocialButtonIcon);
-        socialButtonIcon.setThirdSocialButtonIcon(fourthSocialButtonIcon);
+        socialButtonIcon.setFourthSocialButtonIcon(fourthSocialButtonIcon);
+        socialButtonIcon.setFirstSocialButtonLink(firstSocialButtonLink);
+        socialButtonIcon.setSecondSocialButtonLink(secondSocialButtonLink);
+        socialButtonIcon.setThirdSocialButtonLink(thirdSocialButtonLink);
+        socialButtonIcon.setThirdSocialButtonLink(fourthSocialButtonLink);
         socialButtonIcon.setUser(currentUser);
         socialButtonIconRepository.save(socialButtonIcon);
 
@@ -190,10 +222,16 @@ public class PortfolioController {
         currentUser.setSocialButtonIcon(socialButtonIcon); // User 객체에 소셜 버튼 설정
         currentUser.setTechStackIcon(techStackIcon); // User 객체에 기술 스택 설정
 
-        System.out.println("갱신 된 데이터: " + currentUser);
+        System.out.println("------------------------------------------------------------------------\n");
+        System.out.println("[/api/portfolio/save] 갱신 된 데이터\n" + currentUser +"\n");
+        System.out.println("------------------------------------------------------------------------\n");
+
         session.setAttribute("user", currentUser); // 세션에 갱신된 User 객체 저장
+
+        System.out.println("------------------------------------------------------------------------\n");
+        System.out.println("[/api/portfolio/save] 갱신 된 데이터가 성공적으로 저장되었습니다.\n");
+        System.out.println("------------------------------------------------------------------------\n");
 
         return "redirect:/portfolio"; // 저장 후 포트폴리오 페이지로 리디렉션
     }
-
 }

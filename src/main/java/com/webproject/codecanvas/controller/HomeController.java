@@ -15,9 +15,4 @@ public class HomeController {
     public String Index (){
         return "index";
     }
-
-    @GetMapping("/portfolioForm")
-    public String PortfolioForm (){
-        return "portfolioForm";
-    }
 }
