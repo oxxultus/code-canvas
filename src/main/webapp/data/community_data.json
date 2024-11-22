@@ -46,4 +46,20 @@
   "id" : "e8e0b442-c061-42c3-be6b-d4f4e00e560b",
   "write_detail" : "이미지 삽입은 시간 관계상 하지 못했습니다.",
   "email" : "a1234455@gmail.com"
+}, {
+  "name" : "김영진",
+  "language" : "c",
+  "noticeboard" : "자유게시판",
+  "write_title" : "",
+  "id" : "6892c7c4-9b9c-4f37-9eca-13ec5f84acd8",
+  "write_detail" : "",
+  "email" : "a1234455@gmail.com"
+}, {
+  "name" : "김영진",
+  "language" : "default",
+  "noticeboard" : "자유게시판",
+  "write_title" : "",
+  "id" : "781536a9-2a74-42df-a2c3-994652fc1c6e",
+  "write_detail" : "ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ",
+  "email" : "a1234455@gmail.com"
 } ]

@@ -101,6 +101,14 @@ public class CommunityController {
             return "redirect:/"; // 유저가 세션에 없으면 로그인 페이지로 리디렉션
         }
 
+        /// 1. 제목의 공백 여부 확인
+        if (write_title.isBlank()) {
+            System.out.println("------------------------------------------------------------------------\n");
+            System.out.println("[/api/community/save] : 제목이 비어 있습니다. 저장이 취소됩니다. \n");
+            System.out.println("------------------------------------------------------------------------\n");
+            return "redirect:/community"; // 에러 메시지와 함께 커뮤니티 페이지로 리디렉션
+        }
+
         // 1. 세션 확인
         String email = currentUser.getEmail();
         String name = currentUser.getName();

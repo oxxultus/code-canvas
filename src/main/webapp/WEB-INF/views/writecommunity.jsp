@@ -6,8 +6,10 @@
   <title>게시판 작성</title>
   <link rel="stylesheet" href="../styles/base.css">
   <link rel="stylesheet" href="../styles/writecommunity.css">
+  <script src="../scripts/portfolio/play-sound.js" defer></script>
 </head>
 <body class="background">
+<audio id="click-button-sound" src="../audio/click-button-app.mp3"></audio>
 <section>
 <form action="/api/community/save" method="post">
   <div class="fade-in-top" id="edit_community">
@@ -18,8 +20,8 @@
       <p class="jua-regular" id="community_title">게시판 작성</p>
     </div>
     <!-- 버튼 -->
-    <button id="reset" type="reset"><span class="jua-regular" id="reset_text">초기화</span></button>
-    <button id="submit" type="submit"><span class="jua-regular" id="submit_text">작성</span></button>
+    <button onclick="playSoundButton();" id="reset" type="reset"><span class="jua-regular" id="reset_text">초기화</span></button>
+    <button onclick="playSoundButton();" id="submit" type="submit"><span class="jua-regular" id="submit_text">작성</span></button>
 
     <div id="write_frame">
       <label for="write_title"></label>
@@ -47,14 +49,14 @@
           </label>
         </div>
         <div class="radio-button">
-          <input type="radio" class="radio-button__input" id="radio3" name="noticeboard" value="강의게시판">
+          <input onclick="playSoundButton();" type="radio" class="radio-button__input" id="radio3" name="noticeboard" value="강의게시판">
           <label class="radio-button__label" for="radio3">
             <span class="radio-button__custom"></span>
             강의게시판
           </label>
         </div>
         <div class="radio-button">
-          <input type="radio" class="radio-button__input" id="radio4" name="noticeboard" value="정보게시판">
+          <input onclick="playSoundButton();" type="radio" class="radio-button__input" id="radio4" name="noticeboard" value="정보게시판">
           <label class="radio-button__label" for="radio4">
             <span class="radio-button__custom"></span>
             정보게시판
@@ -65,70 +67,70 @@
       <div id="language_type">
         <div class="radio-button2-container">
           <div class="radio-button2">
-            <input type="radio" class="radio-button2__input" id="radio2_1" name="language" value="java">
+            <input onclick="playSoundButton();" type="radio" class="radio-button2__input" id="radio2_1" name="language" value="java">
             <label class="radio-button2__label" for="radio2_1">
               <span class="radio-button2__custom"></span>
               JAVA
             </label>
           </div>
           <div class="radio-button2">
-            <input type="radio" class="radio-button2__input" id="radio2_2" name="language" value="c">
+            <input onclick="playSoundButton();" type="radio" class="radio-button2__input" id="radio2_2" name="language" value="c">
             <label class="radio-button2__label" for="radio2_2">
               <span class="radio-button2__custom"></span>
               C/C++/C#
             </label>
           </div>
           <div class="radio-button2">
-            <input type="radio" class="radio-button2__input" id="radio2_3" name="language" value="php">
+            <input onclick="playSoundButton();" type="radio" class="radio-button2__input" id="radio2_3" name="language" value="php">
             <label class="radio-button2__label" for="radio2_3">
               <span class="radio-button2__custom"></span>
               PHP
             </label>
           </div>
           <div class="radio-button2">
-            <input type="radio" class="radio-button2__input" id="radio2_4" name="language" value="html">
+            <input onclick="playSoundButton();" type="radio" class="radio-button2__input" id="radio2_4" name="language" value="html">
             <label class="radio-button2__label" for="radio2_4">
               <span class="radio-button2__custom"></span>
               HTML
             </label>
           </div>
           <div class="radio-button2">
-            <input type="radio" class="radio-button2__input" id="radio2_5" name="language" value="css">
+            <input onclick="playSoundButton();" type="radio" class="radio-button2__input" id="radio2_5" name="language" value="css">
             <label class="radio-button2__label" for="radio2_5">
               <span class="radio-button2__custom"></span>
               CSS
             </label>
           </div>
           <div class="radio-button2">
-            <input type="radio" class="radio-button2__input" id="radio2_6" name="language" value="javascript">
+            <input onclick="playSoundButton();" type="radio" class="radio-button2__input" id="radio2_6" name="language" value="javascript">
             <label class="radio-button2__label" for="radio2_6">
               <span class="radio-button2__custom"></span>
               JAVASCRIPT
             </label>
           </div>
           <div class="radio-button2">
-            <input type="radio" class="radio-button2__input" id="radio2_7" name="language" value="python">
+            <input onclick="playSoundButton();" type="radio" class="radio-button2__input" id="radio2_7" name="language" value="python">
             <label class="radio-button2__label" for="radio2_7">
               <span class="radio-button2__custom"></span>
               PYTHON
             </label>
           </div>
           <div class="radio-button2">
-            <input type="radio" class="radio-button2__input" id="radio2_8" name="language" value="kotlin">
+            <input onclick="playSoundButton();" type="radio" class="radio-button2__input" id="radio2_8" name="language" value="kotlin">
             <label class="radio-button2__label" for="radio2_8">
               <span class="radio-button2__custom"></span>
               KOTLIN
             </label>
           </div>
           <div class="radio-button2">
-            <input type="radio" class="radio-button2__input" id="radio2_9" name="language" value="ruby">
+            <input onclick="playSoundButton();" type="radio" class="radio-button2__input" id="radio2_9" name="language" value="ruby">
             <label class="radio-button2__label" for="radio2_9">
               <span class="radio-button2__custom"></span>
               RUBY
             </label>
           </div>
           <div class="radio-button2">
-            <input type="radio" class="radio-button2__input" id="radio2_10" name="language" value="default" checked>
+            <input onclick="playSoundButton();" type="radio" class="radio-button2__input" id="radio2_10" name="language" value="default" checked>
             <label class="radio-button2__label" for="radio2_10">
               <span class="radio-button2__custom"></span>
               DEFAULT
@@ -151,19 +153,19 @@
 </section>
 <nav>
   <div class="fade-in-bottom tab-container">
-    <input type="radio" name="tab" id="tab1" onclick="window.location.href='/home'" class="tab tab--1"/>
+    <input onclick="playSoundButton();" type="radio" name="tab" id="tab1" onclick="window.location.href='/home'" class="tab tab--1"/>
     <label class="tab_label" for="tab1">홈</label>
 
-    <input type="radio" name="tab" onclick="window.location.href='/portfolio'" id="tab2" class="tab tab--2"/>
+    <input onclick="playSoundButton();" type="radio" name="tab" onclick="window.location.href='/portfolio'" id="tab2" class="tab tab--2"/>
     <label class="tab_label" for="tab2">포트폴리오</label>
 
-    <input type="radio" name="tab" id="tab3" onclick="window.location.href='/community'" class="tab tab--3"checked/>
+    <input onclick="playSoundButton();" type="radio" name="tab" id="tab3" onclick="window.location.href='/community'" class="tab tab--3"checked/>
     <label class="tab_label" for="tab3">커뮤니티</label>
 
-    <input type="radio" name="tab" id="tab4" onclick="window.location.href='/information'" class="tab tab--4"/>
+    <input onclick="playSoundButton();" type="radio" name="tab" id="tab4" onclick="window.location.href='/information'" class="tab tab--4"/>
     <label class="tab_label" for="tab4">정보</label>
 
-    <input type="radio" name="tab" id="tab5" onclick="window.location.href='/setting'" class="tab tab--5"/>
+    <input onclick="playSoundButton();" type="radio" name="tab" id="tab5" onclick="window.location.href='/'" class="tab tab--5"/>
     <label class="tab_label" for="tab5">일정</label>
 
     <div class="indicator"></div>

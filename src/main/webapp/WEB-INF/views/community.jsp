@@ -7,15 +7,17 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/base.css">
     <link rel="stylesheet" href="../styles/community.css">
+    <script src="../scripts/portfolio/play-sound.js" defer></script>
     <title>COMMUNITY</title>
 </head>
 <body class="background">
+<audio id="click-button-sound" src="../audio/click-button-app.mp3"></audio>
 <section>
     <div class="fade-in-bottom" id="community">
         <div id="community_frame">
             <div id=community_list_frame>
                 <c:forEach var="post" items="${posts}">
-                    <div class="card" data-title="${post.write_title}" data-text="${post.write_detail}" data-language="${post.language}" data-noticeboard="${post.noticeboard}">
+                    <div class="card" onclick="playSoundButton();" data-title="${post.write_title}" data-text="${post.write_detail}" data-language="${post.language}" data-noticeboard="${post.noticeboard}">
                             <img class="img" src="../images/community/language/${post.language}.png" alt="대표사진">
                             <div class="jua-regular noticeboard">${post.noticeboard}</div>
                             <div class="jua-regular title">[${fn:toUpperCase(post.language)}]${post.write_title}</div>
@@ -24,7 +26,7 @@
                     </div>
                 </c:forEach>
             </div>
-            <button class="jua-regular continue-application" onclick="window.location.href='/writecommunity'">
+            <button class="jua-regular continue-application" onclick="playSoundButton(); window.location.href='/writecommunity'">
                 <div>
                     <div class="pencil"></div>
                     <div class="folder">
@@ -51,7 +53,7 @@
                 <div id="post_detail_noticeboard_frame">
                     <span id="post_detail_noticeboard"></span>
                 </div>
-                <button id="exit" type="submit"><span class="jua-regular" id="exit_text">나가기</span></button>
+                <button onclick="playSoundButton();" id="exit" type="submit"><span class="jua-regular" id="exit_text">나가기</span></button>
             </div>
         </div>
     </div>
@@ -66,7 +68,7 @@
                 <div id="question_type">
                     <div class="radio-button-container">
                         <div class="radio-button">
-                            <input type="radio" class="radio-button__input" id="radio1" name="noticeboard" value="자유게시판"
+                            <input onclick="playSoundButton();" type="radio" class="radio-button__input" id="radio1" name="noticeboard" value="자유게시판"
                             ${param.noticeboard == '자유게시판' ? 'checked' : ''}>
                             <label class="radio-button__label" for="radio1">
                                 <span class="radio-button__custom"></span>
@@ -74,7 +76,7 @@
                             </label>
                         </div>
                         <div class="radio-button">
-                            <input type="radio" class="radio-button__input" id="radio2" name="noticeboard" value="질문게시판"
+                            <input onclick="playSoundButton();" type="radio" class="radio-button__input" id="radio2" name="noticeboard" value="질문게시판"
                             ${param.noticeboard == '질문게시판' ? 'checked' : ''}>
                             <label class="radio-button__label" for="radio2">
                                 <span class="radio-button__custom"></span>
@@ -82,7 +84,7 @@
                             </label>
                         </div>
                         <div class="radio-button">
-                            <input type="radio" class="radio-button__input" id="radio3" name="noticeboard" value="강의게시판"
+                            <input onclick="playSoundButton();" type="radio" class="radio-button__input" id="radio3" name="noticeboard" value="강의게시판"
                             ${param.noticeboard == '강의게시판' ? 'checked' : ''}>
                             <label class="radio-button__label" for="radio3">
                                 <span class="radio-button__custom"></span>
@@ -90,7 +92,7 @@
                             </label>
                         </div>
                         <div class="radio-button">
-                            <input type="radio" class="radio-button__input" id="radio4" name="noticeboard" value="정보게시판"
+                            <input onclick="playSoundButton();" type="radio" class="radio-button__input" id="radio4" name="noticeboard" value="정보게시판"
                             ${param.noticeboard == '정보게시판' ? 'checked' : ''}>
                             <label class="radio-button__label" for="radio4">
                                 <span class="radio-button__custom"></span>
@@ -98,7 +100,7 @@
                             </label>
                         </div>
                         <div class="radio-button">
-                            <input type="radio" class="radio-button__input" id="radio5" name="noticeboard" value=""
+                            <input onclick="playSoundButton();" type="radio" class="radio-button__input" id="radio5" name="noticeboard" value=""
                             ${param.noticeboard == '' ? 'checked' : ''}>
                             <label class="radio-button__label" for="radio5">
                                 <span class="radio-button__custom"></span>
@@ -107,7 +109,7 @@
                         </div>
                     </div>
                 </div>
-                <select class="jua-regular" id="language" name="language">
+                <select onclick="playSoundButton();" class="jua-regular" id="language" name="language">
                     <option value="">언어 선택</option>
                     <option value="java" ${param.language == 'java' ? 'selected' : ''}>JAVA</option>
                     <option value="c" ${param.language == 'c' ? 'selected' : ''}>C</option>
@@ -119,7 +121,7 @@
                     <option value="kotlin" ${param.language == 'kotlin' ? 'selected' : ''}>KOTLIN</option>
                     <option value="ruby" ${param.language == 'ruby' ? 'selected' : ''}>RUBY</option>
                 </select>
-                <button id="submit" type="submit"><span class="jua-regular" id="submit_text">검색</span></button>
+                <button id="submit" type="submit" onclick="playSoundButton();"><span class="jua-regular" id="submit_text" >검색</span></button>
             </form>
         </div>
     </div>
@@ -136,20 +138,20 @@
 </section>
 <nav>
   <div class="fade-in-bottom tab-container">
-    <input type="radio" name="tab" id="tab1" onclick="window.location.href='/home'" class="tab tab--1"/>
+    <input type="radio" name="tab" id="tab1" onclick="playSoundButton(); window.location.href='/home'" class="tab tab--1"/>
     <label class="tab_label" for="tab1">홈</label>
 
-    <input type="radio" name="tab" onclick="window.location.href='/portfolio'" id="tab2" class="tab tab--2"/>
+    <input type="radio" name="tab" onclick="playSoundButton(); window.location.href='/portfolio'" id="tab2" class="tab tab--2"/>
     <label class="tab_label" for="tab2">포트폴리오</label>
 
-    <input type="radio" name="tab" id="tab3" class="tab tab--3"
+    <input onclick="playSoundButton();" type="radio" name="tab" id="tab3" class="tab tab--3"
            checked/>
     <label class="tab_label" for="tab3">커뮤니티</label>
 
-    <input type="radio" name="tab" id="tab4" onclick="window.location.href='/information'" class="tab tab--4"/>
+    <input type="radio" name="tab" id="tab4" onclick="playSoundButton(); window.location.href='/information'" class="tab tab--4"/>
     <label class="tab_label" for="tab4">정보</label>
 
-    <input type="radio" name="tab" id="tab5" onclick="window.location.href='/setting'" class="tab tab--5"/>
+    <input type="radio" name="tab" id="tab5" onclick="playSoundButton(); window.location.href='/'" class="tab tab--5"/>
     <label class="tab_label" for="tab5">일정</label>
 
     <div class="indicator"></div>

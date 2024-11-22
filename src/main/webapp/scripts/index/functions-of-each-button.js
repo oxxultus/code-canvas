@@ -108,7 +108,7 @@ function playHomeButtonSound() {
 
                     // 2초 뒤 페이지 이동
                     setTimeout(function() {
-                        window.location.href = '/portfolio'; // 페이지 이동
+                        window.location.href = '/home'; // 페이지 이동
                     }, 2000); // 2초 후 페이지 이동
                 }, (isSoundOn ? (sound.duration || defaultDelay) : defaultDelay) * 1000);
 
