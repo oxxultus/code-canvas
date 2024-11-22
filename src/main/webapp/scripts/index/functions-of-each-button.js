@@ -233,21 +233,27 @@ function selectButtonA() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password }),
-            credentials: 'include'
+            credentials: 'include' // 쿠키 포함
         })
-            .then(async response => {
+            .then(async (response) => {
+                // 항상 JSON 데이터를 처리하도록 설정
                 const data = await response.json();
-                if (response.status === 200) {
-                    // alert('로그인 성공!');
-                    window.location.href = '/'; // 로그인 성공 후 리디렉션
-                } else {
-                    alert('로그인 실패: ' + data.message);
+
+                if (!response.ok) {
+                    // 상태 코드가 200-299 범위가 아닐 경우 오류 처리
+                    throw new Error(data.message || `HTTP 오류 상태: ${response.status}`);
                 }
+
+                // 로그인 성공 시 처리
+                alert(data.message || '로그인 성공!');
+                window.location.href = '/'; // 리디렉션
             })
-            .catch(error => {
-                console.error('로그인 오류:', error);
-                alert('로그인 중 오류가 발생했습니다.');
+            .catch((error) => {
+                // 네트워크 오류 또는 상태 코드 오류 처리
+                console.error('로그인 요청 중 오류:', error);
+                alert(error.message || '로그인 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
             });
+
     } else if (loginFrameDisplay === "none" && registerFrameDisplay === "flex") {
         // 회원가입 폼 입력값 검증
         const email = document.getElementById('register_email').value;

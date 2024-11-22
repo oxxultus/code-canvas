@@ -28,7 +28,7 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
-            <img id="display-img" src="../images/index/game-1.gif" alt="display-img" oncontextmenu="return false;">
+            <img id="display-img" src="../images/index/display-main.gif" alt="display-img" oncontextmenu="return false;">
             <p class="audiowide-regular" id="loader-text">Loading ...</p>
             <div id="error">
                 <div id="error__icon">
