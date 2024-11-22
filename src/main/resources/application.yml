@@ -21,7 +21,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update  # 개발 중에는 update 사용, 프로덕션에서는 validate 추천
-    show-sql: true
+    show-sql: false
     properties:
       hibernate.format_sql: true
       hibernate.dialect: org.hibernate.dialect.MySQLDialect

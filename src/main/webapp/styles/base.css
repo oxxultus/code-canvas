@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+.jua-regular {
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 /**
  * 파일명: base.css
  * 설명: 이 파일은 *.html(모든 html) 에 적용되는 스타일시트 입니다.
@@ -12,13 +19,6 @@
     height: 100%;
     background: rgb(28, 28, 37) /* 배경 색상 */
     radial-gradient(rgb(40, 40, 48) 20%, transparent 1%); /* 점 패턴 */
-    background-size: 13px 13px;
-}
-.background2 {
-    width: 100%;
-    height: 100%;
-    background: rgb(228, 228, 236) /* 배경 색상 */
-    radial-gradient(rgb(161, 161, 164) 20%, transparent 1%); /* 점 패턴 */
     background-size: 13px 13px;
 }
 
@@ -36,3 +36,342 @@ img {
     overflow: hidden;
 }
 
+/* Footer  ===================================================================== */
+footer {
+    position: absolute;
+    display: flex;
+    width: 1440px;
+    height: 30px;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0); /* 중앙 기준으로 배치 */
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 10px;
+}
+.component-title {
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    top: 30px;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #888;
+    text-align: center;
+}
+.text-focus-in {
+    -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+@-webkit-keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+@keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+/*메뉴바를 구성 하는 css   ===================================================================== */
+nav {
+    position: absolute;
+    display: flex;
+    width: 1440px;
+    height: 50px;
+    top: 820px;
+    left: 50%;
+    transform: translate(-50%, 0); /* 중앙 기준으로 배치 */
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.tab-container {
+    position: relative;
+
+    display: -webkit-box;
+
+    display: -ms-flexbox;
+
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    padding: 2px;
+
+    border-radius: 15px;
+
+    color: rgb(253, 253, 253);
+    background: #1c1c25;
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.71),
+    -10px -10px 50px rgba(0, 0, 0, 0.71);;
+    border: rgb(24, 24, 32) solid 1px;
+    transition: all .3s;
+}
+.tab-container:hover {
+    margin-top: 20px;
+    z-index: 10;
+}
+.indicator {
+    content: "";
+    width: 130px;
+    height: 28px;
+    background: #1d347c;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: 9;
+    border: 1px solid rgba(255, 251, 251, 0.04);
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12),
+    0 3px 1px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12), 0 3px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.tab {
+    width: 130px;
+    height: 28px;
+    position: absolute;
+    z-index: 99;
+    outline: none;
+    opacity: 0;
+}
+.tab_label {
+    width: 130px;
+    height: 30px;
+
+    position: relative;
+    z-index: 999;
+
+    display: -webkit-box;
+
+    display: -ms-flexbox;
+
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+
+    border: 0;
+
+    font-size: 0.75rem;
+    opacity: 0.6;
+
+    cursor: pointer;
+}
+.tab--1:checked ~ .indicator {
+    left: 2px;
+}
+.tab--2:checked ~ .indicator {
+    left: calc(130px + 2px);
+}
+.tab--3:checked ~ .indicator {
+    left: calc(130px * 2 + 2px);
+}
+.tab--4:checked ~ .indicator {
+    left: calc(130px * 3 + 2px);
+}
+.tab--5:checked ~ .indicator {
+    left: calc(130px * 4 + 2px);
+}
+
+/* 블럭 에니메이션 ====================================================================================== */
+/* 오른쪽에서 중앙으로 밝아지면서 들어오는 에니메이션 1번 */
+.first-fade-in-right {
+    -webkit-animation: first-fade-in-right 1s ease-in-out both;
+    animation: first-fade-in-right 1s ease-in-out both;
+}
+@-webkit-keyframes fade-in-right {
+    0% {
+        -webkit-transform: translateX(50px);
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes first-fade-in-right {
+    0% {
+        -webkit-transform: translateX(50px);
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/* 오른쪽에서 중앙으로 밝아지면서 들어오는 에니메이션 2번 */
+.second-fade-in-right {
+    -webkit-animation: second-fade-in-right-right 1.3s ease-in-out both;
+    animation: second-fade-in-right 1.3s ease-in-out both;
+}
+@-webkit-keyframes second-fade-in-right {
+    0% {
+        -webkit-transform: translateX(50px);
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes second-fade-in-right {
+    0% {
+        -webkit-transform: translateX(50px);
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/* 상단에서 중앙으로 밝아지면서 들어오는 에니메이션 */
+.fade-in-top {
+    -webkit-animation: fade-in-top 1s ease-in-out both;
+    animation: fade-in-top 1s ease-in-out both;
+}
+@-webkit-keyframes fade-in-top {
+    0% {
+        -webkit-transform: translateY(-50px);
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes fade-in-top {
+    0% {
+        -webkit-transform: translateY(-50px);
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+/* 하단에서 중앙으로 밝아지면서 들어오는 에니메이션 */
+.fade-in-bottom {
+    -webkit-animation: fade-in-bottom 1s ease-in-out both;
+    animation: fade-in-bottom 1s ease-in-out both;
+}
+@-webkit-keyframes fade-in-bottom {
+    0% {
+        -webkit-transform: translateY(50px);
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes fade-in-bottom {
+    0% {
+        -webkit-transform: translateY(50px);
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+/* 우측에서 중앙으로 밝아지면서 들어오는 에니메이션 */
+.first-fade-in-left {
+    -webkit-animation: first-fade-in-left 1s ease-in-out both;
+    animation: first-fade-in-left 1s ease-in-out both;
+}
+@-webkit-keyframes first-fade-in-left {
+    0% {
+        -webkit-transform: translateX(-50px);
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes first-fade-in-left {
+    0% {
+        -webkit-transform: translateX(-50px);
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.second-fade-in-left {
+    -webkit-animation: second-fade-in-left 1.3s ease-in-out both;
+    animation: second-fade-in-left 1.3s ease-in-out both;
+}
+@-webkit-keyframes second-fade-in-left {
+    0% {
+        -webkit-transform: translateX(-50px);
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes second-fade-in-left {
+    0% {
+        -webkit-transform: translateX(-50px);
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

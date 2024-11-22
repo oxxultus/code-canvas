@@ -13,7 +13,7 @@ body {
     height: 1080px; /* 화면 전체 높이를 최소 높이로 지정 */
     justify-content: center; /* 가로 중앙 정렬 */
     align-items: center; /* 세로 중앙 정렬 */
-    overflow: scroll;
+    overflow: hidden;
 }
 
 
@@ -165,19 +165,15 @@ footer {
 .tab--1:checked ~ .indicator {
     left: 2px;
 }
-
 .tab--2:checked ~ .indicator {
     left: calc(130px + 2px);
 }
-
 .tab--3:checked ~ .indicator {
     left: calc(130px * 2 + 2px);
 }
-
 .tab--4:checked ~ .indicator {
     left: calc(130px * 3 + 2px);
 }
-
 .tab--5:checked ~ .indicator {
     left: calc(130px * 4 + 2px);
 }
@@ -995,36 +991,6 @@ footer {
 }
 .hidden {
     animation: fadeOut 1s forwards; /* 애니메이션 실행 후, 요소가 보이지 않게 처리 */
-}
-/* 에니메이션 설정하는 부분 ================================= */
-/* 텍스트가 천천히 선명해진다 */
-.text-focus-in {
-    -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-}
-@-webkit-keyframes text-focus-in {
-    0% {
-        -webkit-filter: blur(12px);
-        filter: blur(12px);
-        opacity: 0;
-    }
-    100% {
-        -webkit-filter: blur(0px);
-        filter: blur(0px);
-        opacity: 1;
-    }
-}
-@keyframes text-focus-in {
-    0% {
-        -webkit-filter: blur(12px);
-        filter: blur(12px);
-        opacity: 0;
-    }
-    100% {
-        -webkit-filter: blur(0px);
-        filter: blur(0px);
-        opacity: 1;
-    }
 }
 /* 오른쪽에서 중앙으로 밝아지면서 들어오는 에니메이션 1번 */
 .first-fade-in-right {
