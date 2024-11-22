@@ -1,0 +1,170 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgb(28, 28, 37); /* 어두운 배경 색상 */
+    color: #ddd; /* 밝은 글자 색상 */
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(40, 40, 48); /* 메인 배경 색상 */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: rgb(228, 228, 236); /* 밝은 색상 */
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-box input {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: rgb(40, 40, 48); /* 입력창 배경 */
+    color: #ddd; /* 글자 색상 */
+    border: 1px solid rgb(161, 161, 164); /* 테두리 색상 */
+}
+
+.search-btn {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #333; /* 버튼 배경 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #555; /* Hover 효과 */
+}
+
+/* Dropdown 스타일 */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.dropdown-btn {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: rgb(61, 61, 70); /* 어두운 초록색 버튼 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-btn:hover {
+    background-color: rgb(80, 80, 91); /* Hover 효과 */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: rgb(40, 40, 48); /* 드롭다운 배경 */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    min-width: 200px;
+}
+
+.dropdown-content a {
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    color: #ccc; /* 어두운 색상 */
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #555; /* Hover 효과 */
+    color: white; /* 텍스트 색 강조 */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Hover 시 드롭다운 표시 */
+}
+
+/* Results-container 스타일 */
+.results-container {
+    width: 100%;
+    max-width: 700px;
+    margin-top: 30px;
+    background-color: rgb(40, 40, 48); /* 어두운 배경 */
+    border: 1px solid rgb(161, 161, 164); /* 테두리 색상 */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.results-container h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: rgb(228, 228, 236); /* 밝은 색상 */
+    text-align: center;
+    border-bottom: 2px solid rgb(61, 61, 70); /* 초록색 배경 */
+    padding-bottom: 5px;
+}
+
+.result-item {
+    padding: 15px;
+    margin: 10px 0;
+    background-color: rgb(48, 48, 58); /* 어두운 배경 색상 */
+    border: 1px solid rgb(161, 161, 164); /* 테두리 색상 */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.result-item:hover {
+    background-color: rgb(60, 60, 72); /* Hover 시 배경 색상 */
+    transform: scale(1.02); /* 살짝 확대 */
+}
+
+.navigation {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn, .home-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: rgb(61, 61, 70); /* 버튼 배경 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover, .home-btn:hover {
+    background-color: rgb(80, 80, 91); /* Hover 효과 */
+}

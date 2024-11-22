@@ -1,0 +1,445 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+body {
+    position: relative;
+    width: 1440px; /* 화면 전체 높이를 최소 높이로 지정 */
+    height: 1080px; /* 화면 전체 높이를 최소 높이로 지정 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    overflow: hidden;
+}
+/* Section  ===================================================================== */
+section {
+    position: absolute;
+    display: flex;
+    width: 1440px;
+    height: 800px;
+    top: 420px;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 화면 중앙 기준 */
+    justify-content: center;
+    align-items: center;
+    /*border: solid white;*/
+    color: white;
+
+    --card-bg-color: rgb(28, 28, 37);
+    --card-box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.71),
+    -10px -10px 50px rgba(0, 0, 0, 0.71);
+}
+/* 게시판 작성 기준 프레임 ===============================================================*/
+#edit_community {
+    position: absolute;
+    top: 3%;
+    left: 22.2%;
+    display: flex;
+    width: 800px; /* 게시판 너비 */
+    height: 600px; /* 게시판 높이 */
+    border-radius: 15px;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+    transition: all .3s;
+    align-items: center;
+}
+#edit_community:hover {
+    margin-top: -10px;
+}
+/* 게시판 작성 타이틀 프레임 ============================================================== */
+#community_title_frame{
+    position: absolute;
+    top: 3%;
+    left: 2.6%;
+    display: flex;
+    width: 400px;
+    height: 44px;
+    border-radius: 15px;
+    transition: all 0.3s;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+}
+#community_title_frame:hover{
+    box-shadow: 0 0 var(--main-color);
+    transform: translate(1px, 1px);
+}
+/* 게시판 작성 타이틀 프레임 아이콘 */
+#community_title_icon{
+    position: absolute;
+    top: 20%; /* 부모 요소의 세로 중앙 */
+    left: 6%; /* 부모 요소의 가로 중앙 */
+    width: 27px;
+    height: 27px;
+    fill: rgba(234, 177, 54, 0.7);
+}
+/* 게시판 작성 타이틀*/
+#community_title{
+    position: absolute;
+    top: -23%; /* 부모 요소의 세로 중앙 */
+    left: 40%; /* 부모 요소의 가로 중앙 */
+    font-size: 20px;
+    color: rgba(211, 211, 211, 0.54);
+}
+/* 버튼 디자인============================================================*/
+#reset{
+    position: absolute;
+    top: 3%;
+    left: 54%;
+    width: 170px;
+    height: 44px;
+    border-radius: 15px;
+    border: solid 1px #0f0f14;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: #16161c;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+}
+#reset:hover{
+    box-shadow: 0 0 var(--main-color);
+    transform: translate(1px, 1px);
+}
+#reset:active{
+    box-shadow: 0 0 var(--main-color);
+    transform: translate(3px, 3px);
+}
+#reset:hover #reset_text{
+    color: #25409c;
+}
+#reset_text{
+    position: absolute;
+    top: 23%;
+    left: 36%;
+    font-size: 20px;
+    color: rgba(211, 211, 211, 0.54);
+}
+#submit{
+    position: absolute;
+    top: 3%;
+    left: 76.5%;
+    width: 170px;
+    height: 44px;
+    border-radius: 15px;
+    border: solid 1px #0f0f14;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: #16161c;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+}
+#submit:hover{
+    box-shadow: 0 0 var(--main-color);
+    transform: translate(1px, 1px);
+}
+#submit:active{
+    box-shadow: 0 0 var(--main-color);
+    transform: translate(3px, 3px);
+}
+#submit:hover #submit_text{
+    color: #25409c;
+
+}
+#submit_text{
+    position: absolute;
+    top: 23%;
+    left: 40.5%;
+    font-size: 20px;
+    color: rgba(211, 211, 211, 0.54);
+}
+/* 작성하는 부분 프레임 ===================================================================================*/
+#write_frame{
+    position: absolute;
+    top: 13%;
+    left: 2.6%;
+    display: flex;
+    width: 760px;
+    height: 500px;
+    border-radius: 15px;
+    transition: all 0.3s;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+}
+#write_frame:hover{
+    transform: scale(1.1);
+}
+#write_title{
+    position: absolute;
+    top: 3%;
+    left: 2%;
+    width: 725px;
+    height: 30px;
+    text-align: center;
+    font-size: 16px;
+    color: lightgrey;
+    background-color: #0f0f14;
+    border-radius: 15px;
+    border: 1px solid black;
+    letter-spacing: 3px; /* 문자 간격 */
+}
+#write_title:active{
+    border: 1px solid black;
+}
+#write_detail{
+    position: absolute;
+    top: 13%;
+    left: 2.6%;
+    display: flex;
+    width: 685px;
+    height: 380px;
+    border-radius: 15px;
+    font-size: 18px;
+    color: lightgrey;
+    padding: 20px; /* 내부 여백 */
+    resize: none;
+    border: solid 1px #0f0f14;
+    background-color: #0f0f14;
+}
+#tag_frame{
+    position: absolute;
+    top: 80%;
+    left: 22.2%;
+    display: flex;
+    width: 800px; /* 게시판 너비 */
+    height: 140px; /* 게시판 높이 */
+    border-radius: 15px;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+    transition: all .3s;
+    align-items: center;
+}
+/*게시글 종류 라디오 버튼 프레임 ===========================================*/
+#question_type {
+    position: absolute;
+    top: 10%;
+    left: 2.5%;
+    width: 758px;
+    height: 40px;
+    text-align: center;
+    background-color: #0f0f14;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+/*라디오 버튼 디자인===========================================*/
+.radio-button-container {
+    position: absolute;
+    top: 25%;
+    left: 18%;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.radio-button {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.radio-button__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.radio-button__label {
+    display: inline-block;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    position: relative;
+    font-size: 18px;
+    color: rgba(211, 211, 211, 0.7);
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.radio-button__custom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #555;
+    transition: all 0.3s ease;
+}
+
+.radio-button__input:checked + .radio-button__label .radio-button__custom {
+    background-color: #4c8bf5;
+    border-color: transparent;
+    transform: scale(0.8);
+    box-shadow: 0 0 20px #4c8bf580;
+}
+
+.radio-button__input:checked + .radio-button__label {
+    color: #4c8bf5;
+}
+
+.radio-button__label:hover .radio-button__custom {
+    transform: scale(1.2);
+    border-color: #4c8bf5;
+    box-shadow: 0 0 20px #4c8bf580;
+}
+/*언어 테그 라디오 버튼 프레임 =====================================================================*/
+#language_type {
+    position: absolute;
+    top: 50%;
+    left: 2.5%;
+    width: 758px;
+    height: 55px;
+    text-align: center;
+    background-color: #0f0f14;
+    border-radius: 10px;
+    border: 1px solid black;
+    overflow: auto; /* 스크롤 생성 */
+    scrollbar-gutter: stable; /* 스크롤바가 컨테이너 내부에 고정 */
+}
+/* 세로 스크롤바 숨기기 */
+#language_type::-webkit-scrollbar {
+    width: 0; /* 세로 스크롤바 너비를 0으로 설정 */
+    height: 8px; /* 가로 스크롤바 높이 설정 */
+}
+
+/* 가로 스크롤바 트랙 디자인 */
+#language_type::-webkit-scrollbar-track {
+    background: #0f0f14; /* 트랙 배경색 */
+    border-radius: 10px; /* 트랙의 모서리를 둥글게 */
+}
+
+/* 가로 스크롤바 핸들 디자인 */
+#language_type::-webkit-scrollbar-thumb {
+    background: #1c1c25; /* 스크롤바 핸들 색상 */
+    border-radius: 10px; /* 핸들의 모서리를 둥글게 */
+}
+
+/* 가로 스크롤바 핸들 호버 효과 */
+#language_type::-webkit-scrollbar-thumb:hover {
+    background: #4c8bf5; /* 호버 시 색상 변경 */
+}
+/* 언어 테그 라디오 버튼 디자인*/
+.radio-button2-container {
+    position: absolute;
+    top: 25%;
+    left: 1%;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.radio-button2 {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.radio-button2__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.radio-button2__label {
+    display: inline-block;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    position: relative;
+    font-size: 18px;
+    color: rgba(211, 211, 211, 0.7);
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.radio-button2__custom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #555;
+    transition: all 0.3s ease;
+}
+
+.radio-button2__input:checked + .radio-button2__label .radio-button2__custom {
+    background-color: #4c8bf5;
+    border-color: transparent;
+    transform: scale(0.8);
+    box-shadow: 0 0 20px #4c8bf580;
+}
+
+.radio-button2__input:checked + .radio-button2__label {
+    color: #4c8bf5;
+}
+
+.radio-button2__label:hover .radio-button2__custom {
+    transform: scale(1.2);
+    border-color: #4c8bf5;
+    box-shadow: 0 0 20px #4c8bf580;
+}
+
+/* 왼쪽 디스플레이 프레임 ========================================================================= */
+#left_display_frame {
+    position: absolute;
+    top: 3%;
+    left: 1%;
+    display: flex;
+    width: 290px; /* 게시판 너비 */
+    height: 755px; /* 게시판 높이 */
+    border-radius: 15px;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+    transition: all .3s;
+    align-items: center;
+}
+
+#left_display_frame:hover {
+    margin-top: -10px;
+}
+/* 오른쪽 디스플레이 프레임 */
+#right_display_frame {
+    position: absolute;
+    top: 3%;
+    left: 79%;
+    display: flex;
+    width: 290px; /* 게시판 너비 */
+    height: 755px; /* 게시판 높이 */
+    border-radius: 15px;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+    transition: all .3s;
+    align-items: center;
+}
+
+#right_display_frame:hover {
+    margin-top: -10px;
+}
+.display-frame{
+    position: absolute;
+    top: 1.5%;
+    left: 4.5%;
+    display: flex;
+    width: 265px; /* 게시판 너비 */
+    height: 730px; /* 게시판 높이 */
+    border-radius: 15px;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+    transition: all .3s;
+    align-items: center;
+}
+.display-img{
+    position: absolute;
+    top: 1.5%;
+    left: 4.5%;
+    display: flex;
+    width: 243px; /* 게시판 너비 */
+    height: 708px; /* 게시판 높이 */
+    border: black;
+    border-radius: 15px;
+}

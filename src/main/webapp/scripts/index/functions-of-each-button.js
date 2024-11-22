@@ -108,7 +108,7 @@ function playHomeButtonSound() {
 
                     // 2초 뒤 페이지 이동
                     setTimeout(function() {
-                        window.location.href = '/portfolio'; // 페이지 이동
+                        window.location.href = '/home'; // 페이지 이동
                     }, 2000); // 2초 후 페이지 이동
                 }, (isSoundOn ? (sound.duration || defaultDelay) : defaultDelay) * 1000);
 
@@ -233,21 +233,27 @@ function selectButtonA() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password }),
-            credentials: 'include'
+            credentials: 'include' // 쿠키 포함
         })
-            .then(async response => {
+            .then(async (response) => {
+                // 항상 JSON 데이터를 처리하도록 설정
                 const data = await response.json();
-                if (response.status === 200) {
-                    alert('로그인 성공!');
-                    window.location.href = '/'; // 로그인 성공 후 리디렉션
-                } else {
-                    alert('로그인 실패: ' + data.message);
+
+                if (!response.ok) {
+                    // 상태 코드가 200-299 범위가 아닐 경우 오류 처리
+                    throw new Error(data.message || `HTTP 오류 상태: ${response.status}`);
                 }
+
+                // 로그인 성공 시 처리
+                alert(data.message || '로그인 성공!');
+                window.location.href = '/'; // 리디렉션
             })
-            .catch(error => {
-                console.error('로그인 오류:', error);
-                alert('로그인 중 오류가 발생했습니다.');
+            .catch((error) => {
+                // 네트워크 오류 또는 상태 코드 오류 처리
+                console.error('로그인 요청 중 오류:', error);
+                alert(error.message || '로그인 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
             });
+
     } else if (loginFrameDisplay === "none" && registerFrameDisplay === "flex") {
         // 회원가입 폼 입력값 검증
         const email = document.getElementById('register_email').value;
@@ -258,29 +264,55 @@ function selectButtonA() {
         const address = document.getElementById('register_address').value;
         const birth = document.getElementById('register_birth').value;
 
-        // 입력값 검증
-        if (!email) {
-            alert("이메일을 입력해 주세요.");
+
+        // 이메일 유효성 검사 패턴
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(email)) {
+            alert("유효한 이메일 주소를 입력해 주세요.");
             return;
         }
-        if (!password) {
-            alert("비밀번호를 입력해 주세요.");
+
+        // 비밀번호 유효성 검사 패턴
+        const passwordPattern = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=^\S+$).{8,20}$/;
+
+        if (!passwordPattern.test(password)) {
+            alert(
+                "비밀번호는 다음 조건을 충족해야 합니다:\n" +
+                "- 최소 8자, 최대 20자\n" +
+                "- 최소 하나의 대문자(A-Z), 소문자(a-z)\n" +
+                "- 최소 하나의 숫자(0-9)\n" +
+                "- 최소 하나의 특수문자(@#$%^&+=)\n" +
+                "- 공백 포함 불가"
+            );
             return;
         }
-        if (!phone) {
-            alert("전화번호를 입력해 주세요.");
+        // 전화번호 유효성 검사
+        const phonePattern = /^(010|011)\d{7,8}$/;
+
+        if (!phonePattern.test(phone)) {
+            alert("전화번호는 010 또는 011로 시작하고, 숫자 7~8자리가 포함되어야 합니다.");
             return;
         }
-        if (!gender) {
-            alert("성별을 입력해 주세요.");
+        // 허용된 성별 옵션
+        const validGenders = ["남성", "여성", "응답안함"];
+
+        // 성별 유효성 검사
+        if (!validGenders.includes(gender)) {
+            alert("성별은 '남성', '여성', '응답안함'중 하나를 입력해 주세요.");
             return;
         }
-        if (!name) {
-            alert("이름을 입력해 주세요.");
+        // 이름 유효성 검사
+        const regex = /[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9]/g;
+        if (regex.test(name)) {
+            alert("이름에는 특수문자를 사용할 수 없습니다.\n" +
+            "- 한글과 영어만 사용가능합니다.");
             return;
         }
-        if (!address) {
-            alert("주소를 입력해 주세요.");
+        // 한글과 영어만 허용하는 정규식
+        const regex2 = /[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z\s]/g;  // \s는 공백을 허용
+        if (regex.test(address)) {
+            alert("주소는 한글과 영어만 입력 가능합니다.");
             return;
         }
         if (!birth) {

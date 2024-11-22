@@ -1,0 +1,29 @@
+/* 전체 화면을 기준으로 배치 */
+body {
+    position: relative;
+    width: 1440px; /* 화면 전체 높이를 최소 높이로 지정 */
+    height: 1080px; /* 화면 전체 높이를 최소 높이로 지정 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    overflow: hidden;
+}
+/* Section  ===================================================================== */
+section {
+    position: absolute;
+    display: flex;
+    width: 1440px;
+    height: 800px;
+    top: 420px;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 화면 중앙 기준 */
+    justify-content: center;
+    align-items: center;
+    border: solid white;
+    color: white;
+
+    --card-bg-color: rgb(28, 28, 37);
+    --card-box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.71),
+    -10px -10px 50px rgba(0, 0, 0, 0.71);
+    /*--card-bg-color: lightgrey;*/
+    /*--card-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;*/
+}

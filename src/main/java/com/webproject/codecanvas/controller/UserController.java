@@ -8,7 +8,11 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -17,29 +21,35 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // 기존 로그인 엔드포인트
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest, HttpSession session) {
         try {
             // 사용자 인증
             User user = userService.login(loginRequest.getEmail(), loginRequest.getPassword());
-            System.out.println("------------------------------------------------------------------------\n");
-            System.out.println("[/api/login] : 로그인을 위한 사용자 정보\n" + user + "\n"); // 디버깅을 위한 출력
-            System.out.println("------------------------------------------------------------------------\n");
 
-            // 세션에 사용자 정보 저장 (세션에 인증 정보 추가)
+            // 세션에 사용자 정보 저장
             session.setAttribute("user", user);
 
-            User currentUser = (User) session.getAttribute("user");
-            System.out.println("------------------------------------------------------------------------\n");
-            System.out.println("[/api/login] : 세션에 저장된 사용자 정보\n" + currentUser + "\n"); // 디버깅을 위한 출력
-            System.out.println("------------------------------------------------------------------------\n");
+            // JSON 형식으로 응답
+            Map<String, Object> response = new HashMap<>();
+            response.put("status", "success");
+            response.put("message", "로그인 성공");
+            response.put("user", user);
 
-            // 로그인 성공 시 사용자 정보 반환
-            return ResponseEntity.ok().body(user);
-        } catch (RuntimeException e) {
-            // 로그인 실패 시 오류 메시지 반환
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.ok(response);
+        } catch (RuntimeException e) { // 인증 실패 처리: RuntimeException을 잡아야 합니다.
+            // 이메일 또는 비밀번호 틀림
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("status", "error");
+            errorResponse.put("message", "로그인 실패: 이메일 또는 비밀번호를 확인하세요.");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+        } catch (Exception e) { // 기타 예외 처리
+            // 일반적인 서버 오류 처리
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("status", "error");
+            errorResponse.put("message", "서버에 문제가 발생했습니다. 잠시 후 다시 시도해주세요.");
+            errorResponse.put("error", e.getMessage()); // 디버깅 용도로 추가
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
     }
 
