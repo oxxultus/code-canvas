@@ -132,7 +132,7 @@
     </div>
     <div class="first-fade-in-right" id="right_display_frame">
         <div class="display-frame">
-            <img src="../images/community/display-left0.gif" alt="왼쪽 디스플레이">
+            <img src="../images/community/display-left0.gif" alt="오른쪽 디스플레이">
         </div>
     </div>
 </section>
