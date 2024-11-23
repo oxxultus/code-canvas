@@ -1,170 +1,555 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: rgb(28, 28, 37); /* 어두운 배경 색상 */
-    color: #ddd; /* 밝은 글자 색상 */
+    position: relative;
+    width: 1440px; /* 화면 전체 높이를 최소 높이로 지정 */
+    height: 1080px; /* 화면 전체 높이를 최소 높이로 지정 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    overflow: hidden;
 }
+/* Section  ===================================================================== */
+section {
+    position: absolute;
+    display: flex;
+    width: 1440px;
+    height: 800px;
+    top: 420px;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 화면 중앙 기준 */
+    justify-content: center;
+    align-items: center;
+    /*border: solid white;*/
+    color: white;
 
-main {
+    --card-bg-color: rgb(28, 28, 37);
+    --card-box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.71),
+    -10px -10px 50px rgba(0, 0, 0, 0.71);
+}
+/* 게시판 작성 기준 프레임 ===============================================================*/
+#community {
+    position: absolute;
+    top: 23%;
+    left: 8.3%;
+    display: flex;
+    width: 1200px; /* 게시판 너비 */
+    height: 600px; /* 게시판 높이 */
+    border-radius: 15px;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+    transition: all .3s;
+    align-items: center;
+}
+#community:hover {
+    margin-top: -10px;
+}
+#community_frame {
+    position: absolute;
+    top: 3%;
+    left: 1.5%;
+    display: flex;
+    width: 1165px; /* 게시판 너비 */
+    height: 565px; /* 게시판 높이 */
+    border-radius: 15px;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+    transition: all .3s;
+    align-items: center;
+
+}
+/* 게시판 작성 타이틀 프레임 ============================================================== */
+#community_title_frame{
+    position: absolute;
+    top: 3%;
+    left: 2.6%;
+    display: flex;
+    width: 1200px;
+    height: 44px;
+    border-radius: 15px;
+    transition: all 0.3s;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+}
+#community_title_frame:hover{
+    box-shadow: 0 0 var(--main-color);
+    transform: translate(1px, 1px);
+}
+/* 게시판 작성 타이틀 프레임 아이콘 */
+#community_title_icon{
+    position: absolute;
+    top: 20%; /* 부모 요소의 세로 중앙 */
+    left: 6%; /* 부모 요소의 가로 중앙 */
+    width: 27px;
+    height: 27px;
+    fill: rgba(234, 177, 54, 0.7);
+}
+/* 게시판 작성 타이틀*/
+#community_title{
+    position: absolute;
+    top: -23%; /* 부모 요소의 세로 중앙 */
+    left: 40%; /* 부모 요소의 가로 중앙 */
+    font-size: 20px;
+    color: rgba(211, 211, 211, 0.54);
+}
+/* 게시판 리스트가 출력되는 프레임 =========================================================================== */
+#community_list_frame {
+    position: absolute;
+    top: 3%;
+    left: 1.5%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3열로 구성 */
+    gap: 20px; /* 카드 사이 간격 */
+    max-width: 1090px;
+    width: 100%;
+    height: 490px;
+    background: #0f0f14;
+    border-radius: 15px;
+    overflow: auto;
+    scrollbar-gutter: stable; /* 스크롤바가 컨테이너 내부에 고정 */
+    padding: 20px; /* 모든 방향에 내부 여백 추가 */
+}
+#community_list_frame::-webkit-scrollbar {
+    width: 8px; /* 세로 스크롤바 너비를 0으로 설정 */
+    height: 0px; /* 가로 스크롤바 높이 설정 */
+}
+#community_list_frame::-webkit-scrollbar-track {
+    background: #0f0f14; /* 트랙 배경색 */
+    border-radius: 10px; /* 트랙의 모서리를 둥글게 */
+}
+#community_list_frame::-webkit-scrollbar-thumb {
+    background: #2744a5; /* 스크롤바 핸들 색상 */
+    border-radius: 10px; /* 핸들의 모서리를 둥글게 */
+}
+#community_list_frame::-webkit-scrollbar-thumb:hover {
+    background: #4c8bf5; /* 호버 시 색상 변경 */
+}
+#community_frame .card {
+    background-color: rgb(26, 26, 35);
+    border-radius: 15px; /* 둥근 모서리 */
+    overflow: hidden;
+    height: 240px;
+    max-height: 240px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: rgb(40, 40, 48); /* 메인 배경 색상 */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.search-container {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    color: rgb(228, 228, 236); /* 밝은 색상 */
-}
-
-.search-box {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.search-box input {
-    padding: 10px;
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: rgb(40, 40, 48); /* 입력창 배경 */
-    color: #ddd; /* 글자 색상 */
-    border: 1px solid rgb(161, 161, 164); /* 테두리 색상 */
-}
-
-.search-btn {
-    padding: 10px;
-    font-size: 1rem;
-    background-color: #333; /* 버튼 배경 */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.search-btn:hover {
-    background-color: #555; /* Hover 효과 */
-}
-
-/* Dropdown 스타일 */
-.dropdown {
-    position: relative;
-    display: inline-block;
-    text-align: center;
-}
-
-.dropdown-btn {
-    padding: 10px 15px;
-    font-size: 1rem;
-    background-color: rgb(61, 61, 70); /* 어두운 초록색 버튼 */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.dropdown-btn:hover {
-    background-color: rgb(80, 80, 91); /* Hover 효과 */
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    left: 0;
-    background-color: rgb(40, 40, 48); /* 드롭다운 배경 */
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-    min-width: 200px;
-}
-
-.dropdown-content a {
-    text-decoration: none;
-    display: block;
-    padding: 10px 15px;
-    color: #ccc; /* 어두운 색상 */
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease;
-}
-
-.dropdown-content a:hover {
-    background-color: #555; /* Hover 효과 */
-    color: white; /* 텍스트 색 강조 */
-}
-
-.dropdown:hover .dropdown-content {
-    display: block; /* Hover 시 드롭다운 표시 */
-}
-
-/* Results-container 스타일 */
-.results-container {
-    width: 100%;
-    max-width: 700px;
-    margin-top: 30px;
-    background-color: rgb(40, 40, 48); /* 어두운 배경 */
-    border: 1px solid rgb(161, 161, 164); /* 테두리 색상 */
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.results-container h2 {
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    color: rgb(228, 228, 236); /* 밝은 색상 */
-    text-align: center;
-    border-bottom: 2px solid rgb(61, 61, 70); /* 초록색 배경 */
-    padding-bottom: 5px;
-}
-
-.result-item {
     padding: 15px;
-    margin: 10px 0;
-    background-color: rgb(48, 48, 58); /* 어두운 배경 색상 */
-    border: 1px solid rgb(161, 161, 164); /* 테두리 색상 */
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1rem;
-    transition: transform 0.2s ease, background-color 0.3s ease;
-    cursor: pointer;
+    color: black;
+    transition: all 0.3s;
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.71),
+    -10px -10px 50px rgba(0, 0, 0, 0.71);
 }
-
-.result-item:hover {
-    background-color: rgb(60, 60, 72); /* Hover 시 배경 색상 */
-    transform: scale(1.02); /* 살짝 확대 */
+#community_frame .card:hover {
+    box-shadow: 0 0 var(--main-color);
+    transform: translate(1px, 1px);
+    border: solid 1px black;
 }
-
-.navigation {
-    margin-top: 20px;
+#community_frame .img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    border: solid 1px black;
+}
+#community_frame .noticeboard {
+    font-size: 1.0em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: lightgrey;
+}
+#community_frame .title {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+#community_frame .language {
+    font-size: 1.0em;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.8);
+}
+#community_frame .id {
+    display: none;
+}
+#community_frame .name {
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.6);
+}
+/* 검색 프레임 =========================================================================== */
+#search {
+    position: absolute;
+    top: 2.8%;
+    left: 8.3%;
     display: flex;
-    gap: 10px;
+    width: 1200px; /* 게시판 너비 */
+    height: 145px; /* 게시판 높이 */
+    border-radius: 15px;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+    transition: all .3s;
+    align-items: center;
 }
-
-.nav-btn, .home-btn {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: rgb(61, 61, 70); /* 버튼 배경 */
-    color: white;
-    border: none;
-    border-radius: 5px;
+#search:hover {
+    margin-top: -10px;
+}
+#search_frame{
+    position: absolute;
+    top: 10%;
+    left: 1.5%;
+    display: flex;
+    width: 1165px; /* 게시판 너비 */
+    height: 110px; /* 게시판 높이 */
+    border-radius: 15px;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+    transition: all .3s;
+    align-items: center;
+}
+#write_search{
+    position: absolute;
+    top: 7%;
+    left: 1%;
+    width: 900px;
+    height: 45px;
+    text-align: center;
+    font-size: 16px;
+    color: lightgrey;
+    background-color: #0f0f14;
+    border-radius: 15px;
+    border: 1px solid black;
+    letter-spacing: 3px; /* 문자 간격 */
+}
+#write_search:active{
+    border: 1px solid black;
+}
+#write_search_icon{
+    position: absolute;
+    top: 18%;
+    left: 75.5%;
+    fill: #1a2e6d;
+    width: 20px;
+    height: 20px;
+}
+/* 게시판 카테고리 라디오 버튼 디자인 ===========================================*/
+#question_type {
+    position: absolute;
+    top: 58%;
+    left: 1%;
+    width: 905px;
+    height: 35px;
+    text-align: center;
+    background-color: #0f0f14;
+    border-radius: 12px;
+    border: 1px solid black;
+}
+.radio-button-container {
+    position: absolute;
+    top: 25%;
+    left: 6%;
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.radio-button {
+    display: inline-block;
+    position: relative;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
+.radio-button__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.radio-button__label {
+    display: inline-block;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    position: relative;
+    font-size: 18px;
+    color: rgba(211, 211, 211, 0.7);
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+.radio-button__custom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #555;
+    transition: all 0.3s ease;
+}
+.radio-button__input:checked + .radio-button__label .radio-button__custom {
+    background-color: #4c8bf5;
+    border-color: transparent;
+    transform: scale(0.8);
+    box-shadow: 0 0 20px #4c8bf580;
+}
+.radio-button__input:checked + .radio-button__label {
+    color: #4c8bf5;
+}
+.radio-button__label:hover .radio-button__custom {
+    transform: scale(1.2);
+    border-color: #4c8bf5;
+    box-shadow: 0 0 20px #4c8bf580;
+}
+/* 언어 카테고리 프레임 = ================================================*/
+#language{
+    position: absolute;
+    top: 7%;
+    left: 79.5%;
+    width: 228px;
+    height: 48.5px;
+    text-align: center;
+    font-size: 16px;
+    color: lightgrey;
+    background-color: #0f0f14;
+    border-radius: 15px;
+    border: 1px solid black;
+    letter-spacing: 3px; /* 문자 간격 */
+}
+/* 검색 버튼 디자인 =================================================================== */
+#submit{
+    position: absolute;
+    top: 58%;
+    left: 79.5%;
+    width: 228px;
+    height: 35px;
+    border-radius: 13px;
+    border: solid 1px #0f0f14;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: #16161c;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+}
+#submit:hover{
+    box-shadow: 0 0 var(--main-color);
+    transform: translate(1px, 1px);
+}
+#submit:active{
+    box-shadow: -4px -4px var(--main-color);
+    transform: translate(1px, 1px);
+}
+#submit:hover #submit_text{
+    color: #25409c;
 
-.nav-btn:hover, .home-btn:hover {
-    background-color: rgb(80, 80, 91); /* Hover 효과 */
+}
+#submit_text{
+    position: absolute;
+    top: 18%;
+    left: 40.5%;
+    font-size: 20px;
+    color: rgba(211, 211, 211, 0.54);
+}
+/*좌우 디스플레이 프레임===============================================================*/
+#left_display_frame{
+    position: absolute;
+    top: 2.8%;
+    left: 1%;
+    display: flex;
+    width: 89px; /* 게시판 너비 */
+    height: 760px; /* 게시판 높이 */
+    border-radius: 15px;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+    transition: all .3s;
+    align-items: center;
+}
+#left_display_frame:hover {
+    margin-top: -10px;
+}
+#right_display_frame{
+    position: absolute;
+    top: 2.8%;
+    left: 92.8%;
+    display: flex;
+    width: 89px; /* 게시판 너비 */
+    height: 760px; /* 게시판 높이 */
+    border-radius: 15px;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+    transition: all .3s;
+    align-items: center;
+}
+#right_display_frame:hover {
+    margin-top: -10px;
+}
+.display-frame{
+    position: absolute;
+    top: 1%;
+    left: 10%;
+    display: flex;
+    width: 72px; /* 게시판 너비 */
+    height: 743px; /* 게시판 높이 */
+    border-radius: 10px;
+    background: #0f0f14;
+    transition: all .3s;
+    align-items: center;
+}
+.display-frame img{
+    position: absolute;
+    top: 1%;
+    left: 10%;
+    display: flex;
+    width: 56px; /* 게시판 너비 */
+    height: 725px; /* 게시판 높이 */
+    border-radius: 10px;
+    border: solid 1px #0f0f14;
+}
+/* 포스트 세부 내용 확인하기 =================================================================================== */
+#post_detail_frame{
+    position: absolute;
+    top: 3%;
+    left: 1.5%;
+    display: none;
+    width: 1130px; /* 게시판 너비 */
+    height: 527px; /* 게시판 높이 */
+    border-radius: 15px;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+    transition: all .3s;
+    align-items: center;
+    z-index: 9999;
+}
+#post_detail_title_frame{
+    position: absolute;
+    top: 2%;
+    left: 1%;
+    width: 900px;
+    height: 45px;
+    text-align: center;
+    font-size: 16px;
+    color: lightgrey;
+    background-color: #0f0f14;
+    border-radius: 15px;
+    border: 1px solid black;
+    letter-spacing: 3px; /* 문자 간격 */
+    overflow: hidden;
+}
+#post_detail_title{
+    position: absolute;
+    top: 28%;
+    left: 1%;
+    font-size: 20px;
+    text-align: left;
+}
+#post_detail_text_frame{
+    position: absolute;
+    top: 11%;
+    width: 1109px;
+    height: 400px;
+    text-align: center;
+    font-size: 16px;
+    margin: 10px;
+    color: lightgrey;
+    background-color: #0f0f14;
+    border-radius: 15px;
+    border: 1px solid black;
+    letter-spacing: 3px; /* 문자 간격 */
+}
+#post_detail_text{
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    width: 1108px;
+    height: 400px;
+    font-size: 23px;
+    text-align: left;
+    border: lightgrey;
+    overflow-y: auto; /* 세로 스크롤 */
+    overflow-x: hidden; /* 가로 스크롤 숨김 */
+    word-wrap: break-word; /* 긴 단어를 줄바꿈 */
+    white-space: normal
+}
+#post_detail_language_frame{
+    position: absolute;
+    top: 90%;
+    width: 545px;
+    height: 30px;
+    text-align: center;
+    font-size: 16px;
+    margin: 10px;
+    color: lightgrey;
+    background-color: #0f0f14;
+    border-radius: 15px;
+    border: 1px solid black;
+    letter-spacing: 3px; /* 문자 간격 */
+}
+#post_detail_language{
+    position: absolute;
+    top: 10%;
+    left: 4%;
+    font-size: 20px;
+    text-align: left;
+}
+#post_detail_noticeboard_frame{
+    position: absolute;
+    left: 1%;
+    top: 90%;
+    width: 1109px;
+    height: 40px;
+    border-radius: 13px;
+    border: solid 1px #0f0f14;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: #16161c;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+}
+#post_detail_noticeboard_frame:hover{
+    box-shadow: 0 0 var(--main-color);
+    transform: translate(1px, 1px);
+}
+#post_detail_noticeboard_frame:active{
+    box-shadow: -4px -4px var(--main-color);
+    transform: translate(1px, 1px);
+}
+#post_detail_noticeboard_frame:hover #post_detail_noticeboard{
+    color: #25409c;
+}
+#post_detail_noticeboard{
+    position: absolute;
+    top: 18%;
+    left: 40.5%;
+    font-size: 20px;
+    color: rgba(211, 211, 211, 0.54);
+}
+/*exit 버튼 디자인 ==================================================*/
+#exit{
+    position: absolute;
+    top: 2%;
+    left: 82%;
+    width: 194px;
+    height: 45px;
+    border-radius: 13px;
+    border: solid 1px #0f0f14;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: #16161c;
+    background: var(--card-bg-color);
+    box-shadow: var(--card-box-shadow);
+}
+#exit:hover{
+    box-shadow: 0 0 var(--main-color);
+    transform: translate(1px, 1px);
+}
+#exit:active{
+    box-shadow: -4px -4px var(--main-color);
+    transform: translate(1px, 1px);
+}
+#exit:hover #exit_text{
+    color: #25409c;
+}
+#exit_text{
+    position: absolute;
+    top: 18%;
+    left: 36%;
+    font-size: 20px;
+    color: rgba(211, 211, 211, 0.54);
 }

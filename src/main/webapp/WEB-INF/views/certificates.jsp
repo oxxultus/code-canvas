@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -6,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자격증 정보 검색</title>
     <link rel="stylesheet" href="../styles/certificates.css">
+    <link rel="stylesheet" href="../styles/base.css">
+    <script src="../scripts/portfolio/play-sound.js" defer></script>
     <script>
         // 자격증 데이터
         const certificateData = [
@@ -173,57 +176,92 @@
         };
     </script>
 </head>
-<body>
-<main>
-    <div class="search-container">
-        <h1>자격증 정보 검색</h1>
-        <div class="search-box">
-            <form method="get" action="/certificates">
-                <label for="searchInput"></label><input type="text" placeholder="검색어를 입력하세요" name="searchInput" id="searchInput" value="${param.searchInput}">
-                <button class="search-btn" type="submit">🔍</button>
-            </form>
-            <div class="dropdown">
-                <button class="dropdown-btn">분야 ▼</button>
-                <div class="dropdown-content">
-                    <a href="?searchInput=${param.searchInput}&field=웹">웹</a>
-                    <a href="?searchInput=${param.searchInput}&field=모바일">모바일</a>
-                    <a href="?searchInput=${param.searchInput}&field=데스크톱 애플리케이션">데스크톱 애플리케이션</a>
-                    <a href="?searchInput=${param.searchInput}&field=임베디드 소프트웨어">임베디드 소프트웨어</a>
-                    <a href="?searchInput=${param.searchInput}&field=게임">게임</a>
-                    <a href="?searchInput=${param.searchInput}&field=데이터">데이터</a>
-                    <a href="?searchInput=${param.searchInput}&field=인공지능">인공지능</a>
-                    <a href="?searchInput=${param.searchInput}&field=보안">보안</a>
-                    <a href="?searchInput=${param.searchInput}&field=모든 자격증">모든 자격증</a> <!-- 모든 자격증을 선택할 수 있는 항목 추가 -->
+<body class="background">
+<audio id="click-button-sound" src="../audio/click-button-app.mp3"></audio>
+<section>
+    <div class="fade-in-bottom" id="community">
+        <div id="community_frame">
+            <div id="community_list_frame">
+                <c:forEach var="certificate" items="${certificates}">
+                    <div class="card" onclick="playSoundButton();" data-title="${certificate.certificate_title}" data-text="${certificate.certificate_description}" data-link="${certificate.certificate_link}">
+                        <img class="img" src="../images/community/language/${certificate.certificate_field}.png" alt="대표사진">
+                        <div class="jua-regular title">${certificate.certificate_title} <!-- 자격증 제목 출력 -->
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+            <div class="jua-regular" id="post_detail_frame">
+                <div id="post_detail_title_frame">
+                    <span id="post_detail_title"></span>
                 </div>
+                <div id="post_detail_text_frame">
+                    <pre class="jua-regular" id="post_detail_text"></pre>
+                </div>
+                <button id="post_detail_noticeboard_frame">
+                    <span id="post_detail_noticeboard">자격증 페이지 이동하기</span>
+                </button>
+                <button onclick="playSoundButton();" id="exit" type="submit"><span class="jua-regular" id="exit_text">나가기</span></button>
             </div>
         </div>
     </div>
-
-    <div class="results-container">
-        <h2>
-            <c:choose>
-                <c:when test="${not empty param.searchInput}">
-                    '${param.searchInput}'에 대한 검색 결과
-                </c:when>
-                <c:otherwise>
-                    ${param.field} 자격증
-                </c:otherwise>
-            </c:choose>
-        </h2>
-
-        <c:forEach var="cert" items="${filteredCertificates}">
-            <div class="result-item">${cert}</div>
-        </c:forEach>
-
-        <c:if test="${empty filteredCertificates}">
-            <div class="result-item">검색 결과가 없습니다.</div>
-        </c:if>
+    <div class="fade-in-top" id="search">
+        <div id="search_frame">
+            <form action="/certificates" method="get">
+                <label for="write_search"></label>
+                <input class="jua-regular" id="write_search" type="text" name="certificate_title" placeholder="검색어를 입력해 주세요">
+                <svg id="write_search_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
+                </svg>
+                <select onclick="playSoundButton();" class="jua-regular" id="language" name="certificate_field">
+                    <option value="">분야 선택</option>
+                    <option value="web">웹</option>
+                    <option value="mobile" >모바일</option>
+                    <option value="desktop" >데스크톱 애플리케이션</option>
+                    <option value="data" >데이터</option>
+                    <option value="embedded" >임베디드 소프트웨어</option>
+                    <option value="game" >게임</option>
+                    <option value="ai" >인공지능</option>
+                    <option value="security" >보안</option>
+                </select>
+                <button id="submit" type="submit" onclick="playSoundButton();"><span class="jua-regular" id="submit_text" >검색</span></button>
+            </form>
+        </div>
     </div>
-
-    <div class="navigation">
-        <button class="home-btn" onclick="location.href='/information'">홈</button>
+    <div class="first-fade-in-left" id="left_display_frame">
+        <div class="display-frame">
+            <img src="../images/community/display-left0.gif" alt="왼쪽 디스플레이">
+        </div>
     </div>
-</main>
+    <div class="first-fade-in-right" id="right_display_frame">
+        <div class="display-frame">
+            <img src="../images/community/display-left0.gif" alt="오른쪽 디스플레이">
+        </div>
+    </div>
+</section>
+<nav>
+    <div class="fade-in-bottom tab-container">
+        <input type="radio" name="tab" id="tab1" onclick="window.location.href='/home'" class="tab tab--1"/>
+        <label class="tab_label" for="tab1">홈</label>
+
+        <input type="radio" name="tab" onclick="window.location.href='/portfolio'" id="tab2" class="tab tab--2"/>
+        <label class="tab_label" for="tab2">포트폴리오</label>
+
+        <input type="radio"onclick="window.location.href='/community'" name="tab" id="tab3" class="tab tab--3"/>
+        <label class="tab_label" for="tab3">커뮤니티</label>
+
+        <input type="radio" name="tab" id="tab4" onclick="window.location.href='/information'" class="tab tab--4" checked/>
+        <label class="tab_label" for="tab4">정보</label>
+
+        <input type="radio" name="tab" id="tab5" onclick="window.location.href='/'" class="tab tab--5"/>
+        <label class="tab_label" for="tab5">일정</label>
+
+        <div class="indicator"></div>
+    </div>
+</nav>
+<footer class="text-focus-in">
+    <p>CodeCanvas &copy; 2024 - ALL RIGHT RESERVE</p>
+</footer>
+<script src="../scripts/certificates/show-certificate-detail.js"></script>
 </body>
 </html>
 

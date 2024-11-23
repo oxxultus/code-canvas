@@ -1,72 +1,98 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>초보 개발자를 위한 웹사이트</title>
     <link rel="stylesheet" href="../styles/information.css"> <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="../styles/base.css">
+    <script src="../scripts/portfolio/play-sound.js" defer></script>
+    <title>Information</title>
 </head>
-<body>
-<header>
-    <nav>
-        <ul class="menu">
-            <li><a href="/certificates">자격증</a></li>
-            <li><a href="/competitions">공모전/대외활동</a></li>
-        </ul>
-    </nav>
-</header>
-<main>
-    <div class="content">
-        <!-- 자격증 TOP 3 -->
-        <div class="top-section">
-            <h2>분야별 자격증</h2>
-            <div class="grid-container">
-                <!-- 웹 개발 분야 -->
-                <div class="card">
-                    <h3>웹 개발</h3>
-                    <ul>
-                        <li>⦁ 웹 개발 전문가</li>
-                        <li>⦁ HTML5 프로그래밍 자격증</li>
-                        <li>⦁ JavaScript 개발자 인증</li>
-                    </ul>
-                </div>
-
-                <!-- 모바일 개발 분야 -->
-                <div class="card">
-                    <h3>모바일 개발</h3>
-                    <ul>
-                        <li>⦁ 모바일 앱 개발 전문가</li>
-                        <li>⦁ Android 개발 자격증</li>
-                        <li>⦁ iOS 전문가</li>
-                    </ul>
-                </div>
-
-                <!-- 데이터 분석 분야 -->
-                <div class="card">
-                    <h3>데이터 분석</h3>
-                    <ul>
-                        <li>⦁ 데이터 분석 전문가</li>
-                        <li>⦁ SQL 마스터</li>
-                        <li>⦁ 데이터 과학 인증</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- 공모전 TOP 3 -->
-        <div class="top-section">
-            <h2>공모전/대외활동</h2>
-            <div class="grid-container">
-                <div class="card">공모전 1</div>
-                <div class="card">공모전 2</div>
-                <div class="card">공모전 3</div>
-            </div>
+<body class="background">
+<audio id="click-button-sound" src="../audio/click-button-app.mp3"></audio>
+<section>
+    <div class="fade-in-top" id="certificate_frame_title">
+        <div id="certificate_frame_text_title">
+            <span class="jua-regular" id="certificate_title">자격증 검색 순위</span>
         </div>
     </div>
-    <!-- 홈 버튼 -->
-    <div class="home-button">
-        <button onclick="location.href='/'">메인</button>
+    <div class="fade-in-bottom" id="top_certificate_frame">
+        <div id="certificate_frame">
+            <div id=certificate_top_list_frame>
+                <c:forEach var="certificate" items="${certificates}">
+                    <div class="card" onclick="playSoundButton();">
+                        <img class="img" src="../images/certificate/${certificate.certificate_field}.png" alt="대표사진">
+                        <div class="jua-regular title">${certificate.certificate_title}</div> <!-- 자격증 제목 출력 -->
+                    </div>
+                </c:forEach>
+            </div>
+        </div>
+        <div class="button_frame">
+            <button onclick="playSoundButton();" id="certificate_button">
+                <span class="jua-regular" onclick="playSoundButton(); window.location.href='/certificates'" id="certificate_button_text">더 알아보기</span>
+            </button>
+        </div>
     </div>
-</main>
+    <div class="fade-in-top" id="competitions_frame_title">
+        <div id="competitions_frame_text_title">
+            <span class="jua-regular" id="competitions_title">공모전/대외활동 검색 순위</span>
+        </div>
+    </div>
+    <div class="fade-in-bottom" id="top_competitions_frame">
+        <div id="competitions_frame">
+            <div id=competitions_top_list_frame>
+                <%-- 해당 부분에 직접 데이터를 받아와서 출력하게 해보셈--%>
+                <%-- 아래 forEach함수 부분만 수정하면 된다. --%>
+                    <%-- 컨트롤러에서 페이지 로딩하기 이전에 값을 처리하고 데이터를 받아오면 된다. --%>
+                <c:forEach var="certificate" items="${certificates}">
+                    <div class="card" onclick="playSoundButton();">
+                        <img class="img" src="../images/certificate/${certificate.certificate_field}.png" alt="대표사진">
+                        <div class="jua-regular title">${certificate.certificate_title}</div> <!-- 자격증 제목 출력 -->
+                    </div>
+                </c:forEach>
+            </div>
+        </div>
+        <div class="button_frame">
+            <button onclick="playSoundButton();" id="competitions_button">
+                <span class="jua-regular" onclick="playSoundButton(); window.location.href='/competitions'" id="competitions_button_text">더 알아보기</span>
+            </button>
+        </div>
+    </div>
+    <div class="first-fade-in-left" id="left_display_frame">
+        <div class="display-frame">
+            <img src="../images/community/display-left0.gif" alt="왼쪽 디스플레이">
+        </div>
+    </div>
+    <div class="first-fade-in-right" id="right_display_frame">
+        <div class="display-frame">
+            <img src="../images/community/display-left0.gif" alt="오른쪽 디스플레이">
+        </div>
+    </div>
+</section>
+<nav>
+    <div class="fade-in-bottom tab-container">
+        <input type="radio" name="tab" id="tab1" onclick="playSoundButton(); window.location.href='/home'" class="tab tab--1"/>
+        <label class="tab_label" for="tab1">홈</label>
+
+        <input type="radio" name="tab" id="tab2" class="tab tab--2" onclick="playSoundButton(); window.location.href='/portfolio'"/>
+        <label class="tab_label" for="tab2">포트폴리오</label>
+
+        <input type="radio" name="tab" id="tab3" onclick="playSoundButton(); window.location.href='/community'" class="tab tab--3"/>
+        <label class="tab_label" for="tab3">커뮤니티</label>
+
+        <input type="radio" name="tab" id="tab4" onclick="playSoundButton(); window.location.href='/information'" class="tab tab--4" checked/>
+        <label class="tab_label" for="tab4">정보</label>
+
+        <input type="radio" name="tab" id="tab5" onclick="playSoundButton(); window.location.href='/'" class="tab tab--5"/>
+        <label class="tab_label" for="tab5">일정</label>
+
+        <div class="indicator"></div>
+    </div>
+</nav>
+<footer class="text-focus-in">
+    <p>CodeCanvas &copy; 2024 - ALL RIGHT RESERVE</p>
+</footer>
 </body>
 </html>
