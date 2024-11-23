@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/base.css">
     <link rel="stylesheet" href="../styles/community.css">
+    <link rel="icon" type="image/x-icon" href="../images/codecanvas.ico">
+    <link rel="icon" type="image/png" href="../images/codecanvas.png">
     <script src="../scripts/portfolio/play-sound.js" defer></script>
     <title>COMMUNITY</title>
 </head>
@@ -26,7 +28,7 @@
                     </div>
                 </c:forEach>
             </div>
-            <button class="jua-regular continue-application" onclick="playSoundButton(); window.location.href='/writecommunity'">
+            <button class="jua-regular continue-application" onclick="window.location.href='/writecommunity'">
                 <div>
                     <div class="pencil"></div>
                     <div class="folder">
@@ -138,20 +140,20 @@
 </section>
 <nav>
   <div class="fade-in-bottom tab-container">
-    <input type="radio" name="tab" id="tab1" onclick="playSoundButton(); window.location.href='/home'" class="tab tab--1"/>
+    <input type="radio" name="tab" id="tab1" onclick="window.location.href='/home'" class="tab tab--1"/>
     <label class="tab_label" for="tab1">홈</label>
 
-    <input type="radio" name="tab" onclick="playSoundButton(); window.location.href='/portfolio'" id="tab2" class="tab tab--2"/>
+    <input type="radio" name="tab" onclick="window.location.href='/portfolio'" id="tab2" class="tab tab--2"/>
     <label class="tab_label" for="tab2">포트폴리오</label>
 
-    <input onclick="playSoundButton();" type="radio" name="tab" id="tab3" class="tab tab--3"
+    <input type="radio" name="tab" id="tab3" class="tab tab--3"
            checked/>
     <label class="tab_label" for="tab3">커뮤니티</label>
 
-    <input type="radio" name="tab" id="tab4" onclick="playSoundButton(); window.location.href='/information'" class="tab tab--4"/>
+    <input type="radio" name="tab" id="tab4" onclick="window.location.href='/information'" class="tab tab--4"/>
     <label class="tab_label" for="tab4">정보</label>
 
-    <input type="radio" name="tab" id="tab5" onclick="playSoundButton(); window.location.href='/'" class="tab tab--5"/>
+    <input type="radio" name="tab" id="tab5" onclick="window.location.href='/home'" class="tab tab--5"/>
     <label class="tab_label" for="tab5">일정</label>
 
     <div class="indicator"></div>

@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="../styles/base.css"> <!-- base CSS 파일 연결 -->
     <link rel="stylesheet" href="../styles/index.css"> <!-- index CSS 파일 연결 -->
+    <link rel="icon" type="image/x-icon" href="../images/codecanvas.ico">
+    <link rel="icon" type="image/png" href="../images/codecanvas.png">
 
     <script src="../scripts/index/change-image.js" defer></script> <!-- change-image js 파일 연결 -->
     <script src="../scripts/index/functions-of-each-button.js" defer></script> <!-- play-sound js 파일 연결 -->

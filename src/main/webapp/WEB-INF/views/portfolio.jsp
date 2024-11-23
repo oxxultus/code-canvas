@@ -61,6 +61,8 @@
 
     <link rel="stylesheet" href="../styles/base.css">
     <link rel="stylesheet" href="../styles/portfolio.css">
+    <link rel="icon" type="image/x-icon" href="../images/codecanvas.ico">
+    <link rel="icon" type="image/png" href="../images/codecanvas.png">
 
     <script src="../scripts/portfolio/play-sound.js" defer></script>
 </head>
@@ -81,7 +83,7 @@
         <input type="radio" name="tab" id="tab4" onclick="window.location.href='/information'" class="tab tab--4"/>
         <label class="tab_label" for="tab4">정보</label>
 
-        <input type="radio" name="tab" id="tab5" onclick="window.location.href='/'" class="tab tab--5"/>
+        <input type="radio" name="tab" id="tab5" onclick="window.location.href='/home'" class="tab tab--5"/>
         <label class="tab_label" for="tab5">일정</label>
 
         <div class="indicator"></div>

@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/information.css"> <!-- CSS 파일 연결 -->
     <link rel="stylesheet" href="../styles/base.css">
+    <link rel="icon" type="image/x-icon" href="../images/codecanvas.ico">
+    <link rel="icon" type="image/png" href="../images/codecanvas.png">
     <script src="../scripts/portfolio/play-sound.js" defer></script>
     <title>Information</title>
 </head>
@@ -31,7 +33,7 @@
         </div>
         <div class="button_frame">
             <button onclick="playSoundButton();" id="certificate_button">
-                <span class="jua-regular" onclick="playSoundButton(); window.location.href='/certificates'" id="certificate_button_text">더 알아보기</span>
+                <span class="jua-regular" onclick="window.location.href='/certificates'" id="certificate_button_text">더 알아보기</span>
             </button>
         </div>
     </div>
@@ -56,7 +58,7 @@
         </div>
         <div class="button_frame">
             <button onclick="playSoundButton();" id="competitions_button">
-                <span class="jua-regular" onclick="playSoundButton(); window.location.href='/competitions'" id="competitions_button_text">더 알아보기</span>
+                <span class="jua-regular" onclick="window.location.href='/competitions'" id="competitions_button_text">더 알아보기</span>
             </button>
         </div>
     </div>
@@ -85,7 +87,7 @@
         <input type="radio" name="tab" id="tab4" onclick="playSoundButton(); window.location.href='/information'" class="tab tab--4" checked/>
         <label class="tab_label" for="tab4">정보</label>
 
-        <input type="radio" name="tab" id="tab5" onclick="playSoundButton(); window.location.href='/'" class="tab tab--5"/>
+        <input type="radio" name="tab" id="tab5" onclick="playSoundButton(); window.location.href='/home'" class="tab tab--5"/>
         <label class="tab_label" for="tab5">일정</label>
 
         <div class="indicator"></div>
