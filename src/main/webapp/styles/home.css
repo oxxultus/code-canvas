@@ -1,29 +1,240 @@
-/* 전체 화면을 기준으로 배치 */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+.montserrat {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+/* 전체 화면 레이아웃 */
 body {
-    position: relative;
-    width: 1440px; /* 화면 전체 높이를 최소 높이로 지정 */
-    height: 1080px; /* 화면 전체 높이를 최소 높이로 지정 */
+    position: relative; /* ::before를 위한 기준 */
+    margin: 0;
+    width: 100vw; /* 전체 너비 */
+    height: 100vh; /* 전체 높이 */
+    display: flex;
     justify-content: center; /* 가로 중앙 정렬 */
     align-items: center; /* 세로 중앙 정렬 */
     overflow: hidden;
+    background: rgb(28, 28, 37); /* 기본 배경 */
 }
+
 /* Section  ===================================================================== */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%); /* 시작 위치 */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%); /* 끝 위치 */
+    }
+}
 section {
     position: absolute;
     display: flex;
     width: 1440px;
-    height: 800px;
+    height: 770px;
     top: 420px;
     left: 50%;
+    border-radius: 20px;
     transform: translate(-50%, -50%); /* 화면 중앙 기준 */
     justify-content: center;
     align-items: center;
-    border: solid white;
+    /*border: solid white;*/
     color: white;
 
     --card-bg-color: rgb(28, 28, 37);
     --card-box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.71),
     -10px -10px 50px rgba(0, 0, 0, 0.71);
-    /*--card-bg-color: lightgrey;*/
-    /*--card-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;*/
+
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.71) inset,10px 10px 50px rgba(0, 0, 0, 0.71),
+    -10px -10px 50px rgba(0, 0, 0, 0.71) inset;
+
+    background-image: url('../images/home/main.png'); /* 백그라운드 이미지 경로 */
+    background-size: cover; /* 이미지 크기를 섹션에 맞게 조정 */
+    background-position: center; /* 이미지를 가운데 정렬 */
+    background-repeat: no-repeat; /* 이미지 반복 방지 */
+    transition: all .3s;
+    animation: fadeIn 1.3s ease-out; /* 애니메이션 적용 */
 }
+section:hover{
+    margin-top: -10px;
+}
+/* nintendo_game_card  ===================================================================== */
+#social_link_frame {
+    position: absolute;
+    top: 93%;
+    left: 2%;
+    width: 250px;
+    height: 40px;
+    border-radius: 15px;
+    background: rgba(29, 52, 123, 0);
+    /*border: solid 1px lightgrey;*/
+}
+#github_icon{
+    position: absolute;
+    top: 8%;
+    --icon-width-height: 33px;
+    width: var(--icon-width-height);
+    height: var(--icon-width-height);
+    fill: lightgrey;
+    cursor: pointer;
+}
+#bar1{
+    position: absolute;
+    top: 10%;
+    left: 23%;
+    background-color: lightgrey;
+    width: 2px;
+    border-radius: 30px;
+    height: 33px;
+}
+#github_icon_text{
+    position: absolute;
+    top: 10%;
+    left: 35%;
+    font-size: 9px;
+    text-align: left;
+}
+.fade-in-left-img {
+    position: relative; /* 또는 fixed/absolute 적절히 선택 */
+    transform: translateX(0); /* 초기 위치 확인 */
+    transition: transform 0.5s ease-out; /* 부드러운 애니메이션 */
+    overflow: hidden; /* 컨테이너 범위 초과 방지 */
+}
+#project_name_frame{
+    position: absolute;
+    top: 30%;
+    left: 21.6%;
+    width: 800px;
+    height: 300px;
+    /*border: solid 2px white;*/
+}
+#project_title{
+    position: absolute;
+    top: 20%;
+    left: 2%;
+    font-size: 120px;
+    color: rgba(211, 211, 211, 0.8);
+    text-align: center;
+}
+#language_frame{
+    position: absolute;
+    top: 93%;
+    left: 75%;
+    width: 350px;
+    height: 40px;
+    border-radius: 15px;
+    background: rgba(29, 52, 123, 0);
+    /*border: solid 1px lightgrey;*/
+}
+#java_icon{
+    position: absolute;
+    top: 8%;
+    left: 0%;
+    --icon-width-height: 33px;
+    width: var(--icon-width-height);
+    height: var(--icon-width-height);
+    fill: rgba(211, 211, 211, 0.7);
+    cursor: pointer;
+}
+#js_icon{
+    position: absolute;
+    top: 8%;
+    left: 12.5%;
+    --icon-width-height: 30px;
+    width: var(--icon-width-height);
+    height: var(--icon-width-height);
+    fill: rgba(211, 211, 211, 0.7);
+    cursor: pointer;
+}
+#html_icon{
+    position: absolute;
+    top: 8%;
+    left: 25%;
+    --icon-width-height: 32px;
+    width: var(--icon-width-height);
+    height: var(--icon-width-height);
+    fill: rgba(211, 211, 211, 0.7);
+    cursor: pointer;
+}
+#css_icon{
+    position: absolute;
+    top: 8%;
+    left: 37.5%;
+    --icon-width-height: 32px;
+    width: var(--icon-width-height);
+    height: var(--icon-width-height);
+    fill: rgba(211, 211, 211, 0.7);
+    cursor: pointer;
+}
+#spring_icon{
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    --icon-width-height: 28px;
+    width: var(--icon-width-height);
+    height: var(--icon-width-height);
+    fill: rgba(211, 211, 211, 0.7);
+    cursor: pointer;
+}
+#mysql_icon{
+    position: absolute;
+    top: 8%;
+    left: 62.5%;
+    --icon-width-height: 28px;
+    width: var(--icon-width-height);
+    height: var(--icon-width-height);
+    fill: rgba(211, 211, 211, 0.7);
+    cursor: pointer;
+}
+#gradle_icon{
+    position: absolute;
+    top: 8%;
+    left: 75%;
+    --icon-width-height: 32px;
+    width: var(--icon-width-height);
+    height: var(--icon-width-height);
+    fill: rgba(211, 211, 211, 0.7);
+    cursor: pointer;
+}
+#tomcat_icon{
+    position: absolute;
+    top: 7%;
+    left: 87.5%;
+    --icon-width-height: 34px;
+    width: var(--icon-width-height);
+    height: var(--icon-width-height);
+    fill: rgba(211, 211, 211, 0.7);
+    cursor: pointer;
+}
+
+.text-focus-in {
+    -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+@-webkit-keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+@keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
