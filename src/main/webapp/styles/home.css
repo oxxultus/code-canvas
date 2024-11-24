@@ -1,3 +1,4 @@
+/* 통합 폰트 설정 ===================================================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 .montserrat {
     font-family: "Montserrat", sans-serif;
@@ -5,7 +6,7 @@
     font-weight: 300;
     font-style: normal;
 }
-/* 전체 화면 레이아웃 */
+/* 전체 화면 레이아웃 ================================================================================================== */
 body {
     position: relative; /* ::before를 위한 기준 */
     margin: 0;
@@ -18,7 +19,7 @@ body {
     background: rgb(28, 28, 37); /* 기본 배경 */
 }
 
-/* Section  ===================================================================== */
+/* Section  ========================================================================================================= */
 section {
     position: absolute;
     display: flex;
@@ -46,7 +47,6 @@ section {
     transition: all .3s;
     animation: fadeInMove 1.6s ease-in-out forwards; /* 애니메이션 설정 */
 }
-/* 위에서 아래로 부드럽게 내려오는 fadeIn 애니메이션 */
 @keyframes fadeInMove {
     0% {
         opacity: 0; /* 투명하게 시작 */
@@ -57,7 +57,6 @@ section {
         transform: translate(-50%, -50%) translateY(0); /* 원래 위치로 */
     }
 }
-/* hover 상태 */
 section:hover {
     margin-top: -10px;
     transform: translate(-50%, -50%) scale(1.001); /* 살짝 확대 */
@@ -66,7 +65,7 @@ section:hover {
     -15px -15px 60px rgba(0, 0, 0, 0.8) inset; /* 박스 그림자 변화 */
     filter: brightness(1.08); /* 밝기 조정 */
 }
-
+/* 눈 에니메이션 관련 CSS */
 .snow-container {
     position: absolute;
     top: 0;
@@ -79,11 +78,9 @@ section:hover {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
-
 section:hover .snow-container {
     opacity: 1;
 }
-
 .snowflake {
     position: absolute;
     top: -10px;
@@ -94,30 +91,12 @@ section:hover .snow-container {
     opacity: 0.8;
     animation: fall linear infinite;
 }
-
-@keyframes fall {
-    0% {
-        transform: translateY(0);
-        opacity: 0.8;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh);
-        opacity: 0.3;
-    }
-}
-
-/* 여러 눈송이 위치와 속도 지정 */
 .snowflake:nth-child(1) { left: 10%; animation-duration: 5s; animation-delay: 0s; }
 .snowflake:nth-child(2) { left: 20%; animation-duration: 7s; animation-delay: 1s; }
 .snowflake:nth-child(3) { left: 30%; animation-duration: 4s; animation-delay: 2s; }
 .snowflake:nth-child(4) { left: 50%; animation-duration: 6s; animation-delay: 1.5s; }
 .snowflake:nth-child(5) { left: 70%; animation-duration: 8s; animation-delay: 3s; }
 .snowflake:nth-child(6) { left: 90%; animation-duration: 5s; animation-delay: 0.5s; }
-
-/* 눈송이 애니메이션 */
 @keyframes fall {
     0% {
         transform: translateY(0);
@@ -131,8 +110,7 @@ section:hover .snow-container {
         opacity: 0.3;
     }
 }
-
-/* div  ===================================================================== */
+/* div  ============================================================================================================= */
 #social_link_frame {
     position: absolute;
     top: 93%;
@@ -280,7 +258,6 @@ section:hover .snow-container {
     fill: rgba(211, 211, 211, 0.7);
     cursor: pointer;
 }
-
 .text-focus-in {
     -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
     animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
@@ -309,10 +286,8 @@ section:hover .snow-container {
         opacity: 1;
     }
 }
-
-/* div  ===================================================================== */
-
-/* Tooltip container */
+/* Tooltip ========================================================================================================== */
+/* 영역 */
 .tooltip-container {
     top: 2%;
     left: 1%;
@@ -321,8 +296,7 @@ section:hover .snow-container {
     margin: 10px;
     font-size: 15px;
 }
-
-/* Icon styling */
+/* 아이콘 */
 .icon {
     width: 30px;
     height: 30px;

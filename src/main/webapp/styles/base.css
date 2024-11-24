@@ -1,19 +1,11 @@
+/* 통합 폰트 설정 ===================================================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 .jua-regular {
     font-family: "Jua", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
-
-/**
- * 파일명: base.css
- * 설명: 이 파일은 *.html(모든 html) 에 적용되는 스타일시트 입니다.
- * 작성자: oxxultus(김영진)
- * 생성일: 2024-11-06
- * 업데이트일: 2024-11-06
- */
-
-/* 통합 백그라운드 패턴 설정 */
+/* 통합 백그라운드 패턴 설정 ============================================================================================ */
 .background {
     width: 100%;
     height: 100%;
@@ -21,8 +13,7 @@
     radial-gradient(rgb(40, 40, 48) 20%, transparent 1%); /* 점 패턴 */
     background-size: 13px 13px;
 }
-
-/* 이미지 드래그 방지 설정 */
+/* 이미지 드래그 방지 설정 ============================================================================================== */
 img {
     -webkit-user-drag: none; /* Chrome, Safari 용: 이미지가 드래그되지 않도록 설정 */
     -khtml-user-drag: none;  /* Konqueror 브라우저 용 (거의 사용되지 않음) */
@@ -30,13 +21,11 @@ img {
     -o-user-drag: none;      /* Opera 용: 이미지 드래그 방지 */
     user-drag: none;         /* 표준 속성: 지원하는 브라우저에서 이미지 드래그 방지 */
 }
-
-/* 이 요소 내에서 스크롤 바를 숨기고 스크롤을 막습니다 */
+/* 스크롤을 숨기고 막는 클래스 =========================================================================================== */
 .hide-scroll {
     overflow: hidden;
 }
-
-/* Footer  ===================================================================== */
+/* Footer =========================================================================================================== */
 footer {
     position: absolute;
     display: flex;
@@ -91,7 +80,7 @@ footer {
         opacity: 1;
     }
 }
-/*메뉴바를 구성 하는 css   ===================================================================== */
+/* Nav ============================================================================================================== */
 nav {
     position: absolute;
     display: flex;
@@ -200,8 +189,71 @@ nav {
 .tab--5:checked ~ .indicator {
     left: calc(130px * 4 + 2px);
 }
-
-/* 블럭 에니메이션 ====================================================================================== */
+/* 로그아웃 버튼 디자인 */
+.Btn {
+    position: absolute;
+    top: 13%;
+    left: 78%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 38px;
+    height: 38px;
+    border: solid 1px rgba(9, 9, 12, 0.5);
+    border-radius: 15px;
+    cursor: pointer;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 4px 4px 70px rgba(0, 0, 0, 0.71),
+    -4px -4px 70px rgba(0, 0, 0, 0.71);
+    background-color: rgb(37, 37, 48);
+}
+.sign {
+    position: absolute;
+    left: 3%;
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sign svg {
+    width: 14px;
+}
+.sign svg path {
+    fill: rgba(211, 211, 211, 0.7);
+}
+.text {
+    position: absolute;
+    left: 26%;
+    opacity: 0;
+    color: rgba(211, 211, 211, 0.7);
+    font-size: 1.0em;
+    font-weight: 600;
+    transition-duration: .3s;
+}
+.Btn:hover {
+    width: 120px;
+    border-radius: 15px;
+    transition-duration: .3s;
+}
+.Btn:hover .sign {
+    position: absolute;
+    left: -10%;
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+}
+.Btn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+}
+.Btn:active {
+    transform: translate(2px ,2px);
+}
+/* 에니메이션 모음 ==================================================================================================== */
 /* 오른쪽에서 중앙으로 밝아지면서 들어오는 에니메이션 1번 */
 .first-fade-in-right {
     -webkit-animation: first-fade-in-right 1s ease-in-out both;
@@ -252,6 +304,64 @@ nav {
     0% {
         -webkit-transform: translateX(50px);
         transform: translateX(50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/* 좌측에서 중앙으로 밝아지면서 들어오는 에니메이션 1번 */
+.first-fade-in-left {
+    -webkit-animation: first-fade-in-left 1s ease-in-out both;
+    animation: first-fade-in-left 1s ease-in-out both;
+}
+@-webkit-keyframes first-fade-in-left {
+    0% {
+        -webkit-transform: translateX(-50px);
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes first-fade-in-left {
+    0% {
+        -webkit-transform: translateX(-50px);
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/* 좌측에서 중앙으로 밝아지면서 들어오는 에니메이션 2번 */
+.second-fade-in-left {
+    -webkit-animation: second-fade-in-left 1.3s ease-in-out both;
+    animation: second-fade-in-left 1.3s ease-in-out both;
+}
+@-webkit-keyframes second-fade-in-left {
+    0% {
+        -webkit-transform: translateX(-50px);
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes second-fade-in-left {
+    0% {
+        -webkit-transform: translateX(-50px);
+        transform: translateX(-50px);
         opacity: 0;
     }
     100% {
@@ -318,60 +428,4 @@ nav {
         opacity: 1;
     }
 }
-/* 우측에서 중앙으로 밝아지면서 들어오는 에니메이션 */
-.first-fade-in-left {
-    -webkit-animation: first-fade-in-left 1s ease-in-out both;
-    animation: first-fade-in-left 1s ease-in-out both;
-}
-@-webkit-keyframes first-fade-in-left {
-    0% {
-        -webkit-transform: translateX(-50px);
-        transform: translateX(-50px);
-        opacity: 0;
-    }
-    100% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-@keyframes first-fade-in-left {
-    0% {
-        -webkit-transform: translateX(-50px);
-        transform: translateX(-50px);
-        opacity: 0;
-    }
-    100% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-.second-fade-in-left {
-    -webkit-animation: second-fade-in-left 1.3s ease-in-out both;
-    animation: second-fade-in-left 1.3s ease-in-out both;
-}
-@-webkit-keyframes second-fade-in-left {
-    0% {
-        -webkit-transform: translateX(-50px);
-        transform: translateX(-50px);
-        opacity: 0;
-    }
-    100% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-@keyframes second-fade-in-left {
-    0% {
-        -webkit-transform: translateX(-50px);
-        transform: translateX(-50px);
-        opacity: 0;
-    }
-    100% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
+/* ================================================================================================================== */

@@ -1,12 +1,11 @@
+/* 통합 폰트 설정 ===================================================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 .jua-regular {
     font-family: "Jua", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
-
-
-/* 전체 화면을 기준으로 배치 */
+/* 전체 화면을 기준으로 배치 ============================================================================================ */
 body {
     position: relative;
     width: 1440px; /* 화면 전체 높이를 최소 높이로 지정 */
@@ -16,27 +15,10 @@ body {
     overflow: auto;
     scrollbar-width: none; /* Firefox */
 }
-
 ::-webkit-scrollbar {
     display: none; /* WebKit 기반 브라우저 */
 }
-
-
-/* Nav  ===================================================================== */
-nav {
-    position: absolute;
-    display: flex;
-    width: 1440px;
-    height: 50px;
-    top: 820px;
-    left: 50%;
-    transform: translate(-50%, 0); /* 중앙 기준으로 배치 */
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-
-/* Section  ===================================================================== */
+/* Section  ========================================================================================================= */
 section {
     position: absolute;
     display: flex;
@@ -56,8 +38,7 @@ section {
     /*--card-bg-color: lightgrey;*/
     /*--card-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;*/
 }
-
-/* Footer  ===================================================================== */
+/* Footer  ========================================================================================================= */
 footer {
     position: absolute;
     display: flex;
@@ -84,109 +65,7 @@ footer {
     color: #888;
     text-align: center;
 }
-
- /*메뉴바를 구성 하는 css   ===================================================================== */
-.tab-container {
-    position: relative;
-
-    display: -webkit-box;
-
-    display: -ms-flexbox;
-
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    padding: 2px;
-
-    border-radius: 15px;
-
-    color: rgb(253, 253, 253);
-    background: #1c1c25;
-    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.71),
-    -10px -10px 50px rgba(0, 0, 0, 0.71);;
-    border: rgb(24, 24, 32) solid 1px;
-    transition: all .3s;
-}
-.tab-container:hover {
-    margin-top: 20px;
-    z-index: 10;
-}
-.indicator {
-    content: "";
-    width: 130px;
-    height: 28px;
-    background: #1d347c;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    z-index: 9;
-    border: 1px solid rgba(255, 251, 251, 0.04);
-    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12),
-    0 3px 1px rgba(0, 0, 0, 0.04);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12), 0 3px 1px rgba(0, 0, 0, 0.04);
-    border-radius: 12px;
-    -webkit-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-}
-.tab {
-    width: 130px;
-    height: 28px;
-    position: absolute;
-    z-index: 99;
-    outline: none;
-    opacity: 0;
-}
-.tab_label {
-    width: 130px;
-    height: 30px;
-
-    position: relative;
-    z-index: 999;
-
-    display: -webkit-box;
-
-    display: -ms-flexbox;
-
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-
-    border: 0;
-
-    font-size: 0.75rem;
-    opacity: 0.6;
-
-    cursor: pointer;
-}
-.tab--1:checked ~ .indicator {
-    left: 2px;
-}
-
-.tab--2:checked ~ .indicator {
-    left: calc(130px + 2px);
-}
-
-.tab--3:checked ~ .indicator {
-    left: calc(130px * 2 + 2px);
-}
-
-.tab--4:checked ~ .indicator {
-    left: calc(130px * 3 + 2px);
-}
-
-.tab--5:checked ~ .indicator {
-    left: calc(130px * 4 + 2px);
-}
-/* 프로필 구성 ===================================================================== */
+/* 프로필 구성 ======================================================================================================== */
 #profile {
     position: absolute;
     top: 2%;
@@ -272,7 +151,7 @@ footer {
     font-size: 20px;
     color: rgba(211, 211, 211, 0.7);
 }
-/* sns 구성 ===================================================================== */
+/* sns 구성 ========================================================================================================== */
 #social {
     position: absolute;
     top: 48%;
@@ -396,7 +275,7 @@ footer {
     background: var(--card-bg-color);
     /*box-shadow: var(--card-box-shadow);*/
 }
-/* portfolio 구성 ===================================================================== */
+/* portfolio 구성 ==================================================================================================== */
 #portfolio {
      position: absolute;
      top: 2%;
@@ -540,7 +419,7 @@ footer {
     width: 50px;
     height: 50px;
 }
-/* projects 구성 =====================================================================*/
+/* projects 구성 ===================================================================================================== */
 #projects {
     position: absolute;
     top: 48%;
@@ -717,7 +596,7 @@ footer {
     width: 50px;
     height: 50px;
 }
-/* 기술 스택 구성 ===================================================================== */
+/* 기술 스택 구성 ====================================================================================================== */
 #tech-stack {
     position: absolute;
     top: 2%; /* 화면의 50% 아래에 위치 */
@@ -835,7 +714,7 @@ footer {
     background: var(--card-bg-color);
     /*box-shadow: var(--card-box-shadow);*/
 }
-/* 자격증 구성 ========================================================================== */
+/* 자격증 구성 ======================================================================================================== */
 #certificate {
     position: absolute;
     top: 48%;
@@ -1015,7 +894,7 @@ footer {
 .hidden {
     animation: fadeOut 1s forwards; /* 애니메이션 실행 후, 요소가 보이지 않게 처리 */
 }
-/* 에니메이션 설정하는 부분 ================================= */
+/* 에니메이션 설정하는 부분 ============================================================================================== */
 /* 텍스트가 천천히 선명해진다 */
 .text-focus-in {
     -webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
@@ -1219,7 +1098,7 @@ footer {
     }
 }
 
-/* =============================================== */
+/* SNS 선택 디자인 ==================================================================================================== */
 .label {
     display: flex;
     align-items: center;
@@ -1229,13 +1108,11 @@ footer {
     cursor: pointer;
     transition: .3s;
 }
-
 .label:hover,
 .label:focus-within,
 .label:active {
     background: hsla(0, 0%, 80%, .14);
 }
-
 .radio-input {
     position: absolute;
     left: 0;
@@ -1245,7 +1122,6 @@ footer {
     opacity: 0;
     z-index: -1;
 }
-
 .radio-design {
     width: 5px;
     height: 5px;
@@ -1253,7 +1129,6 @@ footer {
     background: linear-gradient(to right bottom, hsl(154, 97%, 62%), hsl(225, 97%, 62%));
     position: relative;
 }
-
 .radio-design::before {
     content: '';
     display: inline-block;
@@ -1264,11 +1139,9 @@ footer {
     transform: scale(1.1);
     transition: .3s;
 }
-
 .radio-input:checked+.radio-design::before {
     transform: scale(0);
 }
-
 .label-text {
     color: hsl(0, 0%, 60%);
     margin-left: 14px;
@@ -1278,12 +1151,10 @@ footer {
     font-weight: 900;
     transition: .3s;
 }
-
 .radio-input:checked~.label-text {
     color: hsl(0, 0%, 40%);
 }
-
-/*========================================*/
+/* 기술 스택 선택 디자인 ================================================================================================ */
 .tech-stack-button:hover {
     box-shadow: 0 0 var(--main-color);
     transform: scale(1.3);
@@ -1305,13 +1176,11 @@ footer {
     cursor: pointer;
     transition: .3s;
 }
-
 .tech-label:hover,
 .tech-label:focus-within,
 .tech-label:active {
     background: hsla(0, 0%, 80%, .14);
 }
-
 .tech-radio-input {
     position: absolute;
     left: 0;
@@ -1321,7 +1190,6 @@ footer {
     opacity: 0;
     z-index: -1;
 }
-
 .tech-radio-design {
     width: 5px;
     height: 5px;
@@ -1329,7 +1197,6 @@ footer {
     background: linear-gradient(to right bottom, hsl(154, 97%, 62%), hsl(225, 97%, 62%));
     position: relative;
 }
-
 .tech-radio-design::before {
     content: '';
     display: inline-block;
@@ -1340,11 +1207,9 @@ footer {
     transform: scale(1.1);
     transition: .3s;
 }
-
 .tech-radio-input:checked+.radio-design::before {
     transform: scale(0);
 }
-
 .tech-label-text {
     color: hsl(0, 0%, 60%);
     margin-left: 14px;
@@ -1354,11 +1219,10 @@ footer {
     font-weight: 900;
     transition: .3s;
 }
-
 .tech-radio-input:checked~.tech-label-text {
     color: hsl(0, 0%, 40%);
 }
-/*========================================*/
+/* 자격증 선택 디자인 =================================================================================================== */
 .certificate-radio-frame{
     position: absolute;
     top: 4%;
@@ -1374,13 +1238,11 @@ footer {
     cursor: pointer;
     transition: .3s;
 }
-
 .certificate-label:hover,
 .certificate-label:focus-within,
 .certificate-label:active {
     background: hsla(0, 0%, 80%, .14);
 }
-
 .certificate-radio-input {
     position: absolute;
     left: 0;
@@ -1390,7 +1252,6 @@ footer {
     opacity: 0;
     z-index: -1;
 }
-
 .certificate-radio-design {
     width: 5px;
     height: 5px;
@@ -1398,7 +1259,6 @@ footer {
     background: linear-gradient(to right bottom, hsl(154, 97%, 62%), hsl(225, 97%, 62%));
     position: relative;
 }
-
 .certificate-radio-design::before {
     content: '';
     display: inline-block;
@@ -1409,11 +1269,9 @@ footer {
     transform: scale(1.1);
     transition: .3s;
 }
-
 .certificate-radio-input:checked+.certificate-radio-design::before {
     transform: scale(0);
 }
-
 .certificate-label-text {
     color: hsl(0, 0%, 60%);
     margin-left: 14px;
@@ -1423,7 +1281,6 @@ footer {
     font-weight: 900;
     transition: .3s;
 }
-
 .certificate-radio-input:checked~.certificate-text {
     color: hsl(0, 0%, 40%);
 }

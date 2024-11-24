@@ -25,7 +25,7 @@
             <div id=certificate_top_list_frame>
                 <c:forEach var="certificate" items="${certificates}">
                     <div class="card" onclick="playSoundButton();">
-                        <img class="img" src="../images/certificate/${certificate.certificate_field}.png" alt="대표사진">
+                        <img class="img" src="../images/certificates/${certificate.certificate_field}.png" alt="대표사진">
                         <div class="jua-regular title">${certificate.certificate_title}</div> <!-- 자격증 제목 출력 -->
                     </div>
                 </c:forEach>
@@ -50,7 +50,7 @@
                     <%-- 컨트롤러에서 페이지 로딩하기 이전에 값을 처리하고 데이터를 받아오면 된다. --%>
                 <c:forEach var="certificate" items="${certificates}">
                     <div class="card" onclick="playSoundButton();">
-                        <img class="img" src="../images/certificate/${certificate.certificate_field}.png" alt="대표사진">
+                        <img class="img" src="../images/certificates/${certificate.certificate_field}.png" alt="대표사진">
                         <div class="jua-regular title">${certificate.certificate_title}</div> <!-- 자격증 제목 출력 -->
                     </div>
                 </c:forEach>
@@ -64,12 +64,12 @@
     </div>
     <div class="first-fade-in-left" id="left_display_frame">
         <div class="display-frame">
-            <img src="../images/community/display-left0.gif" alt="왼쪽 디스플레이">
+            <img src="../images/community/display-left.gif" alt="왼쪽 디스플레이">
         </div>
     </div>
     <div class="first-fade-in-right" id="right_display_frame">
         <div class="display-frame">
-            <img src="../images/community/display-left0.gif" alt="오른쪽 디스플레이">
+            <img src="../images/community/display-right.gif" alt="오른쪽 디스플레이">
         </div>
     </div>
 </section>
@@ -92,6 +92,14 @@
 
         <div class="indicator"></div>
     </div>
+    <form action="/logout" method="post">
+        <button class="montserrat Btn fade-in-bottom">
+
+            <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+
+            <div class="text">Logout</div>
+        </button>
+    </form>
 </nav>
 <footer class="text-focus-in">
     <p>CodeCanvas &copy; 2024 - ALL RIGHT RESERVE</p>

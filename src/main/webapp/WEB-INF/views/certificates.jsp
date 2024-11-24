@@ -186,7 +186,7 @@
             <div id="community_list_frame">
                 <c:forEach var="certificate" items="${certificates}">
                     <div class="card" onclick="playSoundButton();" data-title="${certificate.certificate_title}" data-text="${certificate.certificate_description}" data-link="${certificate.certificate_link}">
-                        <img class="img" src="../images/community/language/${certificate.certificate_field}.png" alt="대표사진">
+                        <img class="img" src="../images/certificates/${certificate.certificate_field}.png" alt="대표사진">
                         <div class="jua-regular title">${certificate.certificate_title} <!-- 자격증 제목 출력 -->
                         </div>
                     </div>
@@ -231,12 +231,12 @@
     </div>
     <div class="first-fade-in-left" id="left_display_frame">
         <div class="display-frame">
-            <img src="../images/community/display-left0.gif" alt="왼쪽 디스플레이">
+            <img src="../images/community/display-left.png" alt="왼쪽 디스플레이">
         </div>
     </div>
     <div class="first-fade-in-right" id="right_display_frame">
         <div class="display-frame">
-            <img src="../images/community/display-left0.gif" alt="오른쪽 디스플레이">
+            <img src="../images/community/display-right.png" alt="오른쪽 디스플레이">
         </div>
     </div>
 </section>
