@@ -45,13 +45,10 @@
     <div class="fade-in-bottom" id="top_competitions_frame">
         <div id="competitions_frame">
             <div id=competitions_top_list_frame>
-                <%-- 해당 부분에 직접 데이터를 받아와서 출력하게 해보셈--%>
-                <%-- 아래 forEach함수 부분만 수정하면 된다. --%>
-                    <%-- 컨트롤러에서 페이지 로딩하기 이전에 값을 처리하고 데이터를 받아오면 된다. --%>
-                <c:forEach var="certificate" items="${certificates}">
+                <c:forEach var="competition" items="${competitions}">
                     <div class="card" onclick="playSoundButton();">
-                        <img class="img" src="../images/certificates/${certificate.certificate_field}.png" alt="대표사진">
-                        <div class="jua-regular title">${certificate.certificate_title}</div> <!-- 자격증 제목 출력 -->
+                        <img class="img" src="../images/competitions/${competition.competitions_field}.png" alt="대표사진">
+                        <div class="jua-regular title">${competition.competitions_title}</div> <!-- 자격증 제목 출력 -->
                     </div>
                 </c:forEach>
             </div>
