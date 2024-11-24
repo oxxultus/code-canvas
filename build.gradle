@@ -8,6 +8,17 @@ plugins {
 group = 'com.webproject'
 version = '0.0.1-SNAPSHOT'
 
+// war 파일명 설정
+war {
+	enabled = true
+	archiveFileName = "${rootProject.name}.war"
+}
+
+bootWar {
+	enabled = true
+	archiveFileName = "${rootProject.name}-boot.war"
+}
+
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(17)
@@ -27,12 +38,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	testImplementation 'org.springframework.security:spring-security-test'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	implementation 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'mysql:mysql-connector-java:8.0.33'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-	providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
+	implementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
 	implementation 'com.fasterxml.jackson.core:jackson-databind'
 	implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:2.0.0'
 	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:2.0.0'
@@ -40,4 +51,10 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+processResources {
+	from('src/main/webapp') {
+		into 'META-INF/resources'
+	}
 }
