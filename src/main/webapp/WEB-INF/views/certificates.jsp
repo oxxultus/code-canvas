@@ -8,6 +8,8 @@
     <title>자격증 정보 검색</title>
     <link rel="stylesheet" href="../styles/certificates.css">
     <link rel="stylesheet" href="../styles/base.css">
+    <link rel="icon" type="image/x-icon" href="../images/codecanvas.ico">
+    <link rel="icon" type="image/png" href="../images/codecanvas.png">
     <script src="../scripts/portfolio/play-sound.js" defer></script>
     <script>
         // 자격증 데이터
@@ -184,7 +186,7 @@
             <div id="community_list_frame">
                 <c:forEach var="certificate" items="${certificates}">
                     <div class="card" onclick="playSoundButton();" data-title="${certificate.certificate_title}" data-text="${certificate.certificate_description}" data-link="${certificate.certificate_link}">
-                        <img class="img" src="../images/community/language/${certificate.certificate_field}.png" alt="대표사진">
+                        <img class="img" src="../images/certificates/${certificate.certificate_field}.png" alt="대표사진">
                         <div class="jua-regular title">${certificate.certificate_title} <!-- 자격증 제목 출력 -->
                         </div>
                     </div>
@@ -229,12 +231,12 @@
     </div>
     <div class="first-fade-in-left" id="left_display_frame">
         <div class="display-frame">
-            <img src="../images/community/display-left0.gif" alt="왼쪽 디스플레이">
+            <img src="../images/community/display-left.png" alt="왼쪽 디스플레이">
         </div>
     </div>
     <div class="first-fade-in-right" id="right_display_frame">
         <div class="display-frame">
-            <img src="../images/community/display-left0.gif" alt="오른쪽 디스플레이">
+            <img src="../images/community/display-right.png" alt="오른쪽 디스플레이">
         </div>
     </div>
 </section>
@@ -252,7 +254,7 @@
         <input type="radio" name="tab" id="tab4" onclick="window.location.href='/information'" class="tab tab--4" checked/>
         <label class="tab_label" for="tab4">정보</label>
 
-        <input type="radio" name="tab" id="tab5" onclick="window.location.href='/'" class="tab tab--5"/>
+        <input type="radio" name="tab" id="tab5" onclick="window.location.href='/home'" class="tab tab--5"/>
         <label class="tab_label" for="tab5">일정</label>
 
         <div class="indicator"></div>

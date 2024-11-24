@@ -1,4 +1,4 @@
-/* 전체 화면을 기준으로 배치 */
+/* 전체 화면을 기준으로 배치 ============================================================================================ */
 body {
     position: relative;
     width: 1440px; /* 화면 전체 높이를 최소 높이로 지정 */
@@ -7,7 +7,7 @@ body {
     align-items: center; /* 세로 중앙 정렬 */
     overflow: hidden;
 }
-/* Section  ===================================================================== */
+/* Section  ========================================================================================================= */
 section {
     position: absolute;
     display: flex;
@@ -18,7 +18,7 @@ section {
     transform: translate(-50%, -50%); /* 화면 중앙 기준 */
     justify-content: center;
     align-items: center;
-    border: solid white;
+    /*border: solid white;*/
     color: white;
 
     --card-bg-color: rgb(28, 28, 37);
@@ -27,7 +27,7 @@ section {
     /*--card-bg-color: lightgrey;*/
     /*--card-box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;*/
 }
-/* 탑 자격증 프레임 ========================================================== */
+/* 탑 자격증 프레임 ==================================================================================================== */
 #certificate_frame_title {
     position: absolute;
     top: 2%;
@@ -63,7 +63,6 @@ section {
     font-size: 25px;;
     color: rgba(211, 211, 211, 0.8);
 }
-
 #top_certificate_frame {
     position: absolute;
     top: 10%;
@@ -93,7 +92,6 @@ section {
     transition: all .3s;
     align-items: center;
 }
-
 #certificate_top_list_frame {
     position: absolute;
     top: 3%;
@@ -161,9 +159,7 @@ section {
 #certificate_top_list_frame .id {
     display: none;
 }
-
-
-/* 공모전 */
+/* 탑 공모전 프레임 ==================================================================================================== */
 #competitions_frame_title {
     position: absolute;
     top: 2%;
@@ -199,7 +195,6 @@ section {
     font-size: 25px;
     color: rgba(211, 211, 211, 0.8);
 }
-
 #top_competitions_frame {
     position: absolute;
     top: 10%;
@@ -229,7 +224,6 @@ section {
     transition: all .3s;
     align-items: center;
 }
-
 #competitions_top_list_frame {
     position: absolute;
     top: 3%;
@@ -297,7 +291,7 @@ section {
 #competitions_top_list_frame .id {
     display: none;
 }
-/*버튼 디자인 */
+/* 버튼 디자인 ======================================================================================================== */
 .button_frame{
     position: absolute;
     top: 90%;
@@ -344,7 +338,6 @@ section {
     font-size: 20px;
     color: rgba(211, 211, 211, 0.54);
 }
-
 #competitions_button{
     position: absolute;
     top: 16%;
@@ -378,7 +371,7 @@ section {
     font-size: 20px;
     color: rgba(211, 211, 211, 0.54);
 }
-/*좌우 디스플레이 프레임===============================================================*/
+/*좌우 디스플레이 프레임================================================================================================= */
 #left_display_frame{
     position: absolute;
     top: 2.8%;

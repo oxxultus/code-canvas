@@ -1,3 +1,4 @@
+/* 통합 폰트 설정 ===================================================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 body {
     position: relative;
@@ -7,7 +8,7 @@ body {
     align-items: center; /* 세로 중앙 정렬 */
     overflow: hidden;
 }
-/* Section  ===================================================================== */
+/* Section  ========================================================================================================= */
 section {
     position: absolute;
     display: flex;
@@ -25,7 +26,7 @@ section {
     --card-box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.71),
     -10px -10px 50px rgba(0, 0, 0, 0.71);
 }
-/* 게시판 작성 기준 프레임 ===============================================================*/
+/* 게시판 작성 기준 프레임 ============================================================================================== */
 #edit_community {
     position: absolute;
     top: 3%;
@@ -42,7 +43,7 @@ section {
 #edit_community:hover {
     margin-top: -10px;
 }
-/* 게시판 작성 타이틀 프레임 ============================================================== */
+/* 게시판 작성 타이틀 프레임 ============================================================================================ */
 #community_title_frame{
     position: absolute;
     top: 3%;
@@ -76,7 +77,7 @@ section {
     font-size: 20px;
     color: rgba(211, 211, 211, 0.54);
 }
-/* 버튼 디자인============================================================*/
+/* 버튼 디자인 ======================================================================================================== */
 #reset{
     position: absolute;
     top: 3%;
@@ -142,7 +143,7 @@ section {
     font-size: 20px;
     color: rgba(211, 211, 211, 0.54);
 }
-/* 작성하는 부분 프레임 ===================================================================================*/
+/* 작성하는 부분 프레임 ================================================================================================ */
 #write_frame{
     position: absolute;
     top: 13%;
@@ -203,7 +204,7 @@ section {
     transition: all .3s;
     align-items: center;
 }
-/*게시글 종류 라디오 버튼 프레임 ===========================================*/
+/*게시글 종류 라디오 버튼 프레임 ========================================================================================= */
 #question_type {
     position: absolute;
     top: 10%;
@@ -215,7 +216,7 @@ section {
     border-radius: 15px;
     border: 1px solid black;
 }
-/*라디오 버튼 디자인===========================================*/
+/*라디오 버튼 디자인==================================================================================================== */
 .radio-button-container {
     position: absolute;
     top: 25%;
@@ -227,20 +228,17 @@ section {
     font-weight: 400;
     font-style: normal;
 }
-
 .radio-button {
     display: inline-block;
     position: relative;
     cursor: pointer;
 }
-
 .radio-button__input {
     position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
 }
-
 .radio-button__label {
     display: inline-block;
     padding-left: 30px;
@@ -253,7 +251,6 @@ section {
     text-transform: uppercase;
     transition: all 0.3s ease;
 }
-
 .radio-button__custom {
     position: absolute;
     top: 0;
@@ -264,24 +261,21 @@ section {
     border: 2px solid #555;
     transition: all 0.3s ease;
 }
-
 .radio-button__input:checked + .radio-button__label .radio-button__custom {
     background-color: #4c8bf5;
     border-color: transparent;
     transform: scale(0.8);
     box-shadow: 0 0 20px #4c8bf580;
 }
-
 .radio-button__input:checked + .radio-button__label {
     color: #4c8bf5;
 }
-
 .radio-button__label:hover .radio-button__custom {
     transform: scale(1.2);
     border-color: #4c8bf5;
     box-shadow: 0 0 20px #4c8bf580;
 }
-/*언어 테그 라디오 버튼 프레임 =====================================================================*/
+/*언어 테그 라디오 버튼 프레임 =========================================================================================== */
 #language_type {
     position: absolute;
     top: 50%;
@@ -300,19 +294,16 @@ section {
     width: 0; /* 세로 스크롤바 너비를 0으로 설정 */
     height: 8px; /* 가로 스크롤바 높이 설정 */
 }
-
 /* 가로 스크롤바 트랙 디자인 */
 #language_type::-webkit-scrollbar-track {
     background: #0f0f14; /* 트랙 배경색 */
     border-radius: 10px; /* 트랙의 모서리를 둥글게 */
 }
-
 /* 가로 스크롤바 핸들 디자인 */
 #language_type::-webkit-scrollbar-thumb {
     background: #1c1c25; /* 스크롤바 핸들 색상 */
     border-radius: 10px; /* 핸들의 모서리를 둥글게 */
 }
-
 /* 가로 스크롤바 핸들 호버 효과 */
 #language_type::-webkit-scrollbar-thumb:hover {
     background: #4c8bf5; /* 호버 시 색상 변경 */
@@ -329,20 +320,17 @@ section {
     font-weight: 400;
     font-style: normal;
 }
-
 .radio-button2 {
     display: inline-block;
     position: relative;
     cursor: pointer;
 }
-
 .radio-button2__input {
     position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
 }
-
 .radio-button2__label {
     display: inline-block;
     padding-left: 30px;
@@ -355,7 +343,6 @@ section {
     text-transform: uppercase;
     transition: all 0.3s ease;
 }
-
 .radio-button2__custom {
     position: absolute;
     top: 0;
@@ -366,25 +353,21 @@ section {
     border: 2px solid #555;
     transition: all 0.3s ease;
 }
-
 .radio-button2__input:checked + .radio-button2__label .radio-button2__custom {
     background-color: #4c8bf5;
     border-color: transparent;
     transform: scale(0.8);
     box-shadow: 0 0 20px #4c8bf580;
 }
-
 .radio-button2__input:checked + .radio-button2__label {
     color: #4c8bf5;
 }
-
 .radio-button2__label:hover .radio-button2__custom {
     transform: scale(1.2);
     border-color: #4c8bf5;
     box-shadow: 0 0 20px #4c8bf580;
 }
-
-/* 왼쪽 디스플레이 프레임 ========================================================================= */
+/* 왼쪽 디스플레이 프레임 =============================================================================================== */
 #left_display_frame {
     position: absolute;
     top: 3%;
@@ -398,7 +381,6 @@ section {
     transition: all .3s;
     align-items: center;
 }
-
 #left_display_frame:hover {
     margin-top: -10px;
 }
@@ -416,7 +398,6 @@ section {
     transition: all .3s;
     align-items: center;
 }
-
 #right_display_frame:hover {
     margin-top: -10px;
 }

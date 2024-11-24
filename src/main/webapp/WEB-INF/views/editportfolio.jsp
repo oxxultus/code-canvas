@@ -31,6 +31,8 @@
 
     <link rel="stylesheet" href="../styles/base.css">
     <link rel="stylesheet" href="../styles/editportfolio.css">
+    <link rel="icon" type="image/x-icon" href="../images/codecanvas.ico">
+    <link rel="icon" type="image/png" href="../images/codecanvas.png">
 
     <script src="../scripts/portfolio/play-sound.js" defer></script>
 </head>
