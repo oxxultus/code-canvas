@@ -61,12 +61,12 @@
     </div>
     <div class="first-fade-in-left" id="left_display_frame">
         <div class="display-frame">
-            <img src="../images/community/display-left.gif" alt="왼쪽 디스플레이">
+            <img src="../images/community/display-left.png" alt="왼쪽 디스플레이">
         </div>
     </div>
     <div class="first-fade-in-right" id="right_display_frame">
         <div class="display-frame">
-            <img src="../images/community/display-right.gif" alt="오른쪽 디스플레이">
+            <img src="../images/community/display-right.png" alt="오른쪽 디스플레이">
         </div>
     </div>
 </section>

@@ -21,7 +21,15 @@ import java.util.stream.Collectors;
 public class InformationController {
 
     @GetMapping("/information")
-    public String Information(Model model) {
+    public String Information(Model model, HttpSession session){
+        User currentUser = (User) session.getAttribute("user");
+        if (currentUser == null) {
+            System.out.println("------------------------------------------------------------------------\n");
+            System.out.println("[/information] : 세선에 저장된  정보가 없습니다. 로그인 페이지로 이동합니다. \n");
+            System.out.println("------------------------------------------------------------------------\n");
+            return "redirect:/"; // 유저가 세션에 없으면 로그인 페이지로 리디렉션
+        }
+
         String filePath = "src/main/webapp/data/certificates_data.json"; // JSON 파일 경로
         System.out.println(filePath);
         List<Map<String, Object>> certificates = new ArrayList<>();
