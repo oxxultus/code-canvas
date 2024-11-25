@@ -39,7 +39,9 @@ public class SecurityConfig {
                                 "/writecommunity",
                                 "/api/community/save",
                                 "/home",
-                                "/increaseCertificateCount"
+                                "/increaseCertificateCount",
+                                "/increaseCompetitionsCount",
+                                "/errer"
                         ).permitAll()  // 인증 없이 접근 가능한 URL
 //                        .requestMatchers("/portfolio").authenticated()  // 인증이 필요한 URL
                         .anyRequest().authenticated()  // 그 외의 모든 요청은 인증 필요
