@@ -14,6 +14,11 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/error")
+    public String Error(){
+        return "error";
+    }
+
     @GetMapping("/home")
     public String Home(Model model, HttpSession session) {
         // 세션에서 로그인된 유저 정보 가져오기
