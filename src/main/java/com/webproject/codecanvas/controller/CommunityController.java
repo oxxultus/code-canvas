@@ -1,5 +1,7 @@
 package com.webproject.codecanvas.controller;
 
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.webproject.codecanvas.entity.User;
@@ -7,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.UUID;
 
 import java.io.File;
+import java.io.InputStream;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -25,15 +29,11 @@ public class CommunityController {
 
         User currentUser = (User) session.getAttribute("user");
         if (currentUser == null) {
-            System.out.println("------------------------------------------------------------------------\n");
-            System.out.println("[/community] : 세선에 저장된  정보가 없습니다. 로그인 페이지로 이동합니다. \n");
-            System.out.println("------------------------------------------------------------------------\n");
             return "redirect:/"; // 유저가 세션에 없으면 로그인 페이지로 리디렉션
         }
 
-        // JSON 파일 경로
-        String filePath = "src/main/webapp/data/community_data.json"; // 파일명 확인
-        File file = new File(filePath);
+        // 외부 파일 경로에서 읽기
+        File file = new File("/codecanvas/data/community_data.json"); // 외부 저장 경로 지정
 
         try {
             // JSON 데이터 읽기 및 변환
@@ -41,7 +41,8 @@ public class CommunityController {
             List<Map<String, Object>> posts = List.of(); // 기본 빈 리스트 설정
 
             if (file.exists()) {
-                posts = objectMapper.readValue(file, new TypeReference<List<Map<String, Object>>>() {});
+                // 파일이 존재하면 파일을 읽어들임
+                posts = objectMapper.readValue(file, new TypeReference<>() {});
 
                 // 검색 조건이 비어있지 않으면 필터링, 그렇지 않으면 전체 게시글을 출력
                 if (title != null && !title.isEmpty()) {
@@ -77,7 +78,7 @@ public class CommunityController {
         User currentUser = (User) session.getAttribute("user");
         if (currentUser == null) {
             System.out.println("------------------------------------------------------------------------\n");
-            System.out.println("[/writecommunity] : 세선에 저장된  정보가 없습니다. 로그인 페이지로 이동합니다. \n");
+            System.out.println("[/writecommunity] : 세션에 저장된 정보가 없습니다. 로그인 페이지로 이동합니다.\n");
             System.out.println("------------------------------------------------------------------------\n");
             return "redirect:/"; // 유저가 세션에 없으면 로그인 페이지로 리디렉션
         }
@@ -96,24 +97,24 @@ public class CommunityController {
         User currentUser = (User) session.getAttribute("user");
         if (currentUser == null) {
             System.out.println("------------------------------------------------------------------------\n");
-            System.out.println("[/api/community/save] : 세선에 저장된  정보가 없습니다. 로그인 페이지로 이동합니다. \n");
+            System.out.println("[/api/community/save] : 세션에 저장된 정보가 없습니다. 로그인 페이지로 이동합니다.\n");
             System.out.println("------------------------------------------------------------------------\n");
             return "redirect:/"; // 유저가 세션에 없으면 로그인 페이지로 리디렉션
         }
 
-        /// 1. 제목의 공백 여부 확인
+        // 제목 공백 여부 확인
         if (write_title.isBlank()) {
             System.out.println("------------------------------------------------------------------------\n");
-            System.out.println("[/api/community/save] : 제목이 비어 있습니다. 저장이 취소됩니다. \n");
+            System.out.println("[/api/community/save] : 제목이 비어 있습니다. 저장이 취소됩니다.\n");
             System.out.println("------------------------------------------------------------------------\n");
-            return "redirect:/community"; // 에러 메시지와 함께 커뮤니티 페이지로 리디렉션
+            return "redirect:/community"; // 제목이 비어있으면 커뮤니티 페이지로 리디렉션
         }
 
-        // 1. 세션 확인
+        // 세션 정보 확인
         String email = currentUser.getEmail();
         String name = currentUser.getName();
 
-        // 2. 전달받은 데이터 JSON 파일로 저장
+        // 데이터 JSON에 저장
         Map<String, Object> data = new HashMap<>();
         data.put("noticeboard", noticeboard);
         data.put("email", email);
@@ -123,37 +124,48 @@ public class CommunityController {
         data.put("language", language);
 
         try {
-            // JSON 파일로 데이터 저장
-            ObjectMapper objectMapper = new ObjectMapper();
-            String fileName = "src/main/webapp/data/community_data.json"; // 상대 경로
-            File file = new File(fileName);
+            // 디렉토리 경로 확인 후 생성
+            File directory = new File("/codecanvas/data"); // 경로를 확인해보세요.
+            if (!directory.exists()) {
+                directory.mkdirs(); // 디렉토리 생성
+            }
 
-            // 파일이 이미 존재하면 기존 데이터 유지하면서 새 데이터 추가
+            // 파일 객체 생성
+            File file = new File(directory, "community_data.json");
+
+            // 파일이 없다면 새로 생성
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            // JSON 파일 읽기 및 데이터 추가
+            ObjectMapper objectMapper = new ObjectMapper();
             List<Map<String, Object>> dataList;
-            if (file.exists()) {
-                dataList = objectMapper.readValue(file, new TypeReference<>() {
-                });
+
+            if (file.length() > 0) {
+                dataList = objectMapper.readValue(file, new TypeReference<List<Map<String, Object>>>() {});
             } else {
                 dataList = new ArrayList<>();
             }
 
-            // UUID로 고유한 id 생성
-            String id = UUID.randomUUID().toString();  // UUID 를 id로 사용
-            data.put("id", id); // id 추가
+            // UUID로 고유 ID 생성
+            String id = UUID.randomUUID().toString();  // UUID로 ID 생성
+            data.put("id", id); // ID 추가
 
             // 게시글 추가
             dataList.add(data);
 
-            // 업데이트된 리스트를 다시 파일에 쓰기
+            // 파일에 데이터 저장
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, dataList);
+
         } catch (IOException e) {
             e.printStackTrace();
-            return "redirect:/community"; // 오류 발생 시 반환
+            return "redirect:/community"; // 오류 발생 시 리디렉션
         }
 
         // 성공적으로 처리된 경우
         System.out.println("------------------------------------------------------------------------\n");
-        System.out.println("[/api/community/save] : 게시글 저장이 정상적으로 완료 되었습니다. \n");
+        System.out.println("[/api/community/save] : 게시글 저장이 정상적으로 완료되었습니다.\n");
         System.out.println("------------------------------------------------------------------------\n");
         return "redirect:/community";
     }

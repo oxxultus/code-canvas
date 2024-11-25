@@ -144,12 +144,12 @@
 </form>
   <div class="first-fade-in-left" id="left_display_frame">
     <div class="display-frame">
-      <img class="display-img" src="../images/community/display-left.gif" alt="게임 gif">
+      <img class="display-img" src="../images/community/write/display-left.png" alt="게임 gif">
     </div>
   </div>
   <div class="first-fade-in-right" id="right_display_frame">
     <div class="display-frame">
-      <img class="display-img" src="../images/community/display-right.gif" alt="게임 gif">
+      <img class="display-img" src="../images/community/write/display-right.png" alt="게임 gif">
     </div>
   </div>
 </section>
