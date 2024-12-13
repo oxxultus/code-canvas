@@ -90,7 +90,7 @@
         <label class="tab_label" for="tab4">정보</label>
 
         <input type="radio" name="tab" id="tab5" onclick="window.location.href='/'" class="tab tab--5"/>
-        <label class="tab_label" for="tab5">일정</label>
+        <label class="tab_label" for="tab5">메인</label>
 
         <div class="indicator"></div>
     </div>
