@@ -84,8 +84,8 @@
         <input type="radio" name="tab" id="tab4" onclick="playSoundButton(); window.location.href='/information'" class="tab tab--4" checked/>
         <label class="tab_label" for="tab4">정보</label>
 
-        <input type="radio" name="tab" id="tab5" onclick="playSoundButton(); window.location.href='/home'" class="tab tab--5"/>
-        <label class="tab_label" for="tab5">일정</label>
+        <input type="radio" name="tab" id="tab5" onclick="playSoundButton(); window.location.href='/'" class="tab tab--5"/>
+        <label class="tab_label" for="tab5">메인</label>
 
         <div class="indicator"></div>
     </div>

@@ -21,6 +21,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    // 로그인
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest, HttpSession session) {
         try {
@@ -53,16 +54,24 @@ public class UserController {
         }
     }
 
-    // 기존 회원가입 엔드포인트
+    // 회원가입을 처리하는 POST 메서드
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest) {
         try {
+            // 사용자 등록 서비스 호출
+            // registerRequest 객체에서 받은 데이터를 기반으로 새로운 User 객체 생성
             User user = userService.register(registerRequest);
+
+            // 사용자 등록 성공 시, 생성된 User 객체를 응답으로 반환
+            // ResponseEntity.ok()는 HTTP 상태 코드 200 OK와 함께 사용자 정보를 반환
             return ResponseEntity.ok().body(user);
         } catch (RuntimeException e) {
+            // 예외가 발생한 경우, 실패 메시지 반환
+            // 예외 메시지를 HTTP 상태 코드 400 Bad Request와 함께 응답으로 반환
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
 
     // 현재 로그인된 사용자 정보 조회
     @GetMapping("/user/current")

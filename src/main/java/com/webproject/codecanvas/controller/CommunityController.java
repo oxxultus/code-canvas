@@ -33,7 +33,7 @@ public class CommunityController {
         }
 
         // 외부 파일 경로에서 읽기
-        File file = new File("/codecanvas/data/community_data.json"); // 외부 저장 경로 지정
+        File file = new File("/home/oxxultus/community_data.json"); // 외부 저장 경로 지정
 
         try {
             // JSON 데이터 읽기 및 변환
@@ -125,7 +125,7 @@ public class CommunityController {
 
         try {
             // 디렉토리 경로 확인 후 생성
-            File directory = new File("/codecanvas/data"); // 경로를 확인해보세요.
+            File directory = new File("/home/oxxultus/"); // 경로를 확인해보세요.
             if (!directory.exists()) {
                 directory.mkdirs(); // 디렉토리 생성
             }
@@ -169,6 +169,4 @@ public class CommunityController {
         System.out.println("------------------------------------------------------------------------\n");
         return "redirect:/community";
     }
-
-
 }

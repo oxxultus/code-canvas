@@ -1,7 +1,7 @@
 <%@ page import="com.webproject.codecanvas.webdata.AddPortfolioData" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%
-    // 데이터 베이스로부터 데이터를 받아와 기본값 등을 설정한다.
+    // model로 전달받는 데이터를 사용하기 위한 부분입니다.
     // .js 에서도 사용하기 위해서
     AddPortfolioData addPortfolioData = (AddPortfolioData) request.getAttribute("addPortfolioData");
 
@@ -83,8 +83,8 @@
         <input type="radio" name="tab" id="tab4" onclick="window.location.href='/information'" class="tab tab--4"/>
         <label class="tab_label" for="tab4">정보</label>
 
-        <input type="radio" name="tab" id="tab5" onclick="window.location.href='/home'" class="tab tab--5"/>
-        <label class="tab_label" for="tab5">일정</label>
+        <input type="radio" name="tab" id="tab5" onclick="window.location.href='/'" class="tab tab--5"/>
+        <label class="tab_label" for="tab5">메인</label>
 
         <div class="indicator"></div>
     </div>

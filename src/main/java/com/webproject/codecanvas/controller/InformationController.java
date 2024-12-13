@@ -37,7 +37,7 @@ public class InformationController {
 
         // certificates_data.json 파일 처리
         List<Map<String, Object>> certificates = new ArrayList<>();
-        String targetPath = "/codecanvas/data/certificates_data.json"; // 복사 대상 경로
+        String targetPath = "/home/oxxultus/certificates_data.json"; // 복사 대상 경로
 
         try {
             // 외부 파일이 존재하지 않는 경우 클래스패스에서 복사
@@ -51,7 +51,7 @@ public class InformationController {
                 }
 
                 // 파일 복사
-                File targetDir = new File("/codecanvas/data/");
+                File targetDir = new File("/home/oxxultus/");
                 if (!targetDir.exists() && !targetDir.mkdirs()) {
                     System.out.println("디렉토리 생성에 실패했습니다.");
                     return "error";
@@ -93,7 +93,7 @@ public class InformationController {
 
         // competitions.json 파일 처리
         List<Map<String, Object>> competitions = new ArrayList<>();
-        String competitionsPath = "/codecanvas/data/competitions.json"; // 복사 대상 경로
+        String competitionsPath = "/home/oxxultus/competitions.json"; // 복사 대상 경로
 
         try {
             // 외부 파일이 존재하지 않는 경우 클래스패스에서 복사
@@ -107,7 +107,7 @@ public class InformationController {
                 }
 
                 // 파일 복사
-                File targetDir = new File("/codecanvas/data/");
+                File targetDir = new File("/home/oxxultus/");
                 if (!targetDir.exists() && !targetDir.mkdirs()) {
                     System.out.println("디렉토리 생성에 실패했습니다.");
                     return "error";
@@ -166,7 +166,7 @@ public class InformationController {
         }
 
         // 외부 파일 경로
-        String targetPath = "/codecanvas/data/competitions.json";
+        String targetPath = "/home/oxxultus/competitions.json";
 
         try {
             // 외부 파일이 존재하지 않으면 클래스패스에서 복사
@@ -180,7 +180,7 @@ public class InformationController {
                 }
 
                 // 파일 복사
-                File targetDir = new File("/codecanvas/data/");
+                File targetDir = new File("/home/oxxultus/");
                 if (!targetDir.exists() && !targetDir.mkdirs()) {
                     System.out.println("디렉토리 생성에 실패했습니다.");
                     return "error";
@@ -236,7 +236,7 @@ public class InformationController {
         }
 
         // 외부 파일 경로
-        String targetPath = "/codecanvas/data/certificates_data.json";
+        String targetPath = "/home/oxxultus/certificates_data.json";
 
         try {
             // 외부 파일이 존재하지 않으면 클래스패스에서 복사
@@ -296,7 +296,7 @@ public class InformationController {
         String certificateTitle = requestData.get("certificateTitle");
 
         // 외부 파일 경로
-        String targetPath = "/codecanvas/data/certificates_data.json";
+        String targetPath = "/home/oxxultus/certificates_data.json";
         ObjectMapper objectMapper = new ObjectMapper();
         List<Map<String, Object>> certificates = new ArrayList<>();
 
@@ -312,7 +312,7 @@ public class InformationController {
                 }
 
                 // 파일 복사
-                File targetDir = new File("/codecanvas/data/");
+                File targetDir = new File("/home/oxxultus/");
                 if (!targetDir.exists() && !targetDir.mkdirs()) {
                     System.out.println("디렉토리 생성에 실패했습니다.");
                     throw new IOException("디렉토리 생성 실패");
@@ -369,7 +369,7 @@ public class InformationController {
         String competitionsTitle = requestData.get("competitionsTitle");
 
         // 외부 파일 경로
-        String targetPath = "/codecanvas/data/competitions.json";
+        String targetPath = "/home/oxxultus/competitions.json";
         ObjectMapper objectMapper = new ObjectMapper();
         List<Map<String, Object>> competitions = new ArrayList<>();
 
@@ -385,7 +385,7 @@ public class InformationController {
                 }
 
                 // 파일 복사
-                File targetDir = new File("/codecanvas/data/");
+                File targetDir = new File("/home/oxxultus/");
                 if (!targetDir.exists() && !targetDir.mkdirs()) {
                     System.out.println("디렉토리 생성에 실패했습니다.");
                     throw new IOException("디렉토리 생성 실패");
@@ -435,6 +435,4 @@ public class InformationController {
         response.put("message", "Competitions count updated successfully");
         return response;
     }
-
-
 }
