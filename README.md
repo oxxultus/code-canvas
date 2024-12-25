@@ -43,10 +43,10 @@ implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:2.0.0'
 
 ## 빌드 및 실행 방법
 1. 이 저장소를 클론합니다:
-   ```bash
+```bash
    git clone <저장소 URL>
    cd <프로젝트 폴더>
-  ```
+```
 
 2. Gradle로 프로젝트를 빌드합니다:
   ```bash
