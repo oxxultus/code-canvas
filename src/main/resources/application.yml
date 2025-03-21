@@ -4,7 +4,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/codecanvas
     username: oxxultus
-    password: 779853
+    password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   devtools:
